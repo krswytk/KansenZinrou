@@ -71,9 +71,12 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
 
     Player[] player;
 
-    public void Start()//表の更新を行う    
-    {
 
+    private GameObject Ibent;//情勢イベントprivate GameObject 
+    private Text Ibenttext;//情勢イベントprivate Text 
+
+    public void Awake()//表の初期設定を行う    
+    {
         INFECTIONFood = GameObject.Find("INFECTIONFood");//薬局の食料
         INFECTIONWater = GameObject.Find("INFECTIONWater");//薬局の飲料
         INFECTIONTool = GameObject.Find("INFECTIONTool");//薬局の道具
@@ -137,12 +140,17 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         TOOLPurchasingText = TOOLPurchasing.GetComponent<Text>();//道具屋の仕入
         TOOLSellText = TOOLSell.GetComponent<Text>();//道具屋の売値
         TOOLCountermeasuresText = TOOLCountermeasures.GetComponent<Text>();//道具屋の対策
+
+
+        Ibent = GameObject.Find("Ibent");//道具屋の対策
+        Ibenttext = Ibent.GetComponent<Text>();//道具屋の対策
     }
 
     public void TableUpdate()//表の更新を行う    
     {
         player = GetComponent<MainManeger>().player;
-        Debug.Log(player[0].GetFood().ToString());
+        //Debug.Log(player[0].GetFood().ToString());
+        //Debug.Log(INFECTIONFood);
         INFECTIONFoodText.text = player[0].GetFood().ToString();//薬局の食料
         INFECTIONWaterText.text = player[0].GetWater().ToString();//薬局の飲料
         INFECTIONToolText.text = player[0].GetTool().ToString();//薬局の道具
@@ -184,22 +192,35 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         支援 = 5,//このターン中のみ感染対策の費用が1になる(国からの支援)
         医療崩壊 = 6//このターン中のみ医者の用意出来るベッドが1になる（医療崩壊）
     }
+    news now;
     public void NewsDisplay()//ニューズの更新を行う
     {
         int n = RandomDice.DiceRoll(6);//1D6 123456
         switch (n)
         {
             case 1:
+                now = news.クラスター;
+                Ibenttext.text = "現在の情勢イベントは " + "このターンの感染率up" + " です。";
                 break;
             case 2:
+                now = news.給付金;
+                Ibenttext.text = "現在の情勢イベントは " + "全プレイヤーに金＋1" + " です。";
                 break;
             case 3:
+                now = news.変異;
+                Ibenttext.text = "現在の情勢イベントは " + "このターンに感染すると2から症状が始まる" + " です。";
                 break;
             case 4:
+                now = news.体調不良;
+                Ibenttext.text = "現在の情勢イベントは " + "PCR検査ランダムに1人の感染状況を開示" + " です。";
                 break;
             case 5:
+                now = news.支援;
+                Ibenttext.text = "現在の情勢イベントは " + "このターン中のみ感染対策の費用が1になる" + " です。";
                 break;
             case 6:
+                now = news.医療崩壊;
+                Ibenttext.text = "現在の情勢イベントは " + "このターン中のみ医者の用意出来るベッドが1になる" + " です。";
                 break;
         }
 

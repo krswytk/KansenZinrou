@@ -26,7 +26,7 @@ public class MainManeger : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Aweek()
+    void Awake()
     {
 
     }
@@ -62,6 +62,7 @@ public class MainManeger : MonoBehaviour
         UIM.TableUpdate();
         Turn = 0;
         Debug.Log("初期値設定終了");
+        Turn = 1;
     }
     // Update is called once per frame
 
@@ -69,7 +70,13 @@ public class MainManeger : MonoBehaviour
     private int Turn;
     void Update()
     {
-        UIM.NewsDisplay();
+        if (Turn == 1)
+        {
+            Debug.Log(Turn + "ターン目開始");
+            UIM.TableUpdate();
+            UIM.NewsDisplay();
+            Turn++;
+        }
 
 
     }
