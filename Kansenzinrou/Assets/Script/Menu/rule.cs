@@ -18,12 +18,11 @@ public class rule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Rule_sw);
+        
     }
 
     public void rule_open()
     {
-        Debug.Log("ルール開く");
         if (Rule_sw)//あったら削除
         {
             scene_open = SceneManager.GetSceneByName("Rule");
@@ -39,8 +38,17 @@ public class rule : MonoBehaviour
     public void rule_close()
     {
         scene_close = SceneManager.GetSceneByName("Rule");//合体しているうちの、こっちだけ
-        Debug.Log("消します");
         SceneManager.UnloadSceneAsync(scene_close);
         Rule_sw = false;
+    }
+
+    public void title_back()
+    {
+        //feadSC.fade("Title");//タイトルに移動
+    }
+
+    public void GameStart()
+    {
+        //feadSC.fade("Title");//ゲームスタート
     }
 }
