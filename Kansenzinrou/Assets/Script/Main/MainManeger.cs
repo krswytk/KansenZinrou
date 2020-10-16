@@ -69,7 +69,8 @@ public class MainManeger : MonoBehaviour
     private int Turn;
     void Update()
     {
-        UIM.
-        
+        UIM.NewsDisplay();
+
+
     }
 }
