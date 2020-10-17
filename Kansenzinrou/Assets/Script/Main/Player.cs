@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClass : MonoBehaviour
-{
-
-}
-
 
 public enum Job
 {
@@ -17,7 +12,7 @@ public enum Job
     TOOL = 3//道具
 }
 
-
+//プレイヤーの情報を格納するクラス
 public class Player {
     
     private string Name;//プレイヤ名
