@@ -3,11 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerClass : MonoBehaviour
-{
-
-}
-
 
 public enum Job
 {
@@ -17,7 +12,7 @@ public enum Job
     TOOL = 3//道具
 }
 
-
+//プレイヤーの情報を格納するクラス
 public class Player {
     
     private string Name;//プレイヤ名
@@ -69,31 +64,33 @@ public class Player {
             case Job.INFECTION:
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
 
-                Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
+                //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Job.FOOD:
                 this.Food = 1000;//食料なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
 
-                Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
+                //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Job.WATER:
                 this.Water = 1000;//水なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
 
-                Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
+                //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Job.TOOL:
                 this.Tool = 1000;//道具なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
 
-                Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
+                //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             default:break;
         }
+        /*
         Debug.Log(this.Food);
         Debug.Log(this.Water);
         Debug.Log(this.Tool);
+        */
     }//プレイヤ生成用のコンストタクタ
 
     public void AllSuppliesMinus()//ターン終了時の全物資-1の処理
@@ -106,12 +103,12 @@ public class Player {
     public void PlayerDate()
     {
         Debug.Log(
+            "職業" + this.Job + "\n" +
             "名前" + this.Name + "\n"+
             "食べ物" + this.Food + "\n" +
             "飲み物" + this.Water + "\n" +
             "お洋服" + this.Tool + "\n" +
             "お金" + this.Money + "\n" +
-            "職業" + this.Job + "\n" +
             "感染状況" + this.infection + "\n"
             );
     }
