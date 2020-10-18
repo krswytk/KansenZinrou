@@ -14,8 +14,8 @@ public class TurnManeger : MonoBehaviour
 
 
     private bool PurchasingTime = false;
-    Config.Stage Stage;
 
+    Config.Stage stage;
 
     // Start is called before the first frame update
     void Start()
@@ -25,31 +25,87 @@ public class TurnManeger : MonoBehaviour
         IA = GetComponent<IventAll>();
         MM = GetComponent<MainManeger>();
         Player = MM.Player;
-        Stage = Config.Stage.待機;//0が入っている
+        stage = Config.Stage.待機;//0が入っている
     }
 
     // Update is called once per frame
     void Update()
-    {/*
+    {       /*
             public enum Stage
-    {
-        待機 = 0,
-        表更新 = 1,
-        情勢イベント表示  = 2,
-        感染状態表示  = 3,
-        情勢イベント  = 4,
-        給料配布  = 5,
-        仕入れを0にする  = 6,
-        仕入れ時間開始  = 7,
-        仕入れ中  = 8,
-        仕入れ終了  = 9,
-        取引  = 10,
-        全ターン終了  = 11,
-        判定  = 12,
-    }*/
+            {
+                待機 = 0,
+                表更新 = 1,
+                情勢イベント表示  = 2,
+                感染状態表示  = 3,
+                情勢イベント  = 4,
+                給料配布  = 5,
+                仕入れを0にする  = 6,
+                仕入れ時間開始  = 7,
+                仕入れ中  = 8,
+                仕入れ終了  = 9,
+                取引  = 10,
+                全ターン終了  = 11,
+                判定  = 12,
+            }*/
         if (MM.FirstSet)//初期設定がすべて完了していたら
-            Debug.Log(Turn + "ターン目開始");
         {
+            Debug.Log(Turn + "ターン目開始");
+            switch (stage)
+            {
+                case Config.Stage.待機:
+                    stage = Config.Stage.表更新;
+                    break;
+                case Config.Stage.表更新:
+                    stage = Config.Stage.情勢イベント表示;
+
+                    break;
+                case Config.Stage.情勢イベント表示:
+                    stage = Config.Stage.感染状態表示;
+
+                    break;
+                case Config.Stage.感染状態表示:
+                    stage = Config.Stage.情勢イベント;
+
+                    break;
+                case Config.Stage.情勢イベント:
+                    stage = Config.Stage.給料配布;
+
+                    break;
+                case Config.Stage.給料配布:
+                    stage = Config.Stage.仕入れを0にする;
+
+                    break;
+                case Config.Stage.仕入れを0にする:
+                    stage = Config.Stage.仕入れ時間開始;
+
+                    break;
+                case Config.Stage.仕入れ時間開始:
+                    stage = Config.Stage.仕入れ中;
+
+                    break;
+                case Config.Stage.仕入れ中:
+                    stage = Config.Stage.仕入れ終了;
+
+                    break;
+                case Config.Stage.仕入れ終了:
+                    stage = Config.Stage.取引;
+
+                    break;
+                case Config.Stage.取引:
+                    stage = Config.Stage.全ターン終了;
+
+                    break;
+                case Config.Stage.全ターン終了:
+                    stage = Config.Stage.判定;
+
+                    break;
+                case Config.Stage.判定:
+                    stage = Config.Stage.待機;
+
+                    break;
+                default:
+                    break;
+            }
 
             //表更新
             UIM.TableUpdate();
