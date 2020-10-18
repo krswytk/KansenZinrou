@@ -4,19 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Job
-{
-    INFECTION = 0,//薬剤師
-    FOOD = 1,//食料
-    WATER = 2,//水
-    TOOL = 3//道具
-}
-
 //プレイヤーの情報を格納するクラス
 public class Player {
     
     private string Name;//プレイヤ名
-    private Job Job;
+    private Config.Job Job;
     private int Food;//食べ物
     private int Water;//水
     private int Tool;//道具
@@ -28,32 +20,16 @@ public class Player {
 
     public Player(string name,int job)
     {
-        int n = 5;
+        int n = 1;
         this.Name = name;
-        this.Job = (Job)Enum.ToObject(typeof(Job), job);
-        while (true)
+        this.Job = (Config.Job)Enum.ToObject(typeof(Config.Job), job);//数字で来たジョブ情報をenum形式に再変換して登録
+        while (n==1)
         {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            this.Food = n;
-            break;
-        }
-        while (true)
-        {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            if(this.Food != n)
-            {
-                this.Water = n;//1D4-1
-                break;
-            }
-        }
-        while (true)
-        {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            if (this.Water != n)
-            {
-                this.Tool = n;//1D4-1
-                break;
-            }
+            this.Food = RandomDice.DiceRoll(4) - 1;//1D4-1
+            this.Water = RandomDice.DiceRoll(4) - 1;//1D4-1
+            this.Tool = RandomDice.DiceRoll(4) - 1;//1D4-1
+            n = 2;
+            if (this.Food == this.Water && this.Water == this.Tool) n = 1;//すべての値が同じになった場合繰り返す
         }
         this.Purchasing = 0;//仕入れ数は0
         this.Sell = 0;//売値は0
@@ -61,24 +37,24 @@ public class Player {
         this.Countermeasures = false;//感染対策はfalse
         switch (Job)
         {
-            case Job.INFECTION:
+            case Config.Job.INFECTION:
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.FOOD:
+            case Config.Job.FOOD:
                 this.Food = 1000;//食料なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.WATER:
+            case Config.Job.WATER:
                 this.Water = 1000;//水なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.TOOL:
+            case Config.Job.TOOL:
                 this.Tool = 1000;//道具なら事実状の無限にする
                 this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
 

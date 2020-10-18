@@ -28,7 +28,7 @@ public class IventAll : Config
         if (sw)
         {
             TimerCount += Time.deltaTime;
-            FO.TimerText.text = "残り時間:" + TimerCount.ToString("f0");
+            FO.TimerText.text = "残り時間:" + ((int)FirstNumber.仕入れ時間-TimerCount).ToString("f0");
             if (TimerCount > (int)FirstNumber.仕入れ時間)
             {
                 sw = false;//制限時間以上ならカウント終了
@@ -59,8 +59,16 @@ public class IventAll : Config
         UIM.TableUpdate();
     }
 
-    public void TimerON()//お給料
+    public void TimerON()//制限時間のタイマー計測を始める　
     {
         sw = true;
+    }
+
+    public void PurchasingRiset()//仕入れ数を0にリセットする　
+    {
+        for(int i = 9; i < Player.Length; i++)
+        {
+            Player[i].SetPurchasing(0);
+        }
     }
 }

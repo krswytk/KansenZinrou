@@ -10,6 +10,8 @@ public class MainManeger : Config
     [HideInInspector] public int PlayerNumber;//プレイヤーの人数を取得
     
     GetPlayerName GPN;
+
+    public bool FirstSet = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,6 +54,7 @@ public class MainManeger : Config
             Player[l] = new Player(GPN.PlayerName[l], l);//プレイヤークラスに名前と役職を当て込む　薬剤師　食料　水　道具の順番
             Player[l].PlayerDate();//プレイヤーデータを各プレイヤーデバック表示
         }
+        FirstSet = true;
         Debug.Log("初期値設定終了");
     }
     // Update is called once per frame
