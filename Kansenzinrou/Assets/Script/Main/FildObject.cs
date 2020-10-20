@@ -16,13 +16,20 @@ public class FildObject : Config
     [HideInInspector] public GameObject Ibent;//情勢イベントprivate GameObject 
     [HideInInspector] public Text Ibenttext;//情勢イベントprivate Text 
 
-    [HideInInspector] public GameObject[] Infection;//情勢イベントprivate GameObject 4人分？
-    [HideInInspector] public Text[] InfectionText;//情勢イベントprivate Text 
+    [HideInInspector] public GameObject[] Infection;//感染情報推測のオブジェクト
+    [HideInInspector] public Text[] InfectionText;//感染情報推測のテキストオブジェクト
 
 
     [HideInInspector] public GameObject Timer;//時間表示のオブジェクト
     [HideInInspector] public Text TimerText;//時間表示のタイマー
-    
+
+    [HideInInspector] public GameObject PCR;//感染情報確定の複数格納オブジェクト
+    [HideInInspector] public GameObject InfectionIndication;//感染情報確定のオブジェクト
+    [HideInInspector] public Text InfectionIndicationText;//感染情報確定のテキストオブジェクト
+
+
+    [HideInInspector] public GameObject PurchasingGroup;//仕入れボタンのセット
+
 
     MainManeger MM;
 
@@ -103,5 +110,15 @@ public class FildObject : Config
         Timer = GameObject.Find("Timer");//情勢イベント
         TimerText = Timer.GetComponent<Text>();//情勢イベントテキスト
         /////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////
+        PCR = GameObject.Find("PCR");//感染情報確定の複数格納オブジェクト
+        InfectionIndication = GameObject.Find("InfectionIndication");//感染情報確定のオブジェクト
+        InfectionIndicationText = Timer.GetComponent<Text>();//感染情報確定のテキストオブジェクト
+        ////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////
+        PurchasingGroup = GameObject.Find("PurchasingGroup");//感染情報確定の複数格納オブジェクト
+        ////////////////////////////////////////////////////////////////////////////
     }
 }

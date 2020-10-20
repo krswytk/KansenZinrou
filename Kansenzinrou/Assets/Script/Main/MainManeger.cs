@@ -11,7 +11,13 @@ public class MainManeger : Config
     
     GetPlayerName GPN;
 
-    public bool FirstSet = false;
+    [HideInInspector]　public bool FirstSet = false;
+
+    [HideInInspector] public int Infectionprobability;//感染確率
+    [HideInInspector] public int InfectionStage;//感染段階　感染した場合この数字から感染が始まる
+    [HideInInspector] public int InfectionControl;//感染対策費用　感染した場合この数字から感染が始まるDrug purchase restrictions
+    [HideInInspector] public int DrugPurchaseRestrictions;//薬を仕入れることのできる最大数
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,6 +29,11 @@ public class MainManeger : Config
         {
             PlayerNumber = 4;
         }
+
+        Infectionprobability = (int)FirstNumber.感染確率;
+        InfectionStage = (int)FirstNumber.感染増加;
+        InfectionControl = (int)FirstNumber.感染対策;
+        DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;
     }
     void Start()
     {

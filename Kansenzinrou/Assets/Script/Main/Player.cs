@@ -38,29 +38,31 @@ public class Player {
         switch (Job)
         {
             case Config.Job.INFECTION:
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Config.Job.FOOD:
                 this.Food = 1000;//食料なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Config.Job.WATER:
                 this.Water = 1000;//水なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
             case Config.Job.TOOL:
                 this.Tool = 1000;//道具なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            default:break;
+            default:
+                Debug.LogError("Cord_201-予期せぬ職業が完成しています");
+                break;
         }
         /*
         Debug.Log(this.Food);
@@ -71,9 +73,9 @@ public class Player {
 
     public void AllSuppliesMinus()//ターン終了時の全物資-1の処理
     {
-        this.Food = this.Food - (int)MainManeger.FirstNumber.マイナス物資;//
-        this.Water = this.Water - (int)MainManeger.FirstNumber.マイナス物資;//
-        this.Tool = this.Tool - (int)MainManeger.FirstNumber.マイナス物資;//
+        this.Food = this.Food - (int)Config.FirstNumber.マイナス物資;//
+        this.Water = this.Water - (int)Config.FirstNumber.マイナス物資;//
+        this.Tool = this.Tool - (int)Config.FirstNumber.マイナス物資;//
     }//ターン終了時の全物資-1の処理
 
     public void PlayerDate()
