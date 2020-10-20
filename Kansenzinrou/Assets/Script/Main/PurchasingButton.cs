@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurchasingButton : MonoBehaviour
+public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンスクリプト
 {
     MainManeger MM;
     UIManger UIM;

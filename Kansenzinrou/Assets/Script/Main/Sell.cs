@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sell : MonoBehaviour
+public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト
 {
     MainManeger MM;
     UIManger UIM;
@@ -17,105 +17,69 @@ public class Sell : MonoBehaviour
     public void SIM()
     {
         int M = MM.Player[0].GetSell();//対応プレイヤーの売値を格納
-        int P = MM.Player[0].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (P >= 1)//1つ以上仕入れている
+        if (M >= 1)//1以上の売値になっている
         {
-            P -= 1;//仕入れ数を1つ減らす
-            M += (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を返却
-            MM.Player[0].SetMoney(M);//所持金に反映
-            MM.Player[0].SetPurchasing(P);//仕入れ数に反映
+            M -= 1;//仕入れ金を返却
+            MM.Player[0].SetSell(M);//売値に反映
         }
         UIM.TableUpdate();
     }
     public void SIP()
     {
-        int M = MM.Player[0].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[0].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (M >= (int)Config.FirstNumber.薬仕入れ金)//1つ以上仕入れられるお金がある
-        {
-            P += 1;//仕入れ数を1つ増やす
-            M -= (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を徴収
-            MM.Player[0].SetMoney(M);//所持金に反映
-            MM.Player[0].SetPurchasing(P);//仕入れ数に反映
-        }
+        int M = MM.Player[0].GetSell();//対応プレイヤーの売値を格納
+        M += 1;
+        MM.Player[0].SetSell(M);//売値に反映
         UIM.TableUpdate();
     }
     public void SFM()
     {
-        int M = MM.Player[1].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[1].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (P >= 1)//1つ以上仕入れている
+        int M = MM.Player[1].GetSell();//対応プレイヤーの売値を格納
+        if (M >= 1)//1以上の売値になっている
         {
-            P -= 1;//仕入れ数を1つ減らす
-            M += (int)Config.FirstNumber.食料仕入れ金;//仕入れ金を返却
-            MM.Player[1].SetMoney(M);//所持金に反映
-            MM.Player[1].SetPurchasing(P);//仕入れ数に反映
+            M -= 1;//仕入れ金を返却
+            MM.Player[1].SetSell(M);//売値に反映
         }
         UIM.TableUpdate();
     }
     public void SFP()
     {
-        int M = MM.Player[1].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[1].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (M >= (int)Config.FirstNumber.食料仕入れ金)//1つ以上仕入れられるお金がある
-        {
-            P += 1;//仕入れ数を1つ増やす
-            M -= (int)Config.FirstNumber.食料仕入れ金;//仕入れ金を徴収
-            MM.Player[1].SetMoney(M);//所持金に反映
-            MM.Player[1].SetPurchasing(P);//仕入れ数に反映
-        }
+        int M = MM.Player[1].GetSell();//対応プレイヤーの売値を格納
+        M += 1;
+        MM.Player[1].SetSell(M);//売値に反映
         UIM.TableUpdate();
     }
     public void SWM()
     {
-        int M = MM.Player[2].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[2].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (P >= 1)//1つ以上仕入れている
+        int M = MM.Player[2].GetSell();//対応プレイヤーの売値を格納
+        if (M >= 1)//1以上の売値になっている
         {
-            P -= 1;//仕入れ数を1つ減らす
-            M += (int)Config.FirstNumber.飲料仕入れ金;//仕入れ金を返却
-            MM.Player[2].SetMoney(M);//所持金に反映
-            MM.Player[2].SetPurchasing(P);//仕入れ数に反映
+            M -= 1;//仕入れ金を返却
+            MM.Player[2].SetSell(M);//売値に反映
         }
         UIM.TableUpdate();
     }
     public void SWP()
     {
-        int M = MM.Player[2].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[2].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (M >= (int)Config.FirstNumber.飲料仕入れ金)//1つ以上仕入れられるお金がある
-        {
-            P += 1;//仕入れ数を1つ増やす
-            M -= (int)Config.FirstNumber.飲料仕入れ金;//仕入れ金を徴収
-            MM.Player[2].SetMoney(M);//所持金に反映
-            MM.Player[2].SetPurchasing(P);//仕入れ数に反映
-        }
+        int M = MM.Player[2].GetSell();//対応プレイヤーの売値を格納
+        M += 1;
+        MM.Player[2].SetSell(M);//売値に反映
         UIM.TableUpdate();
     }
     public void STM()
     {
-        int M = MM.Player[3].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[3].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (P >= 1)//1つ以上仕入れている
+        int M = MM.Player[3].GetSell();//対応プレイヤーの売値を格納
+        if (M >= 1)//1以上の売値になっている
         {
-            P -= 1;//仕入れ数を1つ減らす
-            M += (int)Config.FirstNumber.道具仕入れ金;//仕入れ金を返却
-            MM.Player[3].SetMoney(M);//所持金に反映
-            MM.Player[3].SetPurchasing(P);//仕入れ数に反映
+            M -= 1;//仕入れ金を返却
+            MM.Player[3].SetSell(M);//売値に反映
         }
         UIM.TableUpdate();
     }
     public void STP()
     {
-        int M = MM.Player[3].GetMoney();//対応プレイヤーの所持金を格納
-        int P = MM.Player[3].GetPurchasing();//対応プレイヤーの仕入れ数を格納
-        if (M >= (int)Config.FirstNumber.道具仕入れ金)//1つ以上仕入れられるお金がある
-        {
-            P += 1;//仕入れ数を1つ増やす
-            M -= (int)Config.FirstNumber.道具仕入れ金;//仕入れ金を徴収
-            MM.Player[3].SetMoney(M);//所持金に反映
-            MM.Player[3].SetPurchasing(P);//仕入れ数に反映
-        }
+        int M = MM.Player[3].GetSell();//対応プレイヤーの売値を格納
+        M += 1;
+        MM.Player[3].SetSell(M);//売値に反映
         UIM.TableUpdate();
     }
 }

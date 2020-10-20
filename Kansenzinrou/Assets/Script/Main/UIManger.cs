@@ -26,10 +26,11 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             FO.UIOBText[l, 0].text = Player[l].GetFood().ToString();//食料
             FO.UIOBText[l, 1].text = Player[l].GetWater().ToString();//飲料
             FO.UIOBText[l, 2].text = Player[l].GetTool().ToString();//道具
-            FO.UIOBText[l, 3].text = Player[l].GetMoney().ToString();//お金
-            FO.UIOBText[l, 4].text = Player[l].GetPurchasing().ToString();//仕入
-            FO.UIOBText[l, 5].text = Player[l].GetSell().ToString();//売値
-            FO.UIOBText[l, 6].text = Player[l].GetCountermeasures().ToString();//対策true or false
+            FO.UIOBText[l, 3].text = Player[l].GetMedicine().ToString();//薬量
+            FO.UIOBText[l, 4].text = Player[l].GetMoney().ToString();//お金
+            FO.UIOBText[l, 5].text = Player[l].GetPurchasing().ToString();//仕入
+            FO.UIOBText[l, 6].text = Player[l].GetSell().ToString();//売値
+            FO.UIOBText[l, 7].text = Player[l].GetCountermeasures().ToString();//対策true or false
             switch (l)
             {
                 case 1:

@@ -12,6 +12,7 @@ public class Player {
     private int Food;//食べ物
     private int Water;//水
     private int Tool;//道具
+    private int Medicine;//薬所持数
     private int Money;//お金
     private int Purchasing;//仕入れ数
     private int Sell;//売値
@@ -31,6 +32,7 @@ public class Player {
             n = 2;
             if (this.Food == this.Water && this.Water == this.Tool) n = 1;//すべての値が同じになった場合繰り返す
         }
+        this.Medicine = 0;//薬所持数0
         this.Purchasing = 0;//仕入れ数は0
         this.Sell = 0;//売値は0
         this.infection = 0;//感染状況は0
@@ -109,6 +111,10 @@ public class Player {
     {
         return this.Tool;
     }//道具をリターン
+    public int GetMedicine()
+    {
+        return this.Medicine;
+    }//薬量をリターン
     public int GetMoney()
     {
         return this.Money;
@@ -145,6 +151,10 @@ public class Player {
     {
         this.Tool = Tool;
     }//道具を入れ込み
+    public void SetMedicine(int Medicine)
+    {
+        this.Medicine = Medicine;
+    }//薬量をリターン
     public void SetMoney(int Money)
     {
         this.Money = Money;

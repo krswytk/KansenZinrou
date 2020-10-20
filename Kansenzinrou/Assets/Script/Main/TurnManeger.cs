@@ -169,7 +169,7 @@ public class TurnManeger : MonoBehaviour
                         //1：30秒間の仕入れ時間
                         IA.TimerON();//カウントダウン始め
                         PurchasingTime = true;//仕入れをONに
-                        IA.PurchasingON();//仕入れボンタンを表示
+                        IA.PurchasingON();//仕入れボタンを表示
                         Debug.Log(Turn + "仕入れ開始");
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
