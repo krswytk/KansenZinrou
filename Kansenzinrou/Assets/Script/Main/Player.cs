@@ -88,11 +88,21 @@ public class Player {
             "食べ物" + this.Food + "\n" +
             "飲み物" + this.Water + "\n" +
             "お洋服" + this.Tool + "\n" +
+            "薬" + this.Medicine + "\n" +
             "お金" + this.Money + "\n" +
             "感染状況" + this.infection + "\n"
             );
     }
-    
+
+    public void SetNowSupplies(int[] S)//現在の物資量を引数配列にぶち込む
+    {
+        S = new int[4];
+        S[0] = this.Medicine;
+        S[1] = this.Food;
+        S[2] = this.Water;
+        S[3] = this.Tool;
+    }//ターン終了時の全物資-1の処理
+
 
     //各ゲッターとセッター
     public string GetName()

@@ -222,14 +222,12 @@ public class TurnManeger : MonoBehaviour
                         BusinessSW = true;
                         Debug.Log(Turn + "取引開始");
                     }
-                    if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
+                    if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage && BusinessSW == false)//一定時間経過したら
                     {
                         TSW = true;//スイッチを起動可能状態に戻す
                         stage = Config.Stage.情勢イベント削除;//次のステージへ
                     }
                     ////////////////////////////////////////////////
-
-                    stage = Config.Stage.情勢イベント削除;
                     break;
 
 
@@ -329,6 +327,10 @@ public class TurnManeger : MonoBehaviour
     public bool GetBusinessSW()
     {
         return BusinessSW;
+    }
+    public void SetBusinessSW()
+    {
+        BusinessSW = false;
     }
     public int GetTurn()
     {
