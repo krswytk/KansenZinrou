@@ -4,22 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Job
-{
-    INFECTION = 0,//薬剤師
-    FOOD = 1,//食料
-    WATER = 2,//水
-    TOOL = 3//道具
-}
-
 //プレイヤーの情報を格納するクラス
 public class Player {
     
     private string Name;//プレイヤ名
-    private Job Job;
+    private Config.Job Job;
     private int Food;//食べ物
     private int Water;//水
     private int Tool;//道具
+    private int Medicine;//薬所持数
     private int Money;//お金
     private int Purchasing;//仕入れ数
     private int Sell;//売値
@@ -28,63 +21,50 @@ public class Player {
 
     public Player(string name,int job)
     {
-        int n = 5;
+        int n = 1;
         this.Name = name;
-        this.Job = (Job)Enum.ToObject(typeof(Job), job);
-        while (true)
+        this.Job = (Config.Job)Enum.ToObject(typeof(Config.Job), job);//数字で来たジョブ情報をenum形式に再変換して登録
+        while (n==1)
         {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            this.Food = n;
-            break;
+            this.Food = RandomDice.DiceRoll(4) - 1;//1D4-1
+            this.Water = RandomDice.DiceRoll(4) - 1;//1D4-1
+            this.Tool = RandomDice.DiceRoll(4) - 1;//1D4-1
+            n = 2;
+            if (this.Food == this.Water && this.Water == this.Tool) n = 1;//すべての値が同じになった場合繰り返す
         }
-        while (true)
-        {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            if(this.Food != n)
-            {
-                this.Water = n;//1D4-1
-                break;
-            }
-        }
-        while (true)
-        {
-            n = RandomDice.DiceRoll(4) - 1;//1D4-1
-            if (this.Water != n)
-            {
-                this.Tool = n;//1D4-1
-                break;
-            }
-        }
+        this.Medicine = 0;//薬所持数0
         this.Purchasing = 0;//仕入れ数は0
         this.Sell = 0;//売値は0
         this.infection = 0;//感染状況は0
         this.Countermeasures = false;//感染対策はfalse
         switch (Job)
         {
-            case Job.INFECTION:
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
+            case Config.Job.INFECTION:
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.FOOD:
+            case Config.Job.FOOD:
                 this.Food = 1000;//食料なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Water + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.WATER:
+            case Config.Job.WATER:
                 this.Water = 1000;//水なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Tool);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            case Job.TOOL:
+            case Config.Job.TOOL:
                 this.Tool = 1000;//道具なら事実状の無限にする
-                this.Money = (int)MainManeger.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
+                this.Money = (int)Config.FirstNumber.初期マイナス金額 - (this.Food + this.Water);//初期金額の設定
 
                 //Debug.Log("職業が" + this.Job.ToString() + "の" + this.Name + " が誕生した。");//最終確認用のデバックログ
                 break;
-            default:break;
+            default:
+                Debug.LogError("Cord_201-予期せぬ職業が完成しています");
+                break;
         }
         /*
         Debug.Log(this.Food);
@@ -95,9 +75,9 @@ public class Player {
 
     public void AllSuppliesMinus()//ターン終了時の全物資-1の処理
     {
-        this.Food = this.Food - (int)MainManeger.FirstNumber.マイナス物資;//
-        this.Water = this.Water - (int)MainManeger.FirstNumber.マイナス物資;//
-        this.Tool = this.Tool - (int)MainManeger.FirstNumber.マイナス物資;//
+        this.Food = this.Food - (int)Config.FirstNumber.マイナス物資;//
+        this.Water = this.Water - (int)Config.FirstNumber.マイナス物資;//
+        this.Tool = this.Tool - (int)Config.FirstNumber.マイナス物資;//
     }//ターン終了時の全物資-1の処理
 
     public void PlayerDate()
@@ -108,11 +88,21 @@ public class Player {
             "食べ物" + this.Food + "\n" +
             "飲み物" + this.Water + "\n" +
             "お洋服" + this.Tool + "\n" +
+            "薬" + this.Medicine + "\n" +
             "お金" + this.Money + "\n" +
             "感染状況" + this.infection + "\n"
             );
     }
-    
+
+    public void SetNowSupplies(int[] S)//現在の物資量を引数配列にぶち込む
+    {
+        S = new int[4];
+        S[0] = this.Medicine;
+        S[1] = this.Food;
+        S[2] = this.Water;
+        S[3] = this.Tool;
+    }//ターン終了時の全物資-1の処理
+
 
     //各ゲッターとセッター
     public string GetName()
@@ -131,6 +121,10 @@ public class Player {
     {
         return this.Tool;
     }//道具をリターン
+    public int GetMedicine()
+    {
+        return this.Medicine;
+    }//薬量をリターン
     public int GetMoney()
     {
         return this.Money;
@@ -167,6 +161,10 @@ public class Player {
     {
         this.Tool = Tool;
     }//道具を入れ込み
+    public void SetMedicine(int Medicine)
+    {
+        this.Medicine = Medicine;
+    }//薬量をリターン
     public void SetMoney(int Money)
     {
         this.Money = Money;

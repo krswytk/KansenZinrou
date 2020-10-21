@@ -10,6 +10,14 @@ public class MainManeger : Config
     [HideInInspector] public int PlayerNumber;//プレイヤーの人数を取得
     
     GetPlayerName GPN;
+
+    [HideInInspector]　public bool FirstSet = false;
+
+    [HideInInspector] public int Infectionprobability;//感染確率
+    [HideInInspector] public int InfectionStage;//感染段階　感染した場合この数字から感染が始まる
+    [HideInInspector] public int InfectionControl;//感染対策費用　感染した場合この数字から感染が始まるDrug purchase restrictions
+    [HideInInspector] public int DrugPurchaseRestrictions;//薬を仕入れることのできる最大数
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,6 +29,11 @@ public class MainManeger : Config
         {
             PlayerNumber = 4;
         }
+
+        Infectionprobability = (int)FirstNumber.感染確率;
+        InfectionStage = (int)FirstNumber.感染増加;
+        InfectionControl = (int)FirstNumber.感染対策;
+        DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;
     }
     void Start()
     {
@@ -52,6 +65,7 @@ public class MainManeger : Config
             Player[l] = new Player(GPN.PlayerName[l], l);//プレイヤークラスに名前と役職を当て込む　薬剤師　食料　水　道具の順番
             Player[l].PlayerDate();//プレイヤーデータを各プレイヤーデバック表示
         }
+        FirstSet = true;
         Debug.Log("初期値設定終了");
     }
     // Update is called once per frame

@@ -11,6 +11,10 @@ public class IventAll : Config
     Player[] Player;
 
     private bool sw = false;//タイマースタートのスイッチ　trueでスタート
+    private bool ssw = false;//タイマーに使用
+
+
+    private float Timer;
     private float TimerCount;
 
     private void Start()
@@ -20,20 +24,26 @@ public class IventAll : Config
         FO = GameObject.Find("Maneger").GetComponent<FildObject>();
         Player = MM.Player;
 
-        TimerCount = 0;
-        FO.TimerText.text = "残り時間:" + TimerCount.ToString("f0");
+        Timer = 0;
+        FO.TimerText.text = "残り時間:" + Timer.ToString("f0");
+
+        FO.PCR.SetActive(false);//PCR用の表示を非表示に
+        PurchasingOFF();//仕入れボタンを非表示に
     }
     private void Update()
     {
+        Timer += Time.deltaTime;
+
         if (sw)
         {
-            TimerCount += Time.deltaTime;
-            FO.TimerText.text = "残り時間:" + TimerCount.ToString("f0");
-            if (TimerCount > (int)FirstNumber.仕入れ時間)
+            if (ssw == false) { TimerCount = Timer; ssw = true; }//タイマー初回起動時
+            FO.TimerText.text = "残り時間:" + ((int)FirstNumber.仕入れ時間- (Timer - TimerCount)).ToString("f0");
+            if ((Timer - TimerCount) > (int)FirstNumber.仕入れ時間)
             {
                 sw = false;//制限時間以上ならカウント終了
-                TimerCount = 0;
-                FO.TimerText.text = "残り時間:" + TimerCount.ToString("f0");
+                ssw = false;
+                Timer = 0;
+                FO.TimerText.text = "残り時間:" + Timer.ToString("f0");
             }
         }
     }
@@ -59,8 +69,136 @@ public class IventAll : Config
         UIM.TableUpdate();
     }
 
-    public void TimerON()//お給料
+    public void TimerON()//制限時間のタイマー計測を始める　
     {
         sw = true;
+    }
+
+    public bool GetTimerSW()//現在タイマーが作動中か判定　
+    {
+        return sw;//タイマーが作動中ならtrueが返る
+    }
+
+    public void PurchasingRiset()//仕入れ数を0にリセットする　
+    {
+        for(int i = 0; i < Player.Length; i++)
+        {
+            Player[i].SetPurchasing(0);
+        }
+    }
+
+    public void AllSuppliesMinus()//物資を-1する
+    {
+        for (int i = 0; i < Player.Length; i++)
+        {
+            Player[i].AllSuppliesMinus();
+        }
+    }
+
+    private news now = news.何もない;//現在の情勢イベントを格納しておく
+    public void NewsON(bool T)//情勢イベントの選択、効果の繁栄を行う
+    {
+        if (now == news.何もない)//情勢イベントが打ち消されているかの確認
+        {
+            int n;
+            n = RandomDice.DiceRoll(6);//1-6が入る
+            if (T) n = 0;//最初のターンなら
+            int num = 0;//各処理で使う変数
+
+            switch (n)
+            {
+                case 0:
+                    now = news.発見;
+                    //効果特になし
+                    break;
+                case 1:
+                    now = news.クラスター;
+                    MM.Infectionprobability = (int)newsNumber.感染確率;//感染確率
+                    break;
+                case 2:
+                    now = news.給付金;
+                    for (int i = 0; i < Player.Length; i++)
+                    {
+                        num = Player[i].GetMoney();//現在の金額を収納
+                        num += (int)newsNumber.給付金額;//給付金額をプラス
+                        Player[i].SetMoney(num);//それを反映
+                    }
+                    break;
+                case 3:
+                    now = news.変異;
+                    MM.InfectionStage = (int)newsNumber.感染増加;//感染確率
+                    break;
+                case 4:
+                    now = news.体調不良;
+                    num = RandomDice.DiceRoll(4)-1;//0-3が入る
+                    UIM.InfectionIndication(num);
+                    FO.PCR.SetActive(true);//ゲームオブジェクトPCRを表示
+                    Invoke("OFFPCR", 3.5f);
+                    break;
+                case 5:
+                    now = news.支援;
+                    MM.InfectionControl = (int)newsNumber.感染対策;//感染確率
+                    break;
+                case 6:
+                    now = news.医療崩壊;
+                    MM.DrugPurchaseRestrictions = (int)newsNumber.薬最大数;//薬仕入れ上限
+                    break;
+            }
+            UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
+        }
+        else
+        {
+            Debug.LogError("Cord_301-情勢イベント選択でエラー");
+        }
+    }
+
+    public void NewsOFF()//情勢イベントの効果を打ち消す
+    {
+        switch (now)
+        {
+            case news.発見:
+                //特になし
+                break;
+            case news.クラスター:
+                MM.Infectionprobability = (int)FirstNumber.感染確率;//感染確率
+                break;
+            case news.給付金:
+                //特になし
+                break;
+            case news.変異:
+                MM.InfectionStage = (int)FirstNumber.感染増加;//感染した際の増加率
+                break;
+            case news.体調不良:
+                //特になし
+                break;
+            case news.支援:
+                MM.InfectionControl = (int)FirstNumber.感染対策;//感染対策に必要な費用
+                break;
+            case news.医療崩壊:
+                MM.DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;//薬仕入れ上限
+                break;
+            default:
+                Debug.LogError("Cord_302-情勢イベント取り消しでエラー");
+                break;
+        }
+        now = news.何もない;
+    }
+
+    public void PurchasingON()
+    {
+        FO.PurchasingGroup.SetActive(true);
+    }
+    public void PurchasingOFF()
+    {
+        FO.PurchasingGroup.SetActive(false);
+    }
+    public void OFFPCR()
+    {
+        FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示に戻す
+    }
+
+    public void NextStage()//ターンマネージャーを一定時間後に次の段階に進めるための関数
+    {
+
     }
 }
