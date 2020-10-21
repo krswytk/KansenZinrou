@@ -26,10 +26,14 @@ public class Drawing : MonoBehaviour
 
     public Text SurvivorText;
     public GameObject orizinalPoint;
-    public GameObject chart1;
+    public GameObject Chart1;
 
     int count = 1;
-    
+
+    Vector3[] sumPoint = new Vector3[7];
+
+    LineRenderer lRend;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +46,11 @@ public class Drawing : MonoBehaviour
         Point.setInfectedPerson(3, 4);
         Point.setInfectedPerson(4, 5);
         Point.setInfectedPerson(0, 6);
+
+        GameObject newLine = new GameObject("Line");
+        lRend = newLine.AddComponent<LineRenderer>();
+        //lRend.transform.SetParent(Chart1.transform, false);
+        lRend.sortingOrder = 1;
     }
 
     // Update is called once per frame
@@ -53,7 +62,7 @@ public class Drawing : MonoBehaviour
             GameObject copyPoint = Instantiate(orizinalPoint,
             Vector3.zero,
             Quaternion.identity,
-            chart1.transform) as GameObject;
+            Chart1.transform) as GameObject;
 
             Transform thisTransform = copyPoint.transform;
             Vector2 pos = thisTransform.localPosition;
@@ -98,8 +107,19 @@ public class Drawing : MonoBehaviour
             }
             
             thisTransform.localPosition = pos;
+            lRend.SetWidth(0.05f, 0.05f);
+            // 頂点の数
+            lRend.SetVertexCount(2);
+
+            lRend.SetPosition(0, new Vector3(-6.794f, -2.418273f, -0.1f));
+            lRend.SetPosition(1, new Vector3(-5.895f, -1.4f, -0.1f));
+
+            //sumPoint[count - 1] = thisTransform.localPosition;
+            Debug.Log(count);
+          
             count++;
+
         }
-        
+
     }
 }
