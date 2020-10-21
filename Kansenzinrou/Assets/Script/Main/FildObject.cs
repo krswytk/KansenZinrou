@@ -34,6 +34,8 @@ public class FildObject : Config
     [HideInInspector] public GameObject[] BusinessGroup;//取引ボタンの各役職ごとのセット
     [HideInInspector] public GameObject Next;//全取引を確定させるボタン
 
+    [HideInInspector] public GameObject Countermeasures;//感染対策ボタンのセット
+
 
     MainManeger MM;
 
@@ -137,6 +139,10 @@ public class FildObject : Config
         BusinessGroup[2] = GameObject.Find("WATERB");//水屋の取引ボタンセット
         BusinessGroup[3] = GameObject.Find("TOOLB");//道具屋の取引ボタンセット
         Next = GameObject.Find("Next");//道具屋の取引ボタンセット
+        ////////////////////////////////////////////////////////////////////////////
+        ///
+        /////////////////////////////////////////////////////////////////////////////
+        Countermeasures = GameObject.Find("Countermeasures");//感染情報確定の複数格納オブジェクト
         ////////////////////////////////////////////////////////////////////////////
     }
 }

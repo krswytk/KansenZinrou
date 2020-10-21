@@ -254,8 +254,10 @@ public class TurnManeger : MonoBehaviour
                     if (TSW)
                     {
                         TSW = false;//一回のみ呼び出す処理
-                        NowTime = Timer;                    //情勢イベントの効果を元に戻す
+                        NowTime = Timer;                    
                         IA.AllSuppliesMinus();//全物資-1
+                        //薬品使用
+                        //感染対策無効化
                         Debug.Log(Turn + "全行程終了");
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら

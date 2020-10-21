@@ -13,9 +13,11 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     private int C;
     private static bool next;
 
-    private int[] S;
-    private int[] NS;
+    private int[] S;//取引前の物資量
+    private int[] NS;//取引後の物資量
+    private int[] SI;//取引前の仕入れ数
     Player[] Player;
+    Player[] CopyPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,9 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         C = 0;
         allfalse();//関連ボタンをすべて隠す
         Player = MM.Player;
+        FO.Countermeasures.SetActive(false);
+
+        SI = new int[4];
     }
 
     // Update is called once per frame
@@ -62,8 +67,9 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                 }//誰から始めるのか判断
                 Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
-                //感染対策を行うかのボタン表示
+                FO.Countermeasures.SetActive(true);//感染対策を行うかのボタン表示
                 FO.BusinessGroup[Turn].SetActive(true);//最初の順番のものを表示
+                SINOW();
             }
 
             if (next)
@@ -75,7 +81,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                 }
                 Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
                 //感染対策を行うかのボタン表示
-                FO.BusinessGroup[Turn].SetActive(true);//順番のものを表示
+                FO.BusinessGroup[Turn].SetActive(true);//順番に沿ったボタンを表示
                 if (C == 4){//4回繰り返したら//つまり全員取引を行ったら
                     allfalse();
                     C = 0;
@@ -97,6 +103,10 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         FO.BusinessGroup[Turn].SetActive(false);//最初の順番のものを表示
         next = true;//次に進む（交渉決定)ボタンをtrueにする
         C++;
+    }
+    public int GetTurn()//交渉決定用のボタン
+    {
+        return Turn;
     }
 
     private void allfalse()
@@ -214,6 +224,14 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     }
                 }
             }
+        }
+    }
+
+    private void SINOW()
+    {
+        for (int i = 0; i < Player.Length; i++)
+        {
+            SI[i] = Player[i].GetPurchasing();
         }
     }
 }

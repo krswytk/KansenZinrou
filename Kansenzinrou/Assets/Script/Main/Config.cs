@@ -88,4 +88,11 @@ public class Config : MonoBehaviour
         イベントオール = 3,
         ターンマネージャー = 4
     }
+
+    /*
+    public void setInfectedPerson(int InfectedPerson, int date) { m_InfectedPerson[date] = InfectedPerson; }
+    public void setMoney(int Money, int date) { m_Money[date] = Money; }
+    使い方　setInfectedPerspn(感染者数、日にち(1~6))
+    setMoney(総合金額、日にち(1~6))
+    */
 }
