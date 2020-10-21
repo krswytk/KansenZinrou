@@ -18,6 +18,7 @@ public class Player {
     private int Sell;//売値
     private int infection;//感染状況
     private bool Countermeasures;//感染対策　trueで対策
+    private bool Death;//死亡判定　trueで死んでいる
 
     public Player(string name,int job)
     {
@@ -37,6 +38,7 @@ public class Player {
         this.Sell = 0;//売値は0
         this.infection = 0;//感染状況は0
         this.Countermeasures = false;//感染対策はfalse
+        this.Death = false;//死亡しているか//初期はfalse
         switch (Job)
         {
             case Config.Job.INFECTION:
@@ -144,8 +146,12 @@ public class Player {
     public bool GetCountermeasures()
     {
         return this.Countermeasures;
-    }//対策状況をリターン
-    public void SetName(string Name)
+    }//対策状況をリターン   
+    public bool GetDeath()
+    {
+        return this.Death;
+    }//死亡判定をリターン
+public void SetName(string Name)
     {
         this.Name = Name;
     }//プレイヤ名を入れ込み
@@ -185,4 +191,8 @@ public class Player {
     {
         this.Countermeasures = Countermeasures;
     }//対策状況を入れ込み
+    public void SetDeath(bool Death)
+    {
+        this.Death = Death;
+    }//死亡判定を入れ込み
 }//Playerクラスの元

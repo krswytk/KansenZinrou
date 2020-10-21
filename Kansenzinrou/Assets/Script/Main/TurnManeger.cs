@@ -256,8 +256,8 @@ public class TurnManeger : MonoBehaviour
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;                    
                         IA.AllSuppliesMinus();//全物資-1
-                        //薬品使用
-                        //感染対策無効化
+                        IA.MedicineConsumption();//薬品使用
+                        IA.Countermeasures();//感染対策無効化
                         Debug.Log(Turn + "全行程終了");
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
@@ -275,8 +275,14 @@ public class TurnManeger : MonoBehaviour
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;                    
                         Debug.Log(Turn + "敗北勝利判定");
+                        IA.ShortageOfSupplies();//物資不足での死亡判定
+                        IA.InfectionDeath();//感染での死亡判定
+                        //死者が出ていた場合、取引ができなくなる、仕入れもできなくなる、すべての値が０になる
+
+                        if (Turn >= 6) feadSC.fade("Result");//6ターン目ならゲーム終了
 
                         Turn += 1;
+
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {

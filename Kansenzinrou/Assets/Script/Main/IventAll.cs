@@ -201,4 +201,49 @@ public class IventAll : Config
     {
 
     }
+
+    public void MedicineConsumption()//全プレイヤーの薬を使用　使用した分感染率を下げる
+    {
+        int num;
+        int c;
+        for(int i = 0; i < Player.Length; i++)
+        {
+            num = Player[i].GetMedicine();//薬数を格納
+            c = Player[i].Getinfection();//感染度を格納
+            Player[i].SetMedicine(0);//薬数を0に
+            c = c - num;
+            if (c < 0) c = 0;
+            Player[i].Setinfection(c);
+        }
+    }
+    public void Countermeasures()
+    {
+        for (int i = 0; i < Player.Length; i++)
+        {
+            Player[i].SetCountermeasures(false);
+        }
+    }
+    public void ShortageOfSupplies()//物資不足での死亡判定
+    {
+        for (int i = 0; i < Player.Length; i++)
+        {
+            if (Player[i].GetFood() < 0 || Player[i].GetWater() < 0 || Player[i].GetTool() < 0 )//どれか1つが0未満なら
+            {
+                Player[i].SetFood(-1);
+                Player[i].SetWater(-1);
+                Player[i].SetTool(-1);
+                Player[i].SetDeath(true);//死亡判定
+            }
+        }
+    }
+    public void InfectionDeath ()//感染での死亡
+    {
+        for (int i = 0; i < Player.Length; i++)
+        {
+            if (Player[i].Getinfection() > (int)FirstNumber.感染死亡)//感染が死亡ラインを越えていたら
+            {
+                Player[i].SetDeath(true);//死亡判定
+            }
+        }
+    }
 }

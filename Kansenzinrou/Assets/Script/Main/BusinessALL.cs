@@ -82,6 +82,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                 Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
                 //感染対策を行うかのボタン表示
                 FO.BusinessGroup[Turn].SetActive(true);//順番に沿ったボタンを表示
+                SINOW();
                 if (C == 4){//4回繰り返したら//つまり全員取引を行ったら
                     allfalse();
                     C = 0;
