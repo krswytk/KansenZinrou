@@ -149,4 +149,28 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             }
         }
     }
+    public void WM_()//水の返却
+    {
+        if (Player[2].GetPurchasing() > 0)//まず食料の仕入れがあるか確認
+        {
+            if (Player[BA.GetTurn()].GetMoney() >= Player[2].GetSell())//次に購入できるお金があるか確認//所持金が仕入れ以上ある
+            {
+                //全部問題なかったら
+                num = Player[BA.GetTurn()].GetFood();//食料値取得
+                num += 1;//食料値増加
+                Player[BA.GetTurn()].SetFood(num);//食料値反映
+                //食料＋
+
+                num = Player[BA.GetTurn()].GetMoney();//お金取得
+                num -= Player[1].GetSell();//お金減少
+                Player[BA.GetTurn()].SetMoney(num);//お金反映
+                //お金ー
+
+                num = Player[1].GetPurchasing();//仕入れ取得
+                num -= 1;//仕入れ減少
+                Player[1].SetPurchasing(num);//仕入れ反映
+                //仕入れマイナス-
+            }
+        }
+    }
 }
