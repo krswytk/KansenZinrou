@@ -127,25 +127,50 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
 
     public void MM_()//薬の返却
     {
-        if (Player[1].GetPurchasing() > 0)//まず食料の仕入れがあるか確認
+        if (BA.SI[1]- BA.S[1] > 0)//仕入れ後と仕入れ前の確認
         {
-            if (Player[BA.GetTurn()].GetMoney() >= Player[1].GetSell())//次に購入できるお金があるか確認//所持金が仕入れ以上ある
-            {
+            
                 //全部問題なかったら
                 num = Player[BA.GetTurn()].GetFood();//食料値取得
-                num += 1;//食料値増加
+                num -= 1;//食料値減少
                 Player[BA.GetTurn()].SetFood(num);//食料値反映
-                //食料＋
+                //食料-
 
                 num = Player[BA.GetTurn()].GetMoney();//お金取得
-                num -= Player[1].GetSell();//お金減少
+                num += Player[1].GetSell();//お金増加
                 Player[BA.GetTurn()].SetMoney(num);//お金反映
-                //お金ー
+                //お金+
 
                 num = Player[1].GetPurchasing();//仕入れ取得
-                num -= 1;//仕入れ減少
+                num += 1;//仕入れ増加
                 Player[1].SetPurchasing(num);//仕入れ反映
-                //仕入れマイナス-
+                //仕入れ+
+            
+        }
+    }
+    public void WM_()//水の返却
+    {
+        if (Player[2].GetPurchasing() > 0)//まず食料の仕入れがあるか確認
+        {
+            if (BA.SI[1] - BA.S[1] > 0)//仕入れ後と仕入れ前の確認
+            {
+
+                //全部問題なかったら
+                num = Player[BA.GetTurn()].GetFood();//食料値取得
+                num -= 1;//食料値減少
+                Player[BA.GetTurn()].SetFood(num);//食料値反映
+                //食料-
+
+                num = Player[BA.GetTurn()].GetMoney();//お金取得
+                num += Player[1].GetSell();//お金増加
+                Player[BA.GetTurn()].SetMoney(num);//お金反映
+                //お金+
+
+                num = Player[1].GetPurchasing();//仕入れ取得
+                num += 1;//仕入れ増加
+                Player[1].SetPurchasing(num);//仕入れ反映
+                                             //仕入れ+
+
             }
         }
     }
