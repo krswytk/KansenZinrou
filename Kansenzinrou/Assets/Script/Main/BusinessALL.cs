@@ -44,50 +44,58 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                 switch (TM.GetTurn())//現在が何ターン目なのか取得
                 {
                     case 1:
-                        Turn = 0;//薬局から
+                        Turn = 3;//薬局から
                         break;
                     case 2:
-                        Turn = 1;//食べ物から
+                        Turn = 0;//食べ物から
                         break;
                     case 3:
-                        Turn = 2;//水から
+                        Turn = 1;//水から
                         break;
                     case 4:
-                        Turn = 3;//道具から
+                        Turn = 2;//道具から
                         break;
                     case 5:
-                        Turn = 0;//薬局から
+                        Turn = 3;//薬局から
                         break;
                     case 6:
-                        Turn = 1;//食べ物から
+                        Turn = 0;//食べ物から
                         break;
                     default:
                         Debug.LogError("Cord_501-交渉にて想定外のターンを取得");
                         break;
 
                 }//誰から始めるのか判断
-                Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
-                FO.Countermeasures.SetActive(true);//感染対策を行うかのボタン表示
-                FO.BusinessGroup[Turn].SetActive(true);//最初の順番のものを表示
-                SINOW();
+                next = true;//次に進む（交渉決定)ボタンをtrueにする
+                C++;
             }
 
             if (next)
             {
-                Turn += 1;
+                Turn += 1;//1234のいずれかに　4なら↓
                 if (Turn >= 4)//もし4になったら0(薬剤師)に戻す
                 {
                     Turn = 0;
                 }
-                Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
-                //感染対策を行うかのボタン表示
-                FO.BusinessGroup[Turn].SetActive(true);//順番に沿ったボタンを表示
-                if (C == 4){//4回繰り返したら//つまり全員取引を行ったら
-                    allfalse();
-                    C = 0;
-                    TM.SetBusinessSW();//ターンMの取引ボタンを終了に戻す
+                if (Player[Turn].GetDeath() == false)//死亡してたら終了の処理を記述
+                {
+                    Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
+                    FO.Countermeasures.SetActive(true);//感染対策を行うかのボタン表示
+                    FO.BusinessGroup[Turn].SetActive(true);//順番に沿ったボタンを表示
+                    SINOW();
+                    if (C == 4)
+                    {//4回繰り返したら//つまり全員取引を行ったら
+                        allfalse();
+                        C = 0;
+                        sw = false;
+                        TM.SetBusinessSW();//ターンMの取引ボタンを終了に戻す
+                    }
+                    next = false;
                 }
-                next = false;
+                else
+                {
+                    next = false;
+                }
             }
         }
 
@@ -104,14 +112,14 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         next = true;//次に進む（交渉決定)ボタンをtrueにする
         C++;
     }
-    public int GetTurn()//交渉決定用のボタン
+    public int GetTurn()//今の交渉順を返す
     {
         return Turn;
     }
 
-    private void allfalse()
+    private void allfalse()//交渉用のボタンをすべて隠す
     {
-        for (int i = 0; i < MM.PlayerNumber; i++)
+        for (int i = 0; i < MainManeger.PlayerNumber; i++)
         {
             FO.BusinessGroup[i].SetActive(false);//隠す
         }
@@ -131,15 +139,15 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     {
                         if ( Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MM.Infectionprobability - 2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability - 2) <= RandomDice.DiceRoll(10))//1,2で感染
                             { 
                                 Debug.Log("感染");
-                                Player[Turn].Setinfection(MM.InfectionStage);
+                                Player[Turn].Setinfection(MainManeger.InfectionStage);
                             }
                         }
                         else//自分が感染している
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 int c = Player[Turn].Getinfection();//現在の感染段階取得
@@ -152,15 +160,15 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     {
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で感染
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で感染
                             {
                                 Debug.Log("感染");
-                                Player[Turn].Setinfection(MM.InfectionStage);
+                                Player[Turn].Setinfection(MainManeger.InfectionStage);
                             }
                         }
                         else//自分が感染している
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 int c = Player[Turn].Getinfection();//現在の感染段階取得
@@ -177,27 +185,27 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2で感染
                             {
                                 Debug.Log("感染");
-                                Player[Turn].Setinfection(MM.InfectionStage);
+                                Player[Turn].Setinfection(MainManeger.InfectionStage);
                             }
-                            if ((MM.Infectionprobability-2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability-2) <= RandomDice.DiceRoll(10))//1,2で感染
                             {
                                 Debug.Log("相手が感染");
-                                Player[i].Setinfection(MM.InfectionStage);//相手感染
+                                Player[i].Setinfection(MainManeger.InfectionStage);//相手感染
                             }
                         }
                         else//自分が感染している
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 int c = Player[Turn].Getinfection();//現在の感染段階取得
                                 c += 1;
                                 Player[Turn].Setinfection(c);
                             }
-                            Player[i].Setinfection(MM.InfectionStage);//自分が感染かつ相手が非感染　＝　相手感染
+                            Player[i].Setinfection(MainManeger.InfectionStage);//自分が感染かつ相手が非感染　＝　相手感染
                         }
                     }
                     else//取引相手は感染している
@@ -205,15 +213,15 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MM.Infectionprobability + 2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability + 2) <= RandomDice.DiceRoll(10))//1,2で感染
                             {
                                 Debug.Log("感染");
-                                Player[Turn].Setinfection(MM.InfectionStage);
+                                Player[Turn].Setinfection(MainManeger.InfectionStage);
                             }
                         }
                         else//自分が感染している
                         {
-                            if ((MM.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 int c = Player[Turn].Getinfection();//現在の感染段階取得
@@ -227,7 +235,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         }
     }
 
-    private void SINOW()
+    private void SINOW()//仕入れ数の取得
     {
         for (int i = 0; i < Player.Length; i++)
         {

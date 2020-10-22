@@ -46,8 +46,8 @@ public class FildObject : Config
         MM = GetComponent<MainManeger>();
         
         /////////////////////////////////////////////////////////////////////////////
-        UIOB = new GameObject[MM.PlayerNumber, 8];
-        UIOBText = new Text[MM.PlayerNumber, 8];
+        UIOB = new GameObject[MainManeger.PlayerNumber, 8];
+        UIOBText = new Text[MainManeger.PlayerNumber, 8];
         UIOB[0, 0] = GameObject.Find("INFECTIONFood");//薬局の食料
         UIOB[0, 1] = GameObject.Find("INFECTIONWater");//薬局の飲料
         UIOB[0, 2] = GameObject.Find("INFECTIONTool");//薬局の道具
@@ -133,7 +133,7 @@ public class FildObject : Config
         ////////////////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////////////////////////
-        BusinessGroup = new GameObject[MM.PlayerNumber];
+        BusinessGroup = new GameObject[MainManeger.PlayerNumber];
         BusinessGroup[0] = GameObject.Find("INFECTIONB");//薬局の取引ボタンセット
         BusinessGroup[1] = GameObject.Find("FOODB");//食べ物屋の取引ボタンセット
         BusinessGroup[2] = GameObject.Find("WATERB");//水屋の取引ボタンセット
