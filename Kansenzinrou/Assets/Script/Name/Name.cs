@@ -1,63 +1,46 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Name : MonoBehaviour
 {
-    InputField inputField;
-    [HideInInspector] public string GMName;//名前入力シーンからもらったゲームマスターの名前が格納される
-    [HideInInspector] public string[] PlayerName = null;//名前入力シーンからもらった名前が格納される
-    /// <summary>
-    /// Startメソッド
-    /// InputFieldコンポーネントの取得および初期化メソッドの実行
-    /// </summary>
-    void Start()
-    {
-        DontDestroyOnLoad(this);
-        GMName = null;
-        Debug.Log(GMName);
-        inputField = GetComponent<InputField>();
+    public InputField inputField;
+    public InputField inputField0;
+    public InputField inputField1;
+    public InputField inputField2;
+    public InputField inputField3;
+    private DeliverClass anotherScript;
+    GameObject anotherObject;
 
-        InitInputField();
+    private void Start()
+    {
+        // DeliverClassを取得
+        //DeliverClass deliver = FindObjectOfType<DeliverClass>();
+        // InputFieldの文字列をDeliverに渡す
+        // deliver.deliverString = null;
+        //anotherScript.NamescenePN = new string[4];
+        //Debug.Log(deliver.deliverString);
+        //Debug.Log(deliver.NamescenePN[2]);
+        // シーンを20190304_02に移動
     }
-
-
-
-    /// <summary>
-    /// Log出力用メソッド
-    /// 入力値を取得してLogに出力し、初期化
-    /// </summary>
-
-
-    public void InputLogger()
+    public void OnClickButton()
     {
-        if (GMName == null)
-        {
-            GMName = inputField.text;
-
-            
-
-            InitInputField();
-            Debug.Log(GMName);
-        }
-    }
-
-
-
-    /// <summary>
-    /// InputFieldの初期化用メソッド
-    /// 入力値をリセットして、フィールドにフォーカスする
-    /// </summary>
-
-
-    void InitInputField()
-    {
-
-        // 値をリセット
-        inputField.text = "";
-
-        // フォーカス
-        inputField.ActivateInputField();
+         anotherObject = GameObject.Find("Deliver");
+         anotherScript = anotherObject.GetComponent<DeliverClass>();
+        // DeliverClassを取得
+        //DeliverClass deliver = FindObjectOfType<DeliverClass>();
+        // InputFieldの文字列をDeliverに渡す
+        anotherScript.deliverString = inputField.text;
+        anotherScript.NamescenePN1 = inputField0.text;
+        anotherScript.NamescenePN2 = inputField1.text;
+        anotherScript.NamescenePN3 = inputField2.text;
+        anotherScript.NamescenePN4 = inputField3.text;
+        // シーンを20190304_02に移動
+        SceneManager.LoadScene("Main");
+        Debug.Log(anotherScript.deliverString);
+        Debug.Log(anotherScript.NamescenePN1);
+        Debug.Log(anotherScript.NamescenePN2);
+        Debug.Log(anotherScript.NamescenePN3);
+        Debug.Log(anotherScript.NamescenePN4);
     }
 }
