@@ -13,9 +13,9 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     private int C;
     private static bool next;
 
-    private int[] S;//取引前の物資量
-    private int[] NS;//取引後の物資量
-    private int[] SI;//取引前の仕入れ数
+    public int[] S;//取引前の物資量
+    public int[] NS;//取引後の物資量
+    public int[] SI;//取引前の仕入れ数
     Player[] Player;
     Player[] CopyPlayer;
     // Start is called before the first frame update
