@@ -50,21 +50,30 @@ public class IventAll : Config
     public void Salary()//お給料
     {
         int num;
-        num = Player[0].GetMoney();
-        num += (int)SalaryNumber.薬剤師給料;
-        Player[0].SetMoney(num);
-
-        num = Player[1].GetMoney();
-        num += (int)SalaryNumber.食べ物屋給料;
-        Player[1].SetMoney(num);
-
-        num = Player[2].GetMoney();
-        num += (int)SalaryNumber.水屋給料;
-        Player[2].SetMoney(num);
-
-        num = Player[3].GetMoney();
-        num += (int)SalaryNumber.道具屋給料;
-        Player[3].SetMoney(num);
+        if (Player[0].GetDeath() == false)
+        {
+            num = Player[0].GetMoney();
+            num += (int)SalaryNumber.薬剤師給料;
+            Player[0].SetMoney(num);
+        }
+        if (Player[1].GetDeath() == false)
+        {
+            num = Player[1].GetMoney();
+            num += (int)SalaryNumber.食べ物屋給料;
+            Player[1].SetMoney(num);
+        }
+        if (Player[2].GetDeath() == false)
+        {
+            num = Player[2].GetMoney();
+            num += (int)SalaryNumber.水屋給料;
+            Player[2].SetMoney(num);
+        }
+        if (Player[3].GetDeath() == false)
+        {
+            num = Player[3].GetMoney();
+            num += (int)SalaryNumber.道具屋給料;
+            Player[3].SetMoney(num);
+        }
 
         UIM.TableUpdate();
     }
@@ -119,9 +128,12 @@ public class IventAll : Config
                     now = news.給付金;
                     for (int i = 0; i < Player.Length; i++)
                     {
-                        num = Player[i].GetMoney();//現在の金額を収納
-                        num += (int)newsNumber.給付金額;//給付金額をプラス
-                        Player[i].SetMoney(num);//それを反映
+                        if (Player[i].GetDeath() == false)//プレイヤーが生存していたら
+                        {
+                            num = Player[i].GetMoney();//現在の金額を収納
+                            num += (int)newsNumber.給付金額;//給付金額をプラス
+                            Player[i].SetMoney(num);//それを反映
+                        }
                     }
                     break;
                 case 3:
@@ -229,9 +241,10 @@ public class IventAll : Config
         {
             if (Player[i].GetFood() < 0 || Player[i].GetWater() < 0 || Player[i].GetTool() < 0 )//どれか1つが0未満なら
             {
-                Player[i].SetFood(-1);
-                Player[i].SetWater(-1);
-                Player[i].SetTool(-1);
+                Player[i].SetFood(0);
+                Player[i].SetWater(0);
+                Player[i].SetTool(0);
+                Player[i].SetMoney(0);
                 Player[i].SetDeath(true);//死亡判定
             }
         }
@@ -242,6 +255,10 @@ public class IventAll : Config
         {
             if (Player[i].Getinfection() > (int)FirstNumber.感染死亡)//感染が死亡ラインを越えていたら
             {
+                Player[i].SetFood(0);
+                Player[i].SetWater(0);
+                Player[i].SetTool(0);
+                Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
             }
         }
