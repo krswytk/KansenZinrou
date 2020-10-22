@@ -170,7 +170,7 @@ public class TurnManeger : MonoBehaviour
                         //1：30秒間の仕入れ時間
                         IA.TimerON();//カウントダウン始め
                         PurchasingTime = true;//仕入れをONに
-                        IA.PurchasingON();//仕入れボタンを表示
+                        IA.BusinessGroupON();//仕入れボタンを表示
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
@@ -203,7 +203,7 @@ public class TurnManeger : MonoBehaviour
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
                         IventAll.LogOut(Turn + "仕入れ終了", false);
-                        IA.PurchasingOFF();//仕入れボタンを非表示表示
+                        IA.BusinessGroupOFF();//仕入れボタンを非表示表示
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
