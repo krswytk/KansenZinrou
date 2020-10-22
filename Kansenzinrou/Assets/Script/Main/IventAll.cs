@@ -122,7 +122,7 @@ public class IventAll : Config
                     break;
                 case 1:
                     now = news.クラスター;
-                    MM.Infectionprobability = (int)newsNumber.感染確率;//感染確率
+                    MainManeger.Infectionprobability = (int)newsNumber.感染確率;//感染確率
                     break;
                 case 2:
                     now = news.給付金;
@@ -138,7 +138,7 @@ public class IventAll : Config
                     break;
                 case 3:
                     now = news.変異;
-                    MM.InfectionStage = (int)newsNumber.感染増加;//感染確率
+                    MainManeger.InfectionStage = (int)newsNumber.感染増加;//感染確率
                     break;
                 case 4:
                     now = news.体調不良;
@@ -149,11 +149,11 @@ public class IventAll : Config
                     break;
                 case 5:
                     now = news.支援;
-                    MM.InfectionControl = (int)newsNumber.感染対策;//感染確率
+                    MainManeger.InfectionControl = (int)newsNumber.感染対策;//感染確率
                     break;
                 case 6:
                     now = news.医療崩壊;
-                    MM.DrugPurchaseRestrictions = (int)newsNumber.薬最大数;//薬仕入れ上限
+                    MainManeger.DrugPurchaseRestrictions = (int)newsNumber.薬最大数;//薬仕入れ上限
                     break;
             }
             UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
@@ -172,22 +172,22 @@ public class IventAll : Config
                 //特になし
                 break;
             case news.クラスター:
-                MM.Infectionprobability = (int)FirstNumber.感染確率;//感染確率
+                MainManeger.Infectionprobability = (int)FirstNumber.感染確率;//感染確率
                 break;
             case news.給付金:
                 //特になし
                 break;
             case news.変異:
-                MM.InfectionStage = (int)FirstNumber.感染増加;//感染した際の増加率
+                MainManeger.InfectionStage = (int)FirstNumber.感染増加;//感染した際の増加率
                 break;
             case news.体調不良:
                 //特になし
                 break;
             case news.支援:
-                MM.InfectionControl = (int)FirstNumber.感染対策;//感染対策に必要な費用
+                MainManeger.InfectionControl = (int)FirstNumber.感染対策;//感染対策に必要な費用
                 break;
             case news.医療崩壊:
-                MM.DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;//薬仕入れ上限
+                MainManeger.DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;//薬仕入れ上限
                 break;
             default:
                 Debug.LogError("Cord_302-情勢イベント取り消しでエラー");
@@ -261,6 +261,17 @@ public class IventAll : Config
                 Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
             }
+        }
+    }
+
+    public static void LogOut(string log,bool t)//ログの書き出し　t=trueでLogにも書き出す
+    {
+        MainManeger.AllLog[MainManeger.AllLogCount] = log;
+        MainManeger.AllLogCount++;
+        if (t)
+        {
+            MainManeger.Log[MainManeger.LogCount] = log;
+            MainManeger.LogCount++;
         }
     }
 }
