@@ -7,16 +7,21 @@ public class MainManeger : Config
 {
 
     [HideInInspector] public Player[] Player;//プレイヤークラスを取得
-    [HideInInspector] public int PlayerNumber;//プレイヤーの人数を取得
+    [HideInInspector] public static int PlayerNumber;//プレイヤーの人数を取得
     
     GetPlayerName GPN;
 
     [HideInInspector]　public bool FirstSet = false;
 
-    [HideInInspector] public int Infectionprobability;//感染確率
-    [HideInInspector] public int InfectionStage;//感染段階　感染した場合この数字から感染が始まる
-    [HideInInspector] public int InfectionControl;//感染対策費用　感染した場合この数字から感染が始まるDrug purchase restrictions
-    [HideInInspector] public int DrugPurchaseRestrictions;//薬を仕入れることのできる最大数
+    [HideInInspector] public static int Infectionprobability;//感染確率
+    [HideInInspector] public static int InfectionStage;//感染段階　感染した場合この数字から感染が始まる
+    [HideInInspector] public static int InfectionControl;//感染対策費用　感染した場合この数字から感染が始まるDrug purchase restrictions
+    [HideInInspector] public static int DrugPurchaseRestrictions;//薬を仕入れることのできる最大数
+
+    [HideInInspector] public static string[] Log;//LOG文章格納用の文字配列
+    [HideInInspector] public static string[] AllLog;//LOG文章格納用の文字配列
+    [HideInInspector] public static int LogCount;//LOG文章格納用の文字配列    
+    [HideInInspector] public static int AllLogCount;//LOG文章格納用の文字配列
 
     // Start is called before the first frame update
     void Awake()
@@ -34,6 +39,8 @@ public class MainManeger : Config
         InfectionStage = (int)FirstNumber.感染増加;
         InfectionControl = (int)FirstNumber.感染対策;
         DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;
+        Log = new string[100];
+        LogCount = 0;
     }
     void Start()
     {
