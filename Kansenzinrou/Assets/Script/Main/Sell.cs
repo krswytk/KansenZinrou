@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト
+public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//売り物の売値調整でで使用　
 {
     MainManeger MM;
     UIManger UIM;
@@ -14,7 +14,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト
 
     }
 
-    public void SIM()
+    public void SDM()
     {
         int M = MM.Player[0].GetSell();//対応プレイヤーの売値を格納
         if (M >= 1)//1以上の売値になっている
@@ -24,7 +24,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト
         }
         UIM.TableUpdate();
     }
-    public void SIP()
+    public void SDP()
     {
         int M = MM.Player[0].GetSell();//対応プレイヤーの売値を格納
         M += 1;

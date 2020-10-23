@@ -51,6 +51,7 @@ public class TurnManeger : MonoBehaviour
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
                         MM.LogOut(Turn.ToString() + "ターン目開始", false);
+                        IA.CountermeasuresMaskOFF();
                     }
                     if((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {

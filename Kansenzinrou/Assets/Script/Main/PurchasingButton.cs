@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンスクリプト
+public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンスクリプト//売り物の個数調整に使用
 {
     MainManeger MM;
     UIManger UIM;
@@ -16,7 +16,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
 
     }
 
-    public void IM()
+    public void DM()
     {
         int M = MM.Player[0].GetMoney();//対応プレイヤーの所持金を格納
         int P = MM.Player[0].GetPurchasing();//対応プレイヤーの仕入れ数を格納
@@ -30,7 +30,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
         }
         UIM.TableUpdate();
     }
-    public void IP()
+    public void DP()
     {
         int M = MM.Player[0].GetMoney();//対応プレイヤーの所持金を格納
         int P = MM.Player[0].GetPurchasing();//対応プレイヤーの仕入れ数を格納

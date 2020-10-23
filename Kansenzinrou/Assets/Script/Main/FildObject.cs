@@ -8,11 +8,12 @@ public class FildObject : Config
 {
     [HideInInspector] public GameObject[,] UIOB;//各数値のprivate GameObject 
     [HideInInspector] public Text[,] UIOBText;//各数値のprivate Text //数値用テキストオブジェクト
-    /*
-     1次元　0 薬局　1 食べ物 　2 水屋 　3 道具
-     2次元　0 食料　1 飲料　2 道具　3 薬 4 お金　5 仕入れ　6 売値
-     */
+                                              /*
+                                               1次元　0 薬局　1 食べ物 　2 水屋 　3 道具
+                                               2次元　0 食料　1 飲料　2 道具　3 薬 4 お金　5 仕入れ　6 売値
+                                               */
 
+    [HideInInspector] public GameObject IbentAll;//情勢イベントprivate GameObject 
     [HideInInspector] public GameObject Ibent;//情勢イベントprivate GameObject 
     [HideInInspector] public Text Ibenttext;//情勢イベントprivate Text 
 
@@ -100,6 +101,7 @@ public class FildObject : Config
 
 
         /////////////////////////////////////////////////////////////////////////////
+        IbentAll = GameObject.Find("IbentAll");//情勢イベント
         Ibent = GameObject.Find("Ibent");//情勢イベント
         Ibenttext = Ibent.GetComponent<Text>();//情勢イベントテキスト
         /////////////////////////////////////////////////////////////////////////////
