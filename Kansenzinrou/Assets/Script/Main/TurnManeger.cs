@@ -11,9 +11,7 @@ public class TurnManeger : MonoBehaviour
 
 
     Player[] Player;
-
-
-    private bool PurchasingTime = false;
+    
 
     Config.Stage stage;
 
@@ -169,8 +167,7 @@ public class TurnManeger : MonoBehaviour
                         IventAll.LogOut(Turn + "仕入れ開始", false);
                         //1：30秒間の仕入れ時間
                         IA.TimerON();//カウントダウン始め
-                        PurchasingTime = true;//仕入れをONに
-                        IA.BusinessGroupON();//仕入れボタンを表示
+                        IA.PurchasingON();//仕入れボタンを表示
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
@@ -185,8 +182,7 @@ public class TurnManeger : MonoBehaviour
                     if (IA.GetTimerSW() == false)
                     {//タイマーが終わっていたら
                         IventAll.LogOut(Turn + "仕入れ中（最後に1回呼び出される", false);
-
-                        PurchasingTime = false;//仕入れを終わりにする
+                        
                         stage = Config.Stage.仕入れ終了;//次の段階に移行
                     }
                     else//仕入れ中なら
@@ -203,7 +199,7 @@ public class TurnManeger : MonoBehaviour
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
                         IventAll.LogOut(Turn + "仕入れ終了", false);
-                        IA.BusinessGroupOFF();//仕入れボタンを非表示表示
+                        IA.PurchasingOFF();//仕入れボタンを非表示表示
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {

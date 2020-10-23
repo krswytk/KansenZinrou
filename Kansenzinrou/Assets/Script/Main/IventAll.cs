@@ -266,7 +266,7 @@ public class IventAll : Config
             MainManeger.LogCount++;
         }
     }
-    public void BusinessGroupON()//仕入れボタンをすべて表示
+    public void PurchasingON()//仕入れボタンをすべて表示
     {
         for(int i = 0;i< FO.PurchasingGroup.GetLength(0); i++)
         {
@@ -276,7 +276,7 @@ public class IventAll : Config
             }
         }
     }
-    public void BusinessGroupOFF()//仕入れボタンをすべて非表示
+    public void PurchasingOFF()//仕入れボタンをすべて非表示
     {
         for (int i = 0; i < FO.PurchasingGroup.GetLength(0); i++)
         {
@@ -284,6 +284,20 @@ public class IventAll : Config
             {
                 FO.PurchasingGroup[i, l].SetActive(false);
             }
+        }
+    }
+    public void BusinessGroupON(int T)//購入ボタンをすべて表示
+    {
+        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        {
+            FO.BusinessGroup[T, i].SetActive(true);
+        }
+    }
+    public void BusinessGroupOFF(int T)//仕入れボタンをすべて非表示
+    {
+        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        {
+            FO.BusinessGroup[T, i].SetActive(false);
         }
     }
 }

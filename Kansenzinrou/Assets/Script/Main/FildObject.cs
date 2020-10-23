@@ -157,41 +157,41 @@ public class FildObject : Config
         /////////////////////////////////////////////////////////////////////////////
         BusinessGroup = new GameObject[MainManeger.PlayerNumber,8];//食料ー＋水ー＋道具ー＋薬ー＋
 
-        PurchasingGroup[0, 0] = GameObject.Find("DDBM");//薬の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
-        PurchasingGroup[0, 1] = GameObject.Find("DDBP");//薬の取引薬＋
-        PurchasingGroup[0, 2] = GameObject.Find("DFBM");//薬の取引食料ー
-        PurchasingGroup[0, 3] = GameObject.Find("DFBP");//薬の取引食料＋
-        PurchasingGroup[0, 4] = GameObject.Find("DWBM");//薬の取引水ー
-        PurchasingGroup[0, 5] = GameObject.Find("DWBP");//薬の取引水＋        
-        PurchasingGroup[0, 6] = GameObject.Find("DTBM");//薬の取引道具ー
-        PurchasingGroup[0, 7] = GameObject.Find("DTBP");//薬の取引道具＋
+        BusinessGroup[0, 0] = GameObject.Find("DDBM");//薬の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
+        BusinessGroup[0, 1] = GameObject.Find("DDBP");//薬の取引薬＋
+        BusinessGroup[0, 2] = GameObject.Find("DFBM");//薬の取引食料ー
+        BusinessGroup[0, 3] = GameObject.Find("DFBP");//薬の取引食料＋
+        BusinessGroup[0, 4] = GameObject.Find("DWBM");//薬の取引水ー
+        BusinessGroup[0, 5] = GameObject.Find("DWBP");//薬の取引水＋        
+        BusinessGroup[0, 6] = GameObject.Find("DTBM");//薬の取引道具ー
+        BusinessGroup[0, 7] = GameObject.Find("DTBP");//薬の取引道具＋
 
-        PurchasingGroup[1, 0] = GameObject.Find("FDBM");//食料の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
-        PurchasingGroup[1, 1] = GameObject.Find("FDBP");//食料の取引薬＋
-        PurchasingGroup[1, 2] = GameObject.Find("FFBM");//食料の取引食料ー
-        PurchasingGroup[1, 3] = GameObject.Find("FFBP");//食料の取引食料＋
-        PurchasingGroup[1, 4] = GameObject.Find("FWBM");//食料の取引水ー
-        PurchasingGroup[1, 5] = GameObject.Find("FWBP");//食料の取引水＋        
-        PurchasingGroup[1, 6] = GameObject.Find("FTBM");//食料の取引道具ー
-        PurchasingGroup[1, 7] = GameObject.Find("FTBP");//食料の取引道具＋
+        BusinessGroup[1, 0] = GameObject.Find("FDBM");//食料の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
+        BusinessGroup[1, 1] = GameObject.Find("FDBP");//食料の取引薬＋
+        BusinessGroup[1, 2] = GameObject.Find("FFBM");//食料の取引食料ー
+        BusinessGroup[1, 3] = GameObject.Find("FFBP");//食料の取引食料＋
+        BusinessGroup[1, 4] = GameObject.Find("FWBM");//食料の取引水ー
+        BusinessGroup[1, 5] = GameObject.Find("FWBP");//食料の取引水＋        
+        BusinessGroup[1, 6] = GameObject.Find("FTBM");//食料の取引道具ー
+        BusinessGroup[1, 7] = GameObject.Find("FTBP");//食料の取引道具＋
 
-        PurchasingGroup[2, 0] = GameObject.Find("WDBM");//水の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
-        PurchasingGroup[2, 1] = GameObject.Find("WDBP");//水の取引薬＋
-        PurchasingGroup[2, 2] = GameObject.Find("WFBM");//水の取引食料ー
-        PurchasingGroup[2, 3] = GameObject.Find("WFBP");//水の取引食料＋
-        PurchasingGroup[2, 4] = GameObject.Find("WWBM");//水の取引水ー
-        PurchasingGroup[2, 5] = GameObject.Find("WWBP");//水の取引水＋        
-        PurchasingGroup[2, 6] = GameObject.Find("WTBM");//水の取引道具ー
-        PurchasingGroup[2, 7] = GameObject.Find("WTBP");//水の取引道具＋
+        BusinessGroup[2, 0] = GameObject.Find("WDBM");//水の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
+        BusinessGroup[2, 1] = GameObject.Find("WDBP");//水の取引薬＋
+        BusinessGroup[2, 2] = GameObject.Find("WFBM");//水の取引食料ー
+        BusinessGroup[2, 3] = GameObject.Find("WFBP");//水の取引食料＋
+        BusinessGroup[2, 4] = GameObject.Find("WWBM");//水の取引水ー
+        BusinessGroup[2, 5] = GameObject.Find("WWBP");//水の取引水＋        
+        BusinessGroup[2, 6] = GameObject.Find("WTBM");//水の取引道具ー
+        BusinessGroup[2, 7] = GameObject.Find("WTBP");//水の取引道具＋
 
-        PurchasingGroup[3, 0] = GameObject.Find("TDBM");//道具の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
-        PurchasingGroup[3, 1] = GameObject.Find("TDBP");//道具の取引薬＋
-        PurchasingGroup[3, 2] = GameObject.Find("TFBM");//道具の取引食料ー
-        PurchasingGroup[3, 3] = GameObject.Find("TFBP");//道具の取引食料＋
-        PurchasingGroup[3, 4] = GameObject.Find("TWBM");//道具の取引水ー
-        PurchasingGroup[3, 5] = GameObject.Find("TWBP");//道具の取引水＋        
-        PurchasingGroup[3, 6] = GameObject.Find("TTBM");//道具の取引道具ー
-        PurchasingGroup[3, 7] = GameObject.Find("TTBP");//道具の取引道具＋
+        BusinessGroup[3, 0] = GameObject.Find("TDBM");//道具の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
+        BusinessGroup[3, 1] = GameObject.Find("TDBP");//道具の取引薬＋
+        BusinessGroup[3, 2] = GameObject.Find("TFBM");//道具の取引食料ー
+        BusinessGroup[3, 3] = GameObject.Find("TFBP");//道具の取引食料＋
+        BusinessGroup[3, 4] = GameObject.Find("TWBM");//道具の取引水ー
+        BusinessGroup[3, 5] = GameObject.Find("TWBP");//道具の取引水＋        
+        BusinessGroup[3, 6] = GameObject.Find("TTBM");//道具の取引道具ー
+        BusinessGroup[3, 7] = GameObject.Find("TTBP");//道具の取引道具＋
 
         Next = GameObject.Find("Next");//道具屋の取引ボタンセット
         ////////////////////////////////////////////////////////////////////////////
