@@ -18,10 +18,14 @@ public class MainManeger : Config
     [HideInInspector] public static int InfectionControl;//感染対策費用　感染した場合この数字から感染が始まるDrug purchase restrictions
     [HideInInspector] public static int DrugPurchaseRestrictions;//薬を仕入れることのできる最大数
 
-    [HideInInspector] public static string[] Log;//LOG文章格納用の文字配列
-    [HideInInspector] public static string[] AllLog;//LOG文章格納用の文字配列
-    [HideInInspector] public static int LogCount;//LOG文章格納用の文字配列    
-    [HideInInspector] public static int AllLogCount;//LOG文章格納用の文字配列
+    [HideInInspector] public string[] Log;//LOG文章格納用の文字配列
+    [HideInInspector] public string[] AllLog;//LOG文章格納用の文字配列
+    [HideInInspector] public int LogCount;//LOG文章格納用の文字配列    
+    [HideInInspector] public int AllLogCount;//LOG文章格納用の文字配列
+
+
+    
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Awake()
@@ -39,8 +43,11 @@ public class MainManeger : Config
         InfectionStage = (int)FirstNumber.感染増加;
         InfectionControl = (int)FirstNumber.感染対策;
         DrugPurchaseRestrictions = (int)FirstNumber.薬最大数;
+        AllLog = new string[300];
         Log = new string[100];
+        AllLogCount = 0;
         LogCount = 0;
+        audioSource = GetComponent<AudioSource>();//SE再生用の取得
     }
     void Start()
     {
@@ -76,4 +83,20 @@ public class MainManeger : Config
         Debug.Log("初期値設定終了");
     }
     // Update is called once per frame
+
+    public void LogOut(string log, bool t)//ログの書き出し　t=trueでLogにも書き出す
+    {
+        AllLog[AllLogCount] = log;
+        AllLogCount++;
+        if (t)
+        {
+            Log[LogCount] = log;
+            LogCount++;
+        }
+    }
+
+    public void PlaySE(AudioClip sound)//ログの書き出し　t=trueでLogにも書き出す
+    {
+        audioSource.PlayOneShot(sound);
+    }
 }

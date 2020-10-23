@@ -14,9 +14,9 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     private int C;
     private static bool next;
 
-    public int[] S;//取引前の物資量
-    public int[] NS;//取引後の物資量
-    public int[] SI;//取引前の仕入れ数
+    [HideInInspector] public int[] S;//取引前の物資量
+    [HideInInspector] public int[] NS;//取引後の物資量
+    [HideInInspector] public int[] SI;//取引前の仕入れ数
     Player[] Player;
     Player[] CopyPlayer;
     // Start is called before the first frame update
@@ -112,6 +112,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         Infection();// 感染の判定
         IA.BusinessGroupOFF(Turn);//最初の順番のものを表示
         next = true;//次に進む（交渉決定)ボタンをtrueにする
+        MM.PlaySE(FO.SoundSE[2]);
         C++;
     }
     public int GetTurn()//今の交渉順を返す

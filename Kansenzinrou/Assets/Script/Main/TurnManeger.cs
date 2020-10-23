@@ -50,7 +50,7 @@ public class TurnManeger : MonoBehaviour
                     if(TSW){
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "ターン目開始", false);
+                        MM.LogOut(Turn.ToString() + "ターン目開始", false);
                     }
                     if((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
@@ -66,7 +66,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "表を更新", false);
+                        MM.LogOut(Turn.ToString() + "表を更新", false);
                         //表更新
                         UIM.TableUpdate();
                     }
@@ -85,7 +85,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "情勢イベント設定", false);
+                        MM.LogOut(Turn + "情勢イベント設定", false);
                         //情勢イベント表示
                         if (Turn == 1)
                         {
@@ -98,6 +98,7 @@ public class TurnManeger : MonoBehaviour
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
+                        IA.PCROFF();//PCRだった場合表示を消す
                         TSW = true;//スイッチを起動可能状態に戻す
                         stage = Config.Stage.感染状態表示;//次のステージへ
                     }
@@ -110,7 +111,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "感染状態表示", false);
+                        MM.LogOut(Turn + "感染状態表示", false);
                         //感染状態表示
                         UIM.InfectionDisplay();
                     }
@@ -128,7 +129,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "給料配布", false);
+                        MM.LogOut(Turn + "給料配布", false);
                         //給料配布
                         IA.Salary();
                     }
@@ -146,7 +147,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "仕入れ値リセット", false);
+                        MM.LogOut(Turn + "仕入れ値リセット", false);
                         //仕入れを0にする
                         IA.PurchasingRiset();
                     }
@@ -164,7 +165,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "仕入れ開始", false);
+                        MM.LogOut(Turn + "仕入れ開始", false);
                         //1：30秒間の仕入れ時間
                         IA.TimerON();//カウントダウン始め
                         IA.PurchasingON();//仕入れボタンを表示
@@ -181,7 +182,7 @@ public class TurnManeger : MonoBehaviour
                     ////////////////////////////////////////////////
                     if (IA.GetTimerSW() == false)
                     {//タイマーが終わっていたら
-                        IventAll.LogOut(Turn + "仕入れ中（最後に1回呼び出される", false);
+                        MM.LogOut(Turn + "仕入れ中（最後に1回呼び出される", false);
                         
                         stage = Config.Stage.仕入れ終了;//次の段階に移行
                     }
@@ -198,7 +199,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "仕入れ終了", false);
+                        MM.LogOut(Turn + "仕入れ終了", false);
                         IA.PurchasingOFF();//仕入れボタンを非表示表示
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
@@ -215,11 +216,12 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "取引開始", false);
+                        MM.LogOut(Turn + "取引開始", false);
                         BusinessSW = true;
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage && BusinessSW == false)//一定時間経過したら
                     {
+                        UIM.MaskOFF();//全員の感染対策を無効
                         TSW = true;//スイッチを起動可能状態に戻す
                         stage = Config.Stage.情勢イベント削除;//次のステージへ
                     }
@@ -232,9 +234,9 @@ public class TurnManeger : MonoBehaviour
                     if (TSW)
                     {
                         TSW = false;//一回のみ呼び出す処理
-                        NowTime = Timer;//情勢イベントの効果を元に戻す
-                        IventAll.LogOut(Turn + "情勢イベント削除", false);
-                        IA.NewsOFF();
+                        NowTime = Timer;
+                        MM.LogOut(Turn + "情勢イベント削除", false);
+                        IA.NewsOFF();// 情勢イベントの効果を元に戻す
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
@@ -251,7 +253,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
-                        IventAll.LogOut(Turn + "全行程終了", false);
+                        MM.LogOut(Turn + "全行程終了", false);
                         IA.AllSuppliesMinus();//全物資-1
                         IA.MedicineConsumption();//薬品使用
                         IA.Countermeasures();//感染対策無効化
@@ -269,8 +271,8 @@ public class TurnManeger : MonoBehaviour
                     ///if (TSW)
                     {
                         TSW = false;//一回のみ呼び出す処理
-                        NowTime = Timer;                    
-                        IventAll.LogOut(Turn + "敗北勝利判定", false);
+                        NowTime = Timer;
+                        MM.LogOut(Turn + "敗北勝利判定", false);
                         IA.ShortageOfSupplies();//物資不足での死亡判定
                         IA.InfectionDeath();//感染での死亡判定
                         //死者が出ていた場合、取引ができなくなる、仕入れもできなくなる、すべての値が０になる
