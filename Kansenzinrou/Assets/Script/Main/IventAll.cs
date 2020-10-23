@@ -25,8 +25,8 @@ public class IventAll : Config
         Player = MM.Player;
 
         Timer = 0;
-        FO.TimerText.text = "残り時間:" + Timer.ToString("f0");
-
+        FO.TimerText.text = Timer.ToString("f0");
+        FO.TimerAll.SetActive(false);//タイマー表記を隠す
         FO.PCR.SetActive(false);//PCR用の表示を非表示に
         PurchasingOFF();//仕入れボタンを非表示に
     }
@@ -36,14 +36,19 @@ public class IventAll : Config
 
         if (sw)
         {
-            if (ssw == false) { TimerCount = Timer; ssw = true; }//タイマー初回起動時
-            FO.TimerText.text = "残り時間:" + ((int)FirstNumber.仕入れ時間- (Timer - TimerCount)).ToString("f0");
+            if (ssw == false) {
+                TimerCount = Timer;
+                ssw = true;
+                FO.TimerAll.SetActive(true);//タイマー関係全表示
+            }//タイマー初回起動時
+            FO.TimerText.text = ((int)FirstNumber.仕入れ時間- (Timer - TimerCount)).ToString("f0");
             if ((Timer - TimerCount) > (int)FirstNumber.仕入れ時間)
             {
                 sw = false;//制限時間以上ならカウント終了
                 ssw = false;
+                FO.TimerAll.SetActive(false);//タイマー表記を隠す
                 Timer = 0;
-                FO.TimerText.text = "残り時間:" + Timer.ToString("f0");
+                FO.TimerText.text = Timer.ToString("f0");
             }
         }
     }
@@ -157,6 +162,7 @@ public class IventAll : Config
                     break;
             }
             UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
+            MM.LogOut(now.ToString(), false);
         }
         else
         {
@@ -256,16 +262,6 @@ public class IventAll : Config
         }
     }
 
-    public static void LogOut(string log,bool t)//ログの書き出し　t=trueでLogにも書き出す
-    {
-        MainManeger.AllLog[MainManeger.AllLogCount] = log;
-        MainManeger.AllLogCount++;
-        if (t)
-        {
-            MainManeger.Log[MainManeger.LogCount] = log;
-            MainManeger.LogCount++;
-        }
-    }
     public void PurchasingON()//仕入れボタンをすべて表示
     {
         for(int i = 0;i< FO.PurchasingGroup.GetLength(0); i++)

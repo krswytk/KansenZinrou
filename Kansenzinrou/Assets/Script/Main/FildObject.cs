@@ -17,9 +17,11 @@ public class FildObject : Config
     [HideInInspector] public Text Ibenttext;//情勢イベントprivate Text 
 
     [HideInInspector] public GameObject[] Infection;//感染情報推測のオブジェクト
-    [HideInInspector] public Text[] InfectionText;//感染情報推測のテキストオブジェクト
+    [HideInInspector] public Sprite[] InfectionMark;//感染情報推測のオブジェクト
+    [HideInInspector] public Image[] InfectionImage;//感染情報推測のテキストオブジェクト
 
 
+    [HideInInspector] public GameObject TimerAll;//時間表示のオブジェクト
     [HideInInspector] public GameObject Timer;//時間表示のオブジェクト
     [HideInInspector] public Text TimerText;//時間表示のタイマー
 
@@ -105,19 +107,26 @@ public class FildObject : Config
 
         /////////////////////////////////////////////////////////////////////////////
         Infection = new GameObject[4];
-        InfectionText = new Text[4];
+        InfectionMark = new Sprite[5];
+        InfectionImage = new Image[4];
         Infection[0] = GameObject.Find("DI");//薬の感染
         Infection[1] = GameObject.Find("FI");//食べ物の感染
         Infection[2] = GameObject.Find("WI");//水屋の感染
-        Infection[3] = GameObject.Find("TI");//道具屋の感染
+        Infection[3] = GameObject.Find("TI");//道具屋の感染        
+        InfectionMark[0] = Resources.Load<Sprite>("元気");//元気
+        InfectionMark[1] = Resources.Load<Sprite>("少し具合がわるい");//少し具合がわるい
+        InfectionMark[2] = Resources.Load<Sprite>("風邪っぽい");//風邪っぽい
+        InfectionMark[3] = Resources.Load<Sprite>("吐き気がする");//吐き気がする
+        InfectionMark[3] = Resources.Load<Sprite>("死にそう");//死にそう
         for (int l = 0; l < Infection.GetLength(0); l++)
         {
-            InfectionText[l] = Infection[l].GetComponent<Text>();
+            InfectionImage[l] = Infection[l].GetComponent<Image>();
         }
         /////////////////////////////////////////////////////////////////////////////
 
 
         /////////////////////////////////////////////////////////////////////////////
+        TimerAll = GameObject.Find("TimerAll");//情勢イベント
         Timer = GameObject.Find("Timer");//情勢イベント
         TimerText = Timer.GetComponent<Text>();//情勢イベントテキスト
         /////////////////////////////////////////////////////////////////////////////

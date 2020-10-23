@@ -23,25 +23,26 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
     {
         for (int l = 0; l < FO.UIOBText.GetLength(0); l++)
         {
-            FO.UIOBText[l, 0].text = Player[l].GetFood().ToString();//食料
-            FO.UIOBText[l, 1].text = Player[l].GetWater().ToString();//飲料
-            FO.UIOBText[l, 2].text = Player[l].GetTool().ToString();//道具
-            FO.UIOBText[l, 3].text = Player[l].GetMedicine().ToString();//薬量
+            FO.UIOBText[l, 0].text = Player[l].GetMedicine().ToString();//薬量
+            FO.UIOBText[l, 1].text = Player[l].GetFood().ToString();//食料
+            FO.UIOBText[l, 2].text = Player[l].GetWater().ToString();//飲料
+            FO.UIOBText[l, 3].text = Player[l].GetTool().ToString();//道具
             FO.UIOBText[l, 4].text = Player[l].GetMoney().ToString();//お金
             FO.UIOBText[l, 5].text = Player[l].GetPurchasing().ToString();//仕入
             FO.UIOBText[l, 6].text = Player[l].GetSell().ToString();//売値
             FO.UIOBText[l, 7].text = Player[l].GetCountermeasures().ToString();//対策true or false
-            switch (l)
+
+            if (Player[l].GetFood() > 100)
             {
-                case 1:
-                    FO.UIOBText[l, 0].text = "∞";
-                    break;
-                case 2:
-                    FO.UIOBText[l, 1].text = "∞";
-                    break;
-                case 3:
-                    FO.UIOBText[l, 2].text = "∞";
-                    break;
+                FO.UIOBText[l, 1].text = "∞";
+            }
+            if (Player[l].GetWater() > 100)
+            {
+                FO.UIOBText[l, 2].text = "∞";
+            }
+            if (Player[l].GetTool() > 100)
+            {
+                FO.UIOBText[l, 3].text = "∞";
             }
         }
     }
@@ -78,7 +79,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
     public void InfectionDisplay()//感染状況の表示更新を行う
     {
         int num;
-        string Str = "";
+        Sprite S = FO.InfectionMark[0];
         int r;
 
         for (int l = 0; l < Player.Length; l++)
@@ -90,54 +91,54 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                 case 0:
                     switch (r)
                     {
-                        case 1: Str = "元気"; break;
-                        case 2: Str = "元気"; break;
-                        case 3: Str = "元気"; break;
-                        case 4: Str = "元気"; break;
-                        case 5: Str = "元気"; break;
-                        case 6: Str = "少し具合が悪い"; break;
-                        case 7: Str = "少し具合が悪い"; break;
-                        case 8: Str = "少し具合が悪い"; break;
-                        case 9: Str = "風邪っぽい"; break;
-                        case 10: Str = "風邪っぽい"; break;
+                        case 1: S = FO.InfectionMark[0]; break;
+                        case 2: S = FO.InfectionMark[0]; break;
+                        case 3: S = FO.InfectionMark[0]; break;
+                        case 4: S = FO.InfectionMark[0]; break;
+                        case 5: S = FO.InfectionMark[0]; break;
+                        case 6: S = FO.InfectionMark[1]; break;
+                        case 7: S = FO.InfectionMark[1]; break;
+                        case 8: S = FO.InfectionMark[1]; break;
+                        case 9: S = FO.InfectionMark[2]; break;
+                        case 10: S = FO.InfectionMark[2]; break;
                         default: Debug.LogError("Cord_101-感染表示で想定外の発生"); break;
                     }
                     break;
                 case 1:
                     switch (r)
                     {
-                        case 1: Str = "元気"; break;
-                        case 2: Str = "元気"; break;
-                        case 3: Str = "元気"; break;
-                        case 4: Str = "元気"; break;
-                        case 5: Str = "少し具合が悪い"; break;
-                        case 6: Str = "少し具合が悪い"; break;
-                        case 7: Str = "少し具合が悪い"; break;
-                        case 8: Str = "風邪っぽい"; break;
-                        case 9: Str = "風邪っぽい"; break;
-                        case 10: Str = "吐き気がする"; break;
+                        case 1: S = FO.InfectionMark[0]; break;
+                        case 2: S = FO.InfectionMark[0]; break;
+                        case 3: S = FO.InfectionMark[0]; break;
+                        case 4: S = FO.InfectionMark[0]; break;
+                        case 5: S = FO.InfectionMark[1]; break;
+                        case 6: S = FO.InfectionMark[1]; break;
+                        case 7: S = FO.InfectionMark[1]; break;
+                        case 8: S = FO.InfectionMark[2]; break;
+                        case 9: S = FO.InfectionMark[2]; break;
+                        case 10: S = FO.InfectionMark[3]; break;
                         default: Debug.LogError("Cord_102-感染表示で想定外の発生"); break;
                     }
                     break;
                 case 2:
                     switch (r)
                     {
-                        case 1: Str = "風邪っぽい"; break;
-                        case 2: Str = "風邪っぽい"; break;
-                        case 3: Str = "風邪っぽい"; break;
-                        case 4: Str = "吐き気がする"; break;
-                        case 5: Str = "吐き気がする"; break;
-                        case 6: Str = "吐き気がする"; break;
-                        case 7: Str = "吐き気がする"; break;
-                        case 8: Str = "死にそう"; break;
-                        case 9: Str = "死にそう"; break;
-                        case 10: Str = "死にそう"; break;
+                        case 1: S = FO.InfectionMark[2]; break;
+                        case 2: S = FO.InfectionMark[2]; break;
+                        case 3: S = FO.InfectionMark[2]; break;
+                        case 4: S = FO.InfectionMark[3]; break;
+                        case 5: S = FO.InfectionMark[3]; break;
+                        case 6: S = FO.InfectionMark[3]; break;
+                        case 7: S = FO.InfectionMark[3]; break;
+                        case 8: S = FO.InfectionMark[4]; break;
+                        case 9: S = FO.InfectionMark[4]; break;
+                        case 10: S = FO.InfectionMark[4]; break;
                         default: Debug.LogError("Cord_103-感染表示で想定外の発生"); break;
                     }
                     break;
                 default: Debug.LogError("Cord_104-感染表示で想定外の発生"); break;
             }
-            FO.InfectionText[l].text = Str;
+            FO.InfectionImage[l].sprite = S;
         }
     }
 
