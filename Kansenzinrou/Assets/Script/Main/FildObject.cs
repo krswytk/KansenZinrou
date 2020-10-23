@@ -10,7 +10,7 @@ public class FildObject : Config
     [HideInInspector] public Text[,] UIOBText;//各数値のprivate Text //数値用テキストオブジェクト
     /*
      1次元　0 薬局　1 食べ物 　2 水屋 　3 道具
-     2次元　0 食料　1 飲料　2 道具　3 薬 4 お金　5 仕入れ　6 売値　7対策 
+     2次元　0 食料　1 飲料　2 道具　3 薬 4 お金　5 仕入れ　6 売値
      */
 
     [HideInInspector] public GameObject Ibent;//情勢イベントprivate GameObject 
@@ -37,6 +37,7 @@ public class FildObject : Config
     [HideInInspector] public GameObject Next;//全取引を確定させるボタン
 
     [HideInInspector] public GameObject Countermeasures;//感染対策ボタンのセット
+    [HideInInspector] public GameObject[] CountermeasuresMask;//感染対策ボタンのセット
 
 
     MainManeger MM;
@@ -48,8 +49,8 @@ public class FildObject : Config
         MM = GetComponent<MainManeger>();
         
         /////////////////////////////////////////////////////////////////////////////
-        UIOB = new GameObject[MainManeger.PlayerNumber, 8];
-        UIOBText = new Text[MainManeger.PlayerNumber, 8];
+        UIOB = new GameObject[MainManeger.PlayerNumber, 7];
+        UIOBText = new Text[MainManeger.PlayerNumber, 7];
         UIOB[0, 0] = GameObject.Find("DDN");//薬局の薬//I = 薬局　I = 薬 N = 数字テキスト
         UIOB[0, 1] = GameObject.Find("DFN");//薬局の食料
         UIOB[0, 2] = GameObject.Find("DWN");//薬局の飲料
@@ -57,7 +58,6 @@ public class FildObject : Config
         UIOB[0, 4] = GameObject.Find("DMN");//薬局のお金
         UIOB[0, 5] = GameObject.Find("DPN");//薬局の仕入
         UIOB[0, 6] = GameObject.Find("DSN");//薬局の売値
-        UIOB[0, 7] = GameObject.Find("DCN");//薬局の対策
 
         UIOB[1, 0] = GameObject.Find("FDN");//食べ物屋の薬
         UIOB[1, 1] = GameObject.Find("FFN");//食べ物屋の食料
@@ -66,7 +66,6 @@ public class FildObject : Config
         UIOB[1, 4] = GameObject.Find("FMN");//食べ物屋のお金
         UIOB[1, 5] = GameObject.Find("FPN");//食べ物屋の仕入
         UIOB[1, 6] = GameObject.Find("FSN");//食べ物屋の売値
-        UIOB[1, 7] = GameObject.Find("FCN");//食べ物屋の対策
 
         UIOB[2, 0] = GameObject.Find("WDN");//水屋の薬
         UIOB[2, 1] = GameObject.Find("WFN");//水屋の食料
@@ -75,7 +74,6 @@ public class FildObject : Config
         UIOB[2, 4] = GameObject.Find("WMN");//水屋のお金
         UIOB[2, 5] = GameObject.Find("WPN");//水屋の仕入
         UIOB[2, 6] = GameObject.Find("WSN");//水屋の売値
-        UIOB[2, 7] = GameObject.Find("WCN");//水屋の対策
 
         UIOB[3, 0] = GameObject.Find("TDN");//道具屋の薬
         UIOB[3, 1] = GameObject.Find("TFN");//道具屋の食料
@@ -84,7 +82,6 @@ public class FildObject : Config
         UIOB[3, 4] = GameObject.Find("TMN");//道具屋のお金
         UIOB[3, 5] = GameObject.Find("TPN");//道具屋の仕入
         UIOB[3, 6] = GameObject.Find("TSN");//道具屋の売値
-        UIOB[3, 7] = GameObject.Find("TCN");//道具屋の対策
 
         for (int l = 0; l < UIOB.GetLength(0); l++)
         {
@@ -112,7 +109,7 @@ public class FildObject : Config
         Infection[0] = GameObject.Find("DI");//薬の感染
         Infection[1] = GameObject.Find("FI");//食べ物の感染
         Infection[2] = GameObject.Find("WI");//水屋の感染
-        Infection[3] = GameObject.Find("TI");//道具屋の感染        
+        Infection[3] = GameObject.Find("TI");//道具屋の感染      
         InfectionMark[0] = Resources.Load<Sprite>("元気");//元気
         InfectionMark[1] = Resources.Load<Sprite>("少し具合がわるい");//少し具合がわるい
         InfectionMark[2] = Resources.Load<Sprite>("風邪っぽい");//風邪っぽい
@@ -206,7 +203,12 @@ public class FildObject : Config
         ////////////////////////////////////////////////////////////////////////////
         ///
         /////////////////////////////////////////////////////////////////////////////
+        CountermeasuresMask = new GameObject[4];
         Countermeasures = GameObject.Find("Countermeasures");//感染対策の複数格納オブジェクト
+        CountermeasuresMask[0] = GameObject.Find("DCN");//薬局の対策
+        CountermeasuresMask[1] = GameObject.Find("FCN");//食べ物屋の対策
+        CountermeasuresMask[2] = GameObject.Find("WCN");//水屋の対策
+        CountermeasuresMask[3] = GameObject.Find("TCN");//道具屋の対策
         ////////////////////////////////////////////////////////////////////////////
     }
 }

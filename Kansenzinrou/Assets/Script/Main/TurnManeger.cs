@@ -21,6 +21,9 @@ public class TurnManeger : MonoBehaviour
 
     private bool BusinessSW;
 
+    public AudioClip sound1;
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +101,7 @@ public class TurnManeger : MonoBehaviour
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {
+                        IA.PCROFF();//PCRだった場合表示を消す
                         TSW = true;//スイッチを起動可能状態に戻す
                         stage = Config.Stage.感染状態表示;//次のステージへ
                     }
@@ -220,6 +224,7 @@ public class TurnManeger : MonoBehaviour
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage && BusinessSW == false)//一定時間経過したら
                     {
+                        UIM.MaskOFF();//全員の感染対策を無効
                         TSW = true;//スイッチを起動可能状態に戻す
                         stage = Config.Stage.情勢イベント削除;//次のステージへ
                     }
@@ -232,9 +237,9 @@ public class TurnManeger : MonoBehaviour
                     if (TSW)
                     {
                         TSW = false;//一回のみ呼び出す処理
-                        NowTime = Timer;//情勢イベントの効果を元に戻す
+                        NowTime = Timer;
                         MM.LogOut(Turn + "情勢イベント削除", false);
-                        IA.NewsOFF();
+                        IA.NewsOFF();// 情勢イベントの効果を元に戻す
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
                     {

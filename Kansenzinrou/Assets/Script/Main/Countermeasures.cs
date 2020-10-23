@@ -25,6 +25,7 @@ public class Countermeasures : MonoBehaviour//感染対策用のボタンスク�
     public void Yes()
     {
         MM.Player[BA.GetTurn()].SetCountermeasures(true);//該当プレイヤーの感染対策をONにする
+        GameObject.Find("Maneger").GetComponent<UIManger>().MaskON(BA.GetTurn());
         FO.Countermeasures.SetActive(false);
     }
 

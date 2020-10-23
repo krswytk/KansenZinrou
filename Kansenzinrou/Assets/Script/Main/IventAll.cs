@@ -202,7 +202,7 @@ public class IventAll : Config
         now = news.何もない;
     }
     
-    public void OFFPCR()
+    public void PCROFF()
     {
         FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示に戻す
     }

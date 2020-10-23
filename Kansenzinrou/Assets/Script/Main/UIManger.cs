@@ -11,7 +11,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
     Player[] Player;
     Config Config;
 
-    public void Start()//表の更新を行う    
+    public void Start()//   
     {
         FO = GetComponent<FildObject>();
         MM = GetComponent<MainManeger>();
@@ -21,7 +21,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
 
     public void TableUpdate()//表の更新を行う    
     {
-        for (int l = 0; l < FO.UIOBText.GetLength(0); l++)
+        for (int l = 0; l < FO.UIOBText.GetLength(0)-1; l++)
         {
             FO.UIOBText[l, 0].text = Player[l].GetMedicine().ToString();//薬量
             FO.UIOBText[l, 1].text = Player[l].GetFood().ToString();//食料
@@ -30,7 +30,6 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             FO.UIOBText[l, 4].text = Player[l].GetMoney().ToString();//お金
             FO.UIOBText[l, 5].text = Player[l].GetPurchasing().ToString();//仕入
             FO.UIOBText[l, 6].text = Player[l].GetSell().ToString();//売値
-            FO.UIOBText[l, 7].text = Player[l].GetCountermeasures().ToString();//対策true or false
 
             if (Player[l].GetFood() > 100)
             {
@@ -162,6 +161,19 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             default:
                 Debug.LogError("Cord_105-PRC検査表示で想定外の発生");
                 break;
+        }
+    }
+
+    public void MaskON(int t)
+    {
+        FO.CountermeasuresMask[t].SetActive(true);
+    }
+
+    public void MaskOFF()
+    {
+        for (int l = 0; l < Player.Length; l++)
+        {
+            FO.CountermeasuresMask[l].SetActive(false);
         }
     }
 }

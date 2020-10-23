@@ -23,6 +23,12 @@ public class MainManeger : Config
     [HideInInspector] public int LogCount;//LOG文章格納用の文字配列    
     [HideInInspector] public int AllLogCount;//LOG文章格納用の文字配列
 
+
+
+    public AudioClip sound1;
+    AudioSource audioSource;
+    //audioSource.PlayOneShot(sound1);
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -43,6 +49,7 @@ public class MainManeger : Config
         Log = new string[100];
         AllLogCount = 0;
         LogCount = 0;
+        audioSource = GetComponent<AudioSource>();//SE再生用の取得
     }
     void Start()
     {
