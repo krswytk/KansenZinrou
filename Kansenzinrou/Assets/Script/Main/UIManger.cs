@@ -51,25 +51,25 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         switch (N)
         {
             case Config.news.発見:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "この世界で新たな感染症が発見されました" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "この世界で新たな感染症が発見されました";
                 break;
             case Config.news.クラスター:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "このターンの感染率up" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "このターンの感染率up";
                 break;
             case Config.news.給付金:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "全プレイヤーに金＋1" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "全プレイヤーに金＋1";
                 break;
             case Config.news.変異:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "このターンに感染すると2から症状が始まる" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "このターンに感染すると2から症状が始まる";
                 break;
             case Config.news.体調不良:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "PCR検査ランダムに1人の感染状況を開示" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "PCR検査ランダムに1人の感染状況を開示";
                 break;
             case Config.news.支援:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "このターン中のみ感染対策の費用が1になる" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "このターン中のみ感染対策の費用が1になる";
                 break;
             case Config.news.医療崩壊:
-                FO.Ibenttext.text = "現在の情勢イベントは " + "このターン中のみ医者の用意出来るベッドが1になる" + " です。";
+                FO.Ibenttext.text = "情勢イベントは\n\r" + "このターン中のみ医者の用意出来るベッドが1になる";
                 break;
         }
 

@@ -31,7 +31,9 @@ public class IventAll : Config
         PurchasingOFF();//仕入れボタンを非表示に
 
         TimerSw = new bool[11];
-        TimerSwOFF();
+        TimerSwOFF();//10秒カウント初期化用
+        FO.IbentAll.SetActive(true);//情勢イベントボックスを表示
+        CountermeasuresMaskOFF();
 
     }
     private void Update()
@@ -177,6 +179,7 @@ public class IventAll : Config
     public void TimerON()//制限時間のタイマー計測を始める　
     {
         sw = true;
+        MM.LogOut("仕入れタイマースタート", false);
     }
 
     public bool GetTimerSW()//現在タイマーが作動中か判定　
@@ -210,6 +213,7 @@ public class IventAll : Config
             n = RandomDice.DiceRoll(6);//1-6が入る
             if (T) n = 0;//最初のターンなら
             int num = 0;//各処理で使う変数
+            FO.IbentAll.SetActive(true);//情勢イベントボックスを表示
 
             switch (n)
             {
@@ -265,6 +269,7 @@ public class IventAll : Config
 
     public void NewsOFF()//情勢イベントの効果を打ち消す
     {
+        FO.IbentAll.SetActive(false);//情勢イベントボックスを表示
         switch (now)
         {
             case news.発見:
@@ -338,6 +343,7 @@ public class IventAll : Config
                 Player[i].SetMoney(0);
                 Player[i].SetDeath(true);//死亡判定
                 MM.PlaySE(FO.SoundSE[1]);
+                MM.LogOut(Player[i].GetName() + "が物資不足で死亡", true);
             }
         }
     }
@@ -353,6 +359,7 @@ public class IventAll : Config
                 Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
                 MM.PlaySE(FO.SoundSE[1]);
+                MM.LogOut(Player[i].GetName() + "が感染により死亡", true);
             }
         }
     }
@@ -361,41 +368,54 @@ public class IventAll : Config
     {
         for(int i = 0;i< FO.PurchasingGroup.GetLength(0); i++)
         {
-            for (int l = 0; l < FO.PurchasingGroup.GetLength(0); l++)
+            for (int l = 0; l < FO.PurchasingGroup.GetLength(1); l++)
             {
                 FO.PurchasingGroup[i,l].SetActive(true);
             }
         }
+        MM.LogOut("仕入れボタンを表示", false);
     }
     public void PurchasingOFF()//仕入れボタンをすべて非表示
     {
         for (int i = 0; i < FO.PurchasingGroup.GetLength(0); i++)
         {
-            for (int l = 0; l < FO.PurchasingGroup.GetLength(0); l++)
+            for (int l = 0; l < FO.PurchasingGroup.GetLength(1); l++)
             {
                 FO.PurchasingGroup[i, l].SetActive(false);
             }
         }
+        MM.LogOut("仕入れボタンを非表示", false);
     }
     public void BusinessGroupON(int T)//購入ボタンをすべて表示
     {
-        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        for (int i = 0; i < FO.BusinessGroup.GetLength(1); i++)
         {
             FO.BusinessGroup[T, i].SetActive(true);
         }
+        MM.LogOut(T.ToString() + "の購入を表示", false);
     }
-    public void BusinessGroupOFF(int T)//仕入れボタンをすべて非表示
+    public void BusinessGroupOFF(int T)//購入ボタンをすべて非表示
     {
-        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        for (int i = 0; i < FO.BusinessGroup.GetLength(1); i++)
         {
             FO.BusinessGroup[T, i].SetActive(false);
         }
+        MM.LogOut(T.ToString() + "の購入を非表示", false);
     }
-     public void TimerSwOFF()//仕入れボタンをすべて非表示
+    public void TimerSwOFF()//10秒カウント初期化用CountermeasuresMask
     {
         for (int i = 0; i < TimerSw.Length; i++)
         {
             TimerSw[i] = true;
         }
+        MM.LogOut("仕入れタイマー10秒用初期化", false);
+    }
+    public void CountermeasuresMaskOFF()//感染対策適応をすべて非表示
+    {
+        for (int i = 0; i < FO.CountermeasuresMask.GetLength(1); i++)
+        {
+            FO.CountermeasuresMask[i].SetActive(false);
+        }
+        MM.LogOut("感染対策適応を非表示", false);
     }
 }

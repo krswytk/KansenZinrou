@@ -8,7 +8,7 @@ public class DebugLogOut : MonoBehaviour
     MainManeger MM;
     private void Start()
     {
-        MM = GetComponent<MainManeger>();
+        MM = GameObject.Find("Maneger").GetComponent<MainManeger>();
     }
     private void Update()
     {
