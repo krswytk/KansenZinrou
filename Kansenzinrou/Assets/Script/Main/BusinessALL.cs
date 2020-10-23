@@ -7,6 +7,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     MainManeger MM;
     TurnManeger TM;
     FildObject FO;
+    IventAll IA;
     private bool sw;
 
     private int Turn;
@@ -24,6 +25,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         MM = GetComponent<MainManeger>();
         TM = GetComponent<TurnManeger>();
         FO = GetComponent<FildObject>();
+        IA = GetComponent<IventAll>();
         sw = false;
         Turn = -1;
         C = 0;
@@ -81,7 +83,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                 {
                     Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
                     FO.Countermeasures.SetActive(true);//感染対策を行うかのボタン表示
-                    FO.BusinessGroup[Turn].SetActive(true);//順番に沿ったボタンを表示
+                    IA.BusinessGroupON(Turn);//順番に沿ったボタンを表示
                     SINOW();
                     if (C == 4)
                     {//4回繰り返したら//つまり全員取引を行ったら
@@ -108,7 +110,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     public void NextSW()//交渉決定用のボタン
     {
         Infection();// 感染の判定
-        FO.BusinessGroup[Turn].SetActive(false);//最初の順番のものを表示
+        IA.BusinessGroupOFF(Turn);//最初の順番のものを表示
         next = true;//次に進む（交渉決定)ボタンをtrueにする
         C++;
     }
@@ -121,7 +123,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     {
         for (int i = 0; i < MainManeger.PlayerNumber; i++)
         {
-            FO.BusinessGroup[i].SetActive(false);//隠す
+            IA.BusinessGroupOFF(i);
         }
         FO.Next.SetActive(false);//隠す
     }

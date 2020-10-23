@@ -195,15 +195,7 @@ public class IventAll : Config
         }
         now = news.何もない;
     }
-
-    public void PurchasingON()
-    {
-        FO.PurchasingGroup.SetActive(true);
-    }
-    public void PurchasingOFF()
-    {
-        FO.PurchasingGroup.SetActive(false);
-    }
+    
     public void OFFPCR()
     {
         FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示に戻す
@@ -272,6 +264,40 @@ public class IventAll : Config
         {
             MainManeger.Log[MainManeger.LogCount] = log;
             MainManeger.LogCount++;
+        }
+    }
+    public void PurchasingON()//仕入れボタンをすべて表示
+    {
+        for(int i = 0;i< FO.PurchasingGroup.GetLength(0); i++)
+        {
+            for (int l = 0; l < FO.PurchasingGroup.GetLength(0); l++)
+            {
+                FO.PurchasingGroup[i,l].SetActive(true);
+            }
+        }
+    }
+    public void PurchasingOFF()//仕入れボタンをすべて非表示
+    {
+        for (int i = 0; i < FO.PurchasingGroup.GetLength(0); i++)
+        {
+            for (int l = 0; l < FO.PurchasingGroup.GetLength(0); l++)
+            {
+                FO.PurchasingGroup[i, l].SetActive(false);
+            }
+        }
+    }
+    public void BusinessGroupON(int T)//購入ボタンをすべて表示
+    {
+        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        {
+            FO.BusinessGroup[T, i].SetActive(true);
+        }
+    }
+    public void BusinessGroupOFF(int T)//仕入れボタンをすべて非表示
+    {
+        for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
+        {
+            FO.BusinessGroup[T, i].SetActive(false);
         }
     }
 }
