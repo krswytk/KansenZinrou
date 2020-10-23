@@ -16,6 +16,7 @@ public class IventAll : Config
 
     private float Timer;
     private float TimerCount;
+    private bool[] TimerSw;
 
     private void Start()
     {
@@ -23,25 +24,115 @@ public class IventAll : Config
         UIM = GameObject.Find("Maneger").GetComponent<UIManger>();
         FO = GameObject.Find("Maneger").GetComponent<FildObject>();
         Player = MM.Player;
-
-        Timer = 0;
+        
         FO.TimerText.text = Timer.ToString("f0");
         FO.TimerAll.SetActive(false);//タイマー表記を隠す
         FO.PCR.SetActive(false);//PCR用の表示を非表示に
         PurchasingOFF();//仕入れボタンを非表示に
+
+        TimerSw = new bool[11];
+        TimerSwOFF();
+
     }
     private void Update()
     {
-        Timer += Time.deltaTime;
 
         if (sw)
         {
-            if (ssw == false) {
-                TimerCount = Timer;
-                ssw = true;
+            if (ssw == false)
+            {
+                ssw = true;//一度のみ呼び出すためのスイッチ
+                Timer = 0;//Timerの初期化
                 FO.TimerAll.SetActive(true);//タイマー関係全表示
+                TimerSwOFF();
             }//タイマー初回起動時
-            FO.TimerText.text = ((int)FirstNumber.仕入れ時間- (Timer - TimerCount)).ToString("f0");
+
+            Timer += Time.deltaTime;
+            FO.TimerText.text = ((int)FirstNumber.仕入れ時間 - Timer).ToString("f0");
+
+            if(((int)FirstNumber.仕入れ時間 - Timer) <= 10){
+                switch((int)FirstNumber.仕入れ時間 - Timer)
+                {
+                    case 10:
+                        if (TimerSw[0])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 9:
+                        if (TimerSw[1])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 8:
+                        if (TimerSw[2])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 7:
+                        if (TimerSw[3])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 6:
+                        if (TimerSw[4])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 5:
+                        if (TimerSw[5])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 4:
+                        if (TimerSw[6])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 3:
+                        if (TimerSw[7])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 2:
+                        if (TimerSw[8])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 1:
+                        if (TimerSw[9])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                    case 0:
+                        if (TimerSw[10])
+                        {
+                            MM.PlaySE(FO.SoundSE[5]);
+                            TimerSw[0] = false;
+                        }
+                        break;
+                }
+            }
+
             if ((Timer - TimerCount) > (int)FirstNumber.仕入れ時間)
             {
                 sw = false;//制限時間以上ならカウント終了
@@ -110,6 +201,7 @@ public class IventAll : Config
     }
 
     private news now = news.何もない;//現在の情勢イベントを格納しておく
+
     public void NewsON(bool T)//情勢イベントの選択、効果の繁栄を行う
     {
         if (now == news.何もない)//情勢イベントが打ち消されているかの確認
@@ -163,6 +255,7 @@ public class IventAll : Config
             }
             UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
             MM.LogOut(now.ToString(), false);
+            MM.PlaySE(FO.SoundSE[4]);
         }
         else
         {
@@ -226,7 +319,7 @@ public class IventAll : Config
             Player[i].Setinfection(c);
         }
     }
-    public void Countermeasures()
+    public void Countermeasures()//全プレイヤーの感染対策をOFFにする
     {
         for (int i = 0; i < Player.Length; i++)
         {
@@ -244,6 +337,7 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);
                 Player[i].SetDeath(true);//死亡判定
+                MM.PlaySE(FO.SoundSE[1]);
             }
         }
     }
@@ -258,6 +352,7 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
+                MM.PlaySE(FO.SoundSE[1]);
             }
         }
     }
@@ -294,6 +389,13 @@ public class IventAll : Config
         for (int i = 0; i < FO.PurchasingGroup.GetLength(1); i++)
         {
             FO.BusinessGroup[T, i].SetActive(false);
+        }
+    }
+     public void TimerSwOFF()//仕入れボタンをすべて非表示
+    {
+        for (int i = 0; i < TimerSw.Length; i++)
+        {
+            TimerSw[i] = true;
         }
     }
 }

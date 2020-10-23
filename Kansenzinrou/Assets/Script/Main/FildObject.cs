@@ -40,14 +40,18 @@ public class FildObject : Config
     [HideInInspector] public GameObject[] CountermeasuresMask;//感染対策ボタンのセット
 
 
+    [HideInInspector] public AudioClip[] SoundSE;//感染対策ボタンのセット
+
     MainManeger MM;
+
+
 
     FirstNumber FN;
     // Start is called before the first frame update
     void Awake()
     {
         MM = GetComponent<MainManeger>();
-        
+
         /////////////////////////////////////////////////////////////////////////////
         UIOB = new GameObject[MainManeger.PlayerNumber, 7];
         UIOBText = new Text[MainManeger.PlayerNumber, 7];
@@ -136,7 +140,7 @@ public class FildObject : Config
 
         /////////////////////////////////////////////////////////////////////////////
         PurchasingGroup = new GameObject[4, 4];//売り物ー＋売値ー＋  
-        
+
         PurchasingGroup[0, 0] = GameObject.Find("DPBM");//薬の売り物ー//D = 薬  P = 売り物  B = ボタン P = プラス
         PurchasingGroup[0, 1] = GameObject.Find("DPBP");//薬の売り物＋
         PurchasingGroup[0, 2] = GameObject.Find("DSBM");//薬の売値ー
@@ -161,7 +165,7 @@ public class FildObject : Config
         ////////////////////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////////////////////////
-        BusinessGroup = new GameObject[MainManeger.PlayerNumber,8];//食料ー＋水ー＋道具ー＋薬ー＋
+        BusinessGroup = new GameObject[MainManeger.PlayerNumber, 8];//食料ー＋水ー＋道具ー＋薬ー＋
 
         BusinessGroup[0, 0] = GameObject.Find("DDBM");//薬の取引薬ー//I = 薬局  P = 売り物  B = ボタン P = プラス
         BusinessGroup[0, 1] = GameObject.Find("DDBP");//薬の取引薬＋
@@ -210,5 +214,16 @@ public class FildObject : Config
         CountermeasuresMask[2] = GameObject.Find("WCN");//水屋の対策
         CountermeasuresMask[3] = GameObject.Find("TCN");//道具屋の対策
         ////////////////////////////////////////////////////////////////////////////
+        ///
+        ////////////////////////////////////////////////////////////////////////////
+        SoundSE = new AudioClip[8];//SEの格納
+        SoundSE[0] = Resources.Load<AudioClip>("SE/4nin_Buy etc");
+        SoundSE[1] = Resources.Load<AudioClip>("SE/4nin_Death");
+        SoundSE[2] = Resources.Load<AudioClip>("SE/4nin_NextPlayer");
+        SoundSE[3] = Resources.Load<AudioClip>("SE/4nin_NotBuy etc");
+        SoundSE[4] = Resources.Load<AudioClip>("SE/4nin_Nyu-su");
+        SoundSE[5] = Resources.Load<AudioClip>("SE/4nin_TimeCount");
+        SoundSE[6] = Resources.Load<AudioClip>("SE/4nin_Ton");
+        SoundSE[7] = Resources.Load<AudioClip>("SE/4nin_Ave");
     }
 }

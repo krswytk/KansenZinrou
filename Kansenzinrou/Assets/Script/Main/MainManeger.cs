@@ -24,10 +24,8 @@ public class MainManeger : Config
     [HideInInspector] public int AllLogCount;//LOG文章格納用の文字配列
 
 
-
-    public AudioClip sound1;
+    
     AudioSource audioSource;
-    //audioSource.PlayOneShot(sound1);
 
     // Start is called before the first frame update
     void Awake()
@@ -95,5 +93,10 @@ public class MainManeger : Config
             Log[LogCount] = log;
             LogCount++;
         }
+    }
+
+    public void PlaySE(AudioClip sound)//ログの書き出し　t=trueでLogにも書き出す
+    {
+        audioSource.PlayOneShot(sound);
     }
 }

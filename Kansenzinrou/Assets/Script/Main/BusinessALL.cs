@@ -112,6 +112,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         Infection();// 感染の判定
         IA.BusinessGroupOFF(Turn);//最初の順番のものを表示
         next = true;//次に進む（交渉決定)ボタンをtrueにする
+        MM.PlaySE(FO.SoundSE[2]);
         C++;
     }
     public int GetTurn()//今の交渉順を返す

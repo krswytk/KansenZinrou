@@ -27,10 +27,12 @@ public class Countermeasures : MonoBehaviour//感染対策用のボタンスク�
         MM.Player[BA.GetTurn()].SetCountermeasures(true);//該当プレイヤーの感染対策をONにする
         GameObject.Find("Maneger").GetComponent<UIManger>().MaskON(BA.GetTurn());
         FO.Countermeasures.SetActive(false);
+        MM.PlaySE(FO.SoundSE[0]);
     }
 
     public void No()
     {
         FO.Countermeasures.SetActive(false);
+        MM.PlaySE(FO.SoundSE[3]);
     }
 }

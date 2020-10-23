@@ -21,9 +21,6 @@ public class TurnManeger : MonoBehaviour
 
     private bool BusinessSW;
 
-    public AudioClip sound1;
-    AudioSource audioSource;
-
     // Start is called before the first frame update
     void Start()
     {
