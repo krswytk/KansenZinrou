@@ -21424,6 +21424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112d14587808e6a43b363ce4d55f6501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sw: 0
+  Turn: 0
+  C: 0
+  next: 0
   S: 
   NS: 
   SI: 
@@ -37256,7 +37260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2084460072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a747765deeaf64f8619471f75159fd, type: 3}
+  m_Script: {fileID: 11500000, guid: e6acbf92726330a408d749ac2478c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2084460075
@@ -37303,7 +37307,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2084460074}
-        m_MethodName: TimerON
+        m_MethodName: NextSW
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
