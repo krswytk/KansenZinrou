@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MainManeger : Config
 {
+    FildObject FO;
 
     [HideInInspector] public Player[] Player;//プレイヤークラスを取得
     [HideInInspector] public static int PlayerNumber;//プレイヤーの人数を取得
@@ -55,6 +56,8 @@ public class MainManeger : Config
 
         GPN = GetComponent<GetPlayerName>();
 
+        FO = GetComponent<FildObject>();
+
         try
         {
             LogOut("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3], false);
@@ -95,8 +98,18 @@ public class MainManeger : Config
         }
     }
 
-    public void PlaySE(AudioClip sound)//ログの書き出し　t=trueでLogにも書き出す
+    public void PlaySE(int sound)//ログの書き出し　t=trueでLogにも書き出す
     {
-        audioSource.PlayOneShot(sound);
+        switch (sound)
+        {
+            case 0: audioSource.PlayOneShot(FO.SoundSE[0]); break;
+            case 1: audioSource.PlayOneShot(FO.SoundSE[1]); break;
+            case 2: audioSource.PlayOneShot(FO.SoundSE[2]); break;
+            case 3: audioSource.PlayOneShot(FO.SoundSE[3]); break;
+            case 4: audioSource.PlayOneShot(FO.SoundSE[4]); break;
+            case 5: audioSource.PlayOneShot(FO.SoundSE[5]); break;
+            case 6: audioSource.PlayOneShot(FO.SoundSE[6]); break;
+        }
+
     }
 }

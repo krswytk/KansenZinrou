@@ -109,7 +109,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         next = true;//次に進む（交渉決定)ボタンをtrueにする
         IA.BusinessGroupOFF(Turn);//対象取引ボタンを隠す
         FO.Next.SetActive(false);//Nextボタンを表示にする
-        MM.PlaySE(FO.SoundSE[2]);
+        MM.PlaySE(2);
         if (C >= 4)
         {//4回繰り返したら//つまり全員取引を行ったら
             Allfalse();

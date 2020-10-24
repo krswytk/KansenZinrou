@@ -171,7 +171,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                 default: Debug.LogError("Cord_104-感染表示で想定外の発生"); break;
             }
             FO.InfectionImage[l].sprite = S;
-            MM.PlaySE(FO.SoundSE[6]);
+            MM.PlaySE(6);
         }
         Debug.Log("感染予測表示");
     }
