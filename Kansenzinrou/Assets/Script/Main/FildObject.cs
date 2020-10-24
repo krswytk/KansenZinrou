@@ -43,13 +43,16 @@ public class FildObject : Config
 
     [HideInInspector] public AudioClip[] SoundSE;//感染対策ボタンのセット
 
+
+    [HideInInspector] public GameObject[] DSObject;//死亡表示のセット
+
     MainManeger MM;
 
 
 
     FirstNumber FN;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Debug.Log("全ボタン、テキストオブジェクトの取得");
         MM = GetComponent<MainManeger>();
@@ -111,7 +114,7 @@ public class FildObject : Config
 
         /////////////////////////////////////////////////////////////////////////////
         Infection = new GameObject[4];
-        InfectionMark = new Sprite[5];
+        InfectionMark = new Sprite[6];
         InfectionImage = new Image[4];
         Infection[0] = GameObject.Find("DI");//薬の感染
         Infection[1] = GameObject.Find("FI");//食べ物の感染
@@ -121,7 +124,8 @@ public class FildObject : Config
         InfectionMark[1] = Resources.Load<Sprite>("少し具合がわるい");//少し具合がわるい
         InfectionMark[2] = Resources.Load<Sprite>("風邪っぽい");//風邪っぽい
         InfectionMark[3] = Resources.Load<Sprite>("吐き気がする");//吐き気がする
-        InfectionMark[3] = Resources.Load<Sprite>("死にそう");//死にそう
+        InfectionMark[4] = Resources.Load<Sprite>("死にそう");//死にそう
+        InfectionMark[5] = Resources.Load<Sprite>("死んでいます");//死んだときに表示
         for (int l = 0; l < Infection.GetLength(0); l++)
         {
             InfectionImage[l] = Infection[l].GetComponent<Image>();
@@ -228,5 +232,14 @@ public class FildObject : Config
         SoundSE[5] = Resources.Load<AudioClip>("SE/4nin_TimeCount");
         SoundSE[6] = Resources.Load<AudioClip>("SE/4nin_Ton");
         SoundSE[7] = Resources.Load<AudioClip>("SE/4nin_Ave");
+        ////////////////////////////////////////////////////////////////////////////
+        ///
+        /////////////////////////////////////////////////////////////////////////////
+        DSObject = new GameObject[4];
+        DSObject[0] = GameObject.Find("DSD");//薬局の対策
+        DSObject[1] = GameObject.Find("FSD");//食べ物屋の対策
+        DSObject[2] = GameObject.Find("WSD");//水屋の対策
+        DSObject[3] = GameObject.Find("TSD");//道具屋の対策
+        ////////////////////////////////////////////////////////////////////////////
     }
 }

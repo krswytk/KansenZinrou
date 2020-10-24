@@ -144,10 +144,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     {
         //もともと持っている数よりはマイナスできない
         //今の持っている数　－　もともと持っている数　＞　1以上　なら返却できる
-        //
+        /*
         Debug.Log("Player[BA.GetTurn()].GetMedicine() : " + Player[BA.GetTurn()].GetMedicine());
         Debug.Log("BA.GetTurn() : " + BA.GetTurn());
         Debug.Log("BA.S[0] : " + BA.S[0]);
+        */
         if (Player[BA.GetTurn()].GetMedicine() - BA.S[0] > 0)//取引後と取引前前の確認            //全部問題なかったら
         {
             num = Player[BA.GetTurn()].GetMedicine();//薬値取得
@@ -171,11 +172,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     }
     public void FM_()//食料の返却
     {
-        if (Player[BA.GetTurn()].GetMedicine() - BA.S[1] > 0)//取引後と取引前前の確認            //全部問題なかったら
+        if (Player[BA.GetTurn()].GetFood() - BA.S[1] > 0)//取引後と取引前前の確認            //全部問題なかったら
         {
-            num = Player[BA.GetTurn()].GetMedicine();//薬値取得
+            num = Player[BA.GetTurn()].GetFood();//薬値取得
             num -= 1;//薬値減少
-            Player[BA.GetTurn()].SetMedicine(num);//薬値反映
+            Player[BA.GetTurn()].SetFood(num);//薬値反映
                                                   //薬-
 
             num = Player[BA.GetTurn()].GetMoney();//お金取得
@@ -194,11 +195,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     }
     public void WM_()//水の返却
     {
-        if (Player[BA.GetTurn()].GetMedicine() - BA.S[2] > 0)//取引後と取引前前の確認            //全部問題なかったら
+        if (Player[BA.GetTurn()].GetWater() - BA.S[2] > 0)//取引後と取引前前の確認            //全部問題なかったら
         {
-            num = Player[BA.GetTurn()].GetMedicine();//薬値取得
+            num = Player[BA.GetTurn()].GetWater();//薬値取得
             num -= 1;//薬値減少
-            Player[BA.GetTurn()].SetMedicine(num);//薬値反映
+            Player[BA.GetTurn()].SetWater(num);//薬値反映
                                                   //薬-
 
             num = Player[BA.GetTurn()].GetMoney();//お金取得
@@ -217,11 +218,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     }
     public void TM_()//道具の返却
     {
-        if (Player[BA.GetTurn()].GetMedicine() - BA.S[3] > 0)//取引後と取引前前の確認            //全部問題なかったら
+        if (Player[BA.GetTurn()].GetTool() - BA.S[3] > 0)//取引後と取引前前の確認            //全部問題なかったら
         {
-            num = Player[BA.GetTurn()].GetMedicine();//薬値取得
+            num = Player[BA.GetTurn()].GetTool();//薬値取得
             num -= 1;//薬値減少
-            Player[BA.GetTurn()].SetMedicine(num);//薬値反映
+            Player[BA.GetTurn()].SetTool(num);//薬値反映
                                                   //薬-
 
             num = Player[BA.GetTurn()].GetMoney();//お金取得
