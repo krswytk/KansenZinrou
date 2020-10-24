@@ -383,9 +383,10 @@ public class TurnManeger : MonoBehaviour
     {
         for (int i = 0; i < MM.Player.Length; i++)
         {
-
-            Point.setInfectedPerson(InfectionCounter[i], i + 1);
+            Point.setInfectedPerson(InfectionCounter[i], i + 1);//感染人数の格納
         }
+
+        InfrctionLog.setInfectedPerson(MM.AllLog);//AllLogの格納
         SceneManager.sceneLoaded -= CountInfectionGameSceneLoaded;
     }
     /*

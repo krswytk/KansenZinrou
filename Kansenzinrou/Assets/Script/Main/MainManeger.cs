@@ -31,6 +31,10 @@ public class MainManeger : Config
     // Start is called before the first frame update
     void Awake()
     {
+
+        GPN = GetComponent<GetPlayerName>();
+
+        FO = GetComponent<FildObject>();
         try
         {
             PlayerNumber = GPN.PlayerName.Length;//プレイ人数を取得
@@ -54,12 +58,9 @@ public class MainManeger : Config
     {
         LogOut("初期起動",false);
 
-        GPN = GetComponent<GetPlayerName>();
-
-        FO = GetComponent<FildObject>();
-
         try
         {
+            Debug.Log("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3]);
             LogOut("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3], false);
         }
         catch
@@ -69,6 +70,7 @@ public class MainManeger : Config
             {
                 GPN.PlayerName[l] = "Player " + l.ToString();//Plyer1 Playre2...
             }
+            Debug.Log("デバックプレイヤー起動");
             LogOut("デバックプレイヤー起動", false);
         }//もしプレイヤー名が入っていなかったら　主デバック用
 
