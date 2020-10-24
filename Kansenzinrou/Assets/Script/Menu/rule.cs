@@ -44,11 +44,11 @@ public class rule : MonoBehaviour
 
     public void title_back()
     {
-        //feadSC.fade("Title");//タイトルに移動
+        feadSC.fade("Title");//タイトルに移動
     }
 
     public void GameStart()
     {
-        //feadSC.fade("Title");//ゲームスタート
+        feadSC.fade("Name");//ゲームスタート
     }
 }
