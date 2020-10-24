@@ -15,7 +15,7 @@ public class IventAll : Config
 
 
     private float Timer;
-    private float TimerCount;
+    private float TimerCount = 0;
     private bool[] TimerSw;
 
     private void Start()
@@ -58,77 +58,77 @@ public class IventAll : Config
                     case 10:
                         if (TimerSw[0])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 9:
                         if (TimerSw[1])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 8:
                         if (TimerSw[2])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 7:
                         if (TimerSw[3])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 6:
                         if (TimerSw[4])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 5:
                         if (TimerSw[5])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 4:
                         if (TimerSw[6])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 3:
                         if (TimerSw[7])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 2:
                         if (TimerSw[8])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 1:
                         if (TimerSw[9])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
                     case 0:
                         if (TimerSw[10])
                         {
-                            MM.PlaySE(FO.SoundSE[5]);
+                            MM.PlaySE(5);
                             TimerSw[0] = false;
                         }
                         break;
@@ -264,7 +264,7 @@ public class IventAll : Config
             }
             UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
             MM.LogOut(now.ToString(), false);
-            MM.PlaySE(FO.SoundSE[4]);
+            MM.PlaySE(4);
             Debug.Log(now + "で情勢イベント内容決定");
         }
         else
@@ -352,7 +352,7 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);
                 Player[i].SetDeath(true);//死亡判定
-                MM.PlaySE(FO.SoundSE[1]);
+                MM.PlaySE(1);
                 MM.LogOut(Player[i].GetName() + "が物資不足で死亡", true);
                 Debug.Log(Player[i].GetName() + "が物資不足で死亡");
             }
@@ -369,7 +369,7 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
-                MM.PlaySE(FO.SoundSE[1]);
+                MM.PlaySE(1);
                 MM.LogOut(Player[i].GetName() + "が感染により死亡", true);
                 Debug.Log(Player[i].GetName() + "が感染により死亡");
             }

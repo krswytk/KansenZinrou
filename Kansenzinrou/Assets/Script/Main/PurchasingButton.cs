@@ -26,7 +26,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M += (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を返却
             MM.Player[0].SetMoney(M);//所持金に反映
             MM.Player[0].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[3]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -40,7 +40,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M -= (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を徴収
             MM.Player[0].SetMoney(M);//所持金に反映
             MM.Player[0].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[0]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -54,7 +54,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M += (int)Config.FirstNumber.食料仕入れ金;//仕入れ金を返却
             MM.Player[1].SetMoney(M);//所持金に反映
             MM.Player[1].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[3]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -68,7 +68,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M -= (int)Config.FirstNumber.食料仕入れ金;//仕入れ金を徴収
             MM.Player[1].SetMoney(M);//所持金に反映
             MM.Player[1].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[0]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -82,7 +82,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M += (int)Config.FirstNumber.飲料仕入れ金;//仕入れ金を返却
             MM.Player[2].SetMoney(M);//所持金に反映
             MM.Player[2].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[3]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -96,7 +96,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M -= (int)Config.FirstNumber.飲料仕入れ金;//仕入れ金を徴収
             MM.Player[2].SetMoney(M);//所持金に反映
             MM.Player[2].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[0]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -110,7 +110,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M += (int)Config.FirstNumber.道具仕入れ金;//仕入れ金を返却
             MM.Player[3].SetMoney(M);//所持金に反映
             MM.Player[3].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[3]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }
@@ -124,7 +124,7 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
             M -= (int)Config.FirstNumber.道具仕入れ金;//仕入れ金を徴収
             MM.Player[3].SetMoney(M);//所持金に反映
             MM.Player[3].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(FO.SoundSE[0]);
+            MM.PlaySE(3);
         }
         UIM.TableUpdate();
     }

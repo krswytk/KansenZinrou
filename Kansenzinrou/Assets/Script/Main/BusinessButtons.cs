@@ -46,7 +46,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num -= 1;//仕入れ減少
                 Player[1].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
-                MM.PlaySE(FO.SoundSE[0]);
+                MM.PlaySE(0);
             }
         }
     }
@@ -71,7 +71,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num -= 1;//仕入れ減少
                 Player[2].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
-                MM.PlaySE(FO.SoundSE[0]);
+                MM.PlaySE(0);
             }
         }
     }
@@ -96,7 +96,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num -= 1;//仕入れ減少
                 Player[3].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
-                MM.PlaySE(FO.SoundSE[0]);
+                MM.PlaySE(0);
             }
         }
     }
@@ -121,7 +121,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num -= 1;//仕入れ減少
                 Player[0].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
-                MM.PlaySE(FO.SoundSE[0]);
+                MM.PlaySE(0);
             }
         }
     }
@@ -131,25 +131,25 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
 
     public void MM_()//薬の返却
     {
-        if (BA.SI[0]- BA.S[0] > 0)//取引後と取引前前の確認
+        if (BA.SI[0] - BA.S[0] > 0)//取引後と取引前前の確認
         {
-            
-                //全部問題なかったら
-                num = Player[BA.GetTurn()].GetMedicine();//食料値取得
-                num -= 1;//食料値減少
-                Player[BA.GetTurn()].SetMedicine(num);//食料値反映
-                //食料-
 
-                num = Player[BA.GetTurn()].GetMoney();//お金取得
-                num += Player[1].GetSell();//お金増加
-                Player[BA.GetTurn()].SetMoney(num);//お金反映
-                //お金+
+            //全部問題なかったら
+            num = Player[BA.GetTurn()].GetMedicine();//食料値取得
+            num -= 1;//食料値減少
+            Player[BA.GetTurn()].SetMedicine(num);//食料値反映
+                                                  //食料-
 
-                num = Player[1].GetPurchasing();//仕入れ取得
-                num += 1;//仕入れ増加
-                Player[1].SetPurchasing(num);//仕入れ反映
-                                             //仕入れ+
-            MM.PlaySE(FO.SoundSE[3]);
+            num = Player[BA.GetTurn()].GetMoney();//お金取得
+            num += Player[1].GetSell();//お金増加
+            Player[BA.GetTurn()].SetMoney(num);//お金反映
+                                               //お金+
+
+            num = Player[1].GetPurchasing();//仕入れ取得
+            num += 1;//仕入れ増加
+            Player[1].SetPurchasing(num);//仕入れ反映
+                                         //仕入れ+
+            MM.PlaySE(3);
 
         }
     }
@@ -157,25 +157,25 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     {
         if (BA.SI[1] - BA.S[1] > 0)//まず食料の仕入れがあるか確認
         {
-            
-                //全部問題なかったら
-                num = Player[BA.GetTurn()].GetWater();//食料値取得
-                num -= 1;//食料値減少
-                Player[BA.GetTurn()].SetWater(num);//食料値反映
-                //食料-
 
-                num = Player[BA.GetTurn()].GetMoney();//お金取得
-                num += Player[1].GetSell();//お金増加
-                Player[BA.GetTurn()].SetMoney(num);//お金反映
-                //お金+
+            //全部問題なかったら
+            num = Player[BA.GetTurn()].GetWater();//食料値取得
+            num -= 1;//食料値減少
+            Player[BA.GetTurn()].SetWater(num);//食料値反映
+                                               //食料-
 
-                num = Player[1].GetPurchasing();//仕入れ取得
-                num += 1;//仕入れ増加
-                Player[1].SetPurchasing(num);//仕入れ反映
-                                             //仕入れ+
-                MM.PlaySE(FO.SoundSE[3]);
+            num = Player[BA.GetTurn()].GetMoney();//お金取得
+            num += Player[1].GetSell();//お金増加
+            Player[BA.GetTurn()].SetMoney(num);//お金反映
+                                               //お金+
 
-            
+            num = Player[1].GetPurchasing();//仕入れ取得
+            num += 1;//仕入れ増加
+            Player[1].SetPurchasing(num);//仕入れ反映
+                                         //仕入れ+
+            MM.PlaySE(3);
+
+
         }
     }
 
@@ -199,6 +199,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             num += 1;//仕入れ増加
             Player[1].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+
+            MM.PlaySE(3);
 
 
         }
@@ -224,6 +225,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             num += 1;//仕入れ増加
             Player[1].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+
+            MM.PlaySE(3);
 
 
         }
