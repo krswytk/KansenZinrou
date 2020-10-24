@@ -34,6 +34,8 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         FO.Countermeasures.SetActive(false);//感染症対策YESNOボタンのセット
         FO.Next.SetActive(false);//Nextボタンを非表示にする
 
+        S = new int[4];
+        NS = new int[4];
         SI = new int[4];
     }
 

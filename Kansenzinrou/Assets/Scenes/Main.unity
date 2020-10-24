@@ -10708,12 +10708,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ea3141835fa21248830bd286c80506a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -19554,7 +19554,7 @@ GameObject:
   - component: {fileID: 995478173}
   - component: {fileID: 995478172}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21400,6 +21400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448beb9601919094a9fc515416d816f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InfectionCounter: 000000000000000000000000000000000000000000000000
 --- !u!114 &1091554402
 MonoBehaviour:
   m_ObjectHideFlags: 0

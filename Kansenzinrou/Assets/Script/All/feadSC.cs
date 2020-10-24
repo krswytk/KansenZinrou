@@ -34,6 +34,7 @@ public class feadSC : MonoBehaviour
     {
         F = Instantiate(fadeimage, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
         F.GetComponent<fadeob>().OFFfade();
+        SceneManager.sceneLoaded -= GameSceneLoaded;
     }
     
 }
