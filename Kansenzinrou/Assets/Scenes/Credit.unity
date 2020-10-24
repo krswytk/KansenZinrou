@@ -418,7 +418,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 1780184673}
   - component: {fileID: 1780184672}
   - component: {fileID: 1780184674}
+  - component: {fileID: 1780184675}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -597,8 +598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -262.5}
-  m_SizeDelta: {x: -384, y: -525}
+  m_AnchoredPosition: {x: 0, y: -375}
+  m_SizeDelta: {x: -384, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780184672
 MonoBehaviour:
@@ -613,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -621,10 +622,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 57af344a2d7037c498d8d0a350aec506, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 1
@@ -635,7 +636,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "4\u4EBA\u5BC4\u308C\u3070\u751F\u5B58\u306E\u77E5\u6075\n\n\n\n\n~staff~\n\nyutaka
     kirisawa\n\nrintarou katakura\n\nchihiro nagoshi\n\nmai takano\n\nsatoru harada\n\nkenta
-    igarashi\n\nitsuki satou\n\ntsubasa katsumata\n\n\n\n\n\npress space to title"
+    igarashi\n\nitsuki satou\n\ntsubasa katsumata\n\n\n\n\n\n\n\n\npress space to
+    title"
 --- !u!222 &1780184673
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -658,3 +660,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scspeed: 150
   limpos: 3400
+--- !u!114 &1780184675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780184670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
