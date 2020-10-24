@@ -146,6 +146,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
         //今の持っている数　－　もともと持っている数　＞　1以上　なら返却できる
         //
         Debug.Log("Player[BA.GetTurn()].GetMedicine() : " + Player[BA.GetTurn()].GetMedicine());
+        Debug.Log("BA.GetTurn() : " + BA.GetTurn());
         Debug.Log("BA.S[0] : " + BA.S[0]);
         if (Player[BA.GetTurn()].GetMedicine() - BA.S[0] > 0)//取引後と取引前前の確認            //全部問題なかったら
         {
