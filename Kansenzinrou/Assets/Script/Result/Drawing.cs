@@ -57,12 +57,12 @@ public class Drawing : MonoBehaviour
         SurvivorText.text += "　" + Survivor.getSurvivor().ToString() + "人";
 
         //デバック用
-        Point.setInfectedPerson(0, 1);
+        /*Point.setInfectedPerson(0, 1);
         Point.setInfectedPerson(1, 2);
         Point.setInfectedPerson(2, 3);
         Point.setInfectedPerson(3, 4);
         Point.setInfectedPerson(4, 5);
-        Point.setInfectedPerson(0, 6);
+        Point.setInfectedPerson(0, 6);*/
     }
 
     // Update is called once per frame
