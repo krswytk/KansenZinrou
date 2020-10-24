@@ -104,7 +104,7 @@ public class Player {
         S[1] = this.Food;
         S[2] = this.Water;
         S[3] = this.Tool;
-    }//ターン終了時の全物資-1の処理
+    }//今の物資量を引数の配列に保存する
 
 
     //各ゲッターとセッター
