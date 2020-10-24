@@ -375,6 +375,12 @@ MonoBehaviour:
   inputField1: {fileID: 1755951655}
   inputField2: {fileID: 790087943}
   inputField3: {fileID: 868105675}
+  nameholde:
+  - 
+  - 
+  - 
+  - 
+  gmnameholde: 
 --- !u!114 &32011001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,7 +1084,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &720334147
 Transform:
   m_ObjectHideFlags: 0
