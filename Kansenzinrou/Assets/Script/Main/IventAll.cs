@@ -436,4 +436,6 @@ public class IventAll : Config
         MM.LogOut("感染対策適応を非表示", false);
         Debug.Log("感染対策適応を非表示");
     }
+
+
 }

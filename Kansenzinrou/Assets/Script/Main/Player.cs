@@ -99,7 +99,6 @@ public class Player {
 
     public void SetNowSupplies(int[] S)//現在の物資量を引数配列にぶち込む
     {
-        S = new int[4];
         S[0] = this.Medicine;
         S[1] = this.Food;
         S[2] = this.Water;
