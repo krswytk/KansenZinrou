@@ -49,7 +49,7 @@ public class FildObject : Config
 
     FirstNumber FN;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Debug.Log("全ボタン、テキストオブジェクトの取得");
         MM = GetComponent<MainManeger>();
