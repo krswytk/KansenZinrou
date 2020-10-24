@@ -35,6 +35,6 @@ public class Countermeasures : MonoBehaviour//感染対策用のボタンスク�
     {
         FO.Countermeasures.SetActive(false);
         MM.PlaySE(3);
-        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いました。");
+        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いませんでした×");
     }
 }
