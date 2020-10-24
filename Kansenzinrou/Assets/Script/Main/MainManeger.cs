@@ -32,16 +32,22 @@ public class MainManeger : Config
     void Awake()
     {
 
+
+    }
+    void Start()
+    {
         GPN = GetComponent<GetPlayerName>();
 
         FO = GetComponent<FildObject>();
         try
         {
             PlayerNumber = GPN.PlayerName.Length;//プレイ人数を取得
+            Debug.Log(GPN.PlayerName.Length + "人でプレイを行います");
         }
         catch
         {
             PlayerNumber = 4;
+            Debug.Log("デバック起動４人でプレイを行います");
         }
 
         Infectionprobability = (int)FirstNumber.感染確率;
@@ -53,9 +59,6 @@ public class MainManeger : Config
         AllLogCount = 0;
         LogCount = 0;
         audioSource = GetComponent<AudioSource>();//SE再生用の取得
-    }
-    void Start()
-    {
         LogOut("初期起動",false);
 
         try
