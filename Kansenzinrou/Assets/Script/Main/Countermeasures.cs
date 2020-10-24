@@ -27,14 +27,14 @@ public class Countermeasures : MonoBehaviour//感染対策用のボタンスク�
         MM.Player[BA.GetTurn()].SetCountermeasures(true);//該当プレイヤーの感染対策をONにする
         FO.CountermeasuresMask[BA.GetTurn()].SetActive(true);
         FO.Countermeasures.SetActive(false);
-        MM.PlaySE(FO.SoundSE[0]);
+        MM.PlaySE(0);
         Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いました。");
     }
 
     public void No()
     {
         FO.Countermeasures.SetActive(false);
-        MM.PlaySE(FO.SoundSE[3]);
-        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いました。");
+        MM.PlaySE(3);
+        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いませんでした×");
     }
 }

@@ -12,14 +12,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: c87610b36c802c840b8a4c9852aa5843
   - enabled: 1
-    path: Assets/Scenes/Rule.unity
-    guid: 3cd24a1674bee2e42a574bc35499f49c
+    path: Assets/Scenes/Name.unity
+    guid: 385cce4c1e60f3f41a93b7f8fc7f718e
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2d67e9f0d25ee0846afd9e5fa65c2343
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 421beb7e3aa07154882934d6f82cc80e
+  - enabled: 1
+    path: Assets/Scenes/Rule.unity
+    guid: 3cd24a1674bee2e42a574bc35499f49c
   - enabled: 1
     path: Assets/Scenes/Credit.unity
     guid: 6fd66ce418c5fd147a1884d0e6a35b07

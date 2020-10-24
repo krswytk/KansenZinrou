@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TurnManeger : MonoBehaviour
 {
@@ -265,6 +266,7 @@ public class TurnManeger : MonoBehaviour
                     {
                         TSW = false;//一回のみ呼び出す処理
                         NowTime = Timer;
+                        CountInfection();//毎ターンの感染者数を格納
                         MM.LogOut(Turn + "ターン目全行程終了", false);
                         Debug.Log(Turn.ToString() + "ターン目全行程終了");
                         IA.AllSuppliesMinus();//全物資-1
@@ -290,7 +292,11 @@ public class TurnManeger : MonoBehaviour
                         IA.InfectionDeath();//感染での死亡判定
                         //死者が出ていた場合、取引ができなくなる、仕入れもできなくなる、すべての値が０になる
 
-                        if (Turn >= 6) feadSC.fade("Result");//6ターン目ならゲーム終了
+                        if (Turn >= 6)
+                        {
+                            SceneManager.sceneLoaded += CountInfectionGameSceneLoaded;
+                            feadSC.fade("Result");//6ターン目ならゲーム終了
+                        }
 
                         Turn += 1;
 
@@ -355,4 +361,40 @@ public class TurnManeger : MonoBehaviour
     {
         return Turn;
     }
+
+    public int[] InfectionCounter = new int[6];
+    public void CountInfection()//感染対策適応をすべて非表示
+    {
+        int c = 0;
+        for (int i = 0; i < MM.Player.Length; i++)
+        {
+            if(Player[i].Getinfection() != 0)
+            {
+                c++;
+            }
+        }
+        InfectionCounter[Turn - 1] = c;
+        MM.LogOut(Turn + "ターン目の感染者数は" + c + "人です。", true);
+        Debug.Log("感染者数をカウント");
+    }
+
+
+    private void CountInfectionGameSceneLoaded(Scene next, LoadSceneMode mode)
+    {
+        for (int i = 0; i < MM.Player.Length; i++)
+        {
+            Point.setInfectedPerson(InfectionCounter[i], i + 1);//感染人数の格納
+        }
+
+        InfrctionLog.setInfectedPerson(MM.AllLog);//AllLogの格納
+        SceneManager.sceneLoaded -= CountInfectionGameSceneLoaded;
+    }
+    /*
+    private static int[] m_InfectedPerson = new int[6];
+    public static void setInfectedPerson(int InfectedPerson, int date)
+    {
+        m_InfectedPerson[date - 1] = InfectedPerson;
+    }
+    */
+
 }

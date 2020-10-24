@@ -13,7 +13,6 @@ public class feadSC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fadeimage = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/fade.prefab");
     }
 
     // Update is called once per frame
@@ -24,6 +23,7 @@ public class feadSC : MonoBehaviour
 
     public static void fade(string name)
     {
+        fadeimage = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/fade.prefab");
         SceneManager.sceneLoaded += GameSceneLoaded;
         F = Instantiate(fadeimage, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
         F.GetComponent<fadeob>().ONfade(name);
@@ -34,6 +34,7 @@ public class feadSC : MonoBehaviour
     {
         F = Instantiate(fadeimage, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
         F.GetComponent<fadeob>().OFFfade();
+        SceneManager.sceneLoaded -= GameSceneLoaded;
     }
     
 }

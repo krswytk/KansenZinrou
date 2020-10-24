@@ -7174,9 +7174,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2084460073}
   - {fileID: 395311318}
   - {fileID: 1937110609}
-  - {fileID: 2084460073}
   - {fileID: 1698407239}
   - {fileID: 162881571}
   m_Father: {fileID: 995478175}
@@ -8829,7 +8829,7 @@ RectTransform:
   - {fileID: 2077655321}
   - {fileID: 1964214533}
   m_Father: {fileID: 291165589}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10708,12 +10708,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5ea3141835fa21248830bd286c80506a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -19554,7 +19554,7 @@ GameObject:
   - component: {fileID: 995478173}
   - component: {fileID: 995478172}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21400,6 +21400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448beb9601919094a9fc515416d816f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InfectionCounter: 000000000000000000000000000000000000000000000000
 --- !u!114 &1091554402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34888,7 +34889,7 @@ Transform:
   - {fileID: 1635123183}
   - {fileID: 1259238168}
   m_Father: {fileID: 291165589}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938483241
 GameObject:
@@ -37244,7 +37245,7 @@ RectTransform:
   m_Children:
   - {fileID: 496252088}
   m_Father: {fileID: 291165589}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

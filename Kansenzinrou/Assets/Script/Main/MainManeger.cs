@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MainManeger : Config
 {
+    FildObject FO;
 
     [HideInInspector] public Player[] Player;//プレイヤークラスを取得
     [HideInInspector] public static int PlayerNumber;//プレイヤーの人数を取得
@@ -30,13 +31,23 @@ public class MainManeger : Config
     // Start is called before the first frame update
     void Awake()
     {
+
+
+    }
+    void Start()
+    {
+        GPN = GetComponent<GetPlayerName>();
+
+        FO = GetComponent<FildObject>();
         try
         {
             PlayerNumber = GPN.PlayerName.Length;//プレイ人数を取得
+            Debug.Log(GPN.PlayerName.Length + "人でプレイを行います");
         }
         catch
         {
             PlayerNumber = 4;
+            Debug.Log("デバック起動４人でプレイを行います");
         }
 
         Infectionprobability = (int)FirstNumber.感染確率;
@@ -48,15 +59,11 @@ public class MainManeger : Config
         AllLogCount = 0;
         LogCount = 0;
         audioSource = GetComponent<AudioSource>();//SE再生用の取得
-    }
-    void Start()
-    {
         LogOut("初期起動",false);
-
-        GPN = GetComponent<GetPlayerName>();
 
         try
         {
+            Debug.Log("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3]);
             LogOut("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3], false);
         }
         catch
@@ -66,6 +73,7 @@ public class MainManeger : Config
             {
                 GPN.PlayerName[l] = "Player " + l.ToString();//Plyer1 Playre2...
             }
+            Debug.Log("デバックプレイヤー起動");
             LogOut("デバックプレイヤー起動", false);
         }//もしプレイヤー名が入っていなかったら　主デバック用
 
@@ -95,8 +103,18 @@ public class MainManeger : Config
         }
     }
 
-    public void PlaySE(AudioClip sound)//ログの書き出し　t=trueでLogにも書き出す
+    public void PlaySE(int sound)//ログの書き出し　t=trueでLogにも書き出す
     {
-        audioSource.PlayOneShot(sound);
+        switch (sound)
+        {
+            case 0: audioSource.PlayOneShot(FO.SoundSE[0]); break;
+            case 1: audioSource.PlayOneShot(FO.SoundSE[1]); break;
+            case 2: audioSource.PlayOneShot(FO.SoundSE[2]); break;
+            case 3: audioSource.PlayOneShot(FO.SoundSE[3]); break;
+            case 4: audioSource.PlayOneShot(FO.SoundSE[4]); break;
+            case 5: audioSource.PlayOneShot(FO.SoundSE[5]); break;
+            case 6: audioSource.PlayOneShot(FO.SoundSE[6]); break;
+        }
+
     }
 }
