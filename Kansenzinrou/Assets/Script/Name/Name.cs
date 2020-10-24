@@ -37,6 +37,7 @@ public class Name : MonoBehaviour
         anotherScript.NamescenePN4 = inputField3.text;
         // シーンを20190304_02に移動
         SceneManager.LoadScene("Main");
+        feadSC.fade("Menu");
         Debug.Log(anotherScript.deliverString);
         Debug.Log(anotherScript.NamescenePN1);
         Debug.Log(anotherScript.NamescenePN2);
