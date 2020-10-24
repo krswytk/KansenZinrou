@@ -243,7 +243,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6e3e382f7d9d7c2459ffc29548c8085b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e26d37c24801a747a3baf6aeb4aefbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -633,44 +633,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'news typing
-
-
-
-
-
-    ~staff~
-
-
-    yutaka kirisawa
-
-
-    rintarou katakura
-
-
-    chihiro nagoshi
-
-
-    mai takano
-
-
-    satoru harada
-
-
-    kenta igarashi
-
-
-    itsuki satou
-
-
-    tsubasa katsumata
-
-
-
-
-
-
-    press space to title'
+  m_Text: "4\u4EBA\u5BC4\u308C\u3070\u751F\u5B58\u306E\u77E5\u6075\n\n\n\n\n~staff~\n\nyutaka
+    kirisawa\n\nrintarou katakura\n\nchihiro nagoshi\n\nmai takano\n\nsatoru harada\n\nkenta
+    igarashi\n\nitsuki satou\n\ntsubasa katsumata\n\n\n\n\n\npress space to title"
 --- !u!222 &1780184673
 CanvasRenderer:
   m_ObjectHideFlags: 0
