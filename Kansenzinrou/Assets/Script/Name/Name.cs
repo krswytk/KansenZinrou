@@ -25,7 +25,8 @@ public class Name : MonoBehaviour
     }
     public void OnClickButton()
     {
-         anotherObject = GameObject.Find("Deliver");
+        SceneManager.sceneLoaded += NamePass;
+        anotherObject = GameObject.Find("Deliver");
          anotherScript = anotherObject.GetComponent<DeliverClass>();
         // DeliverClassを取得
         //DeliverClass deliver = FindObjectOfType<DeliverClass>();
@@ -42,5 +43,17 @@ public class Name : MonoBehaviour
         Debug.Log(anotherScript.NamescenePN2);
         Debug.Log(anotherScript.NamescenePN3);
         Debug.Log(anotherScript.NamescenePN4);
+    }
+
+    private void NamePass(Scene next, LoadSceneMode mode)
+    {
+        GameObject.Find("Maneger").GetComponent<GetPlayerName>().PlayerName = new string[4];
+        GameObject.Find("Maneger").GetComponent<GetPlayerName>().GMName = "GMプレイヤーの名前ー";
+        for (int i = 0;i < 4; i++)
+        {
+            GameObject.Find("Maneger").GetComponent<GetPlayerName>().PlayerName[i] = "プレイヤーの名前ー";
+        }
+
+        SceneManager.sceneLoaded -= NamePass;
     }
 }
