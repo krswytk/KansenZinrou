@@ -33,6 +33,7 @@ public class IventAll : Config
         TimerSw = new bool[11];
         TimerSwOFF();//10秒カウント初期化用
         FO.IbentAll.SetActive(false);//情勢イベントボックスを表示
+        DSOFF();//死亡時の影を隠す
 
     }
     private void Update()
@@ -197,6 +198,7 @@ public class IventAll : Config
             Player[i].SetPurchasing(0);
         }
         Debug.Log("仕入れ数を0にリセット");
+        UIM.TableUpdate();
     }
 
     public void AllSuppliesMinus()//物資を-1する
@@ -206,6 +208,7 @@ public class IventAll : Config
             Player[i].AllSuppliesMinus();
         }
         Debug.Log("全員の全物資を-1した。");
+        UIM.TableUpdate();
     }
 
     private news now = news.何もない;//現在の情勢イベントを格納しておく
@@ -271,6 +274,7 @@ public class IventAll : Config
         {
             Debug.LogError("Cord_301-情勢イベント選択でエラー");
         }
+        UIM.TableUpdate();
     }
 
     public void NewsOFF()//情勢イベントの効果を打ち消す
@@ -306,19 +310,15 @@ public class IventAll : Config
         }
         now = news.何もない;
         Debug.Log("情勢イベント内容打ち消し");
+        UIM.TableUpdate();
     }
     
     public void PCROFF()
     {
         FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示に戻す
         Debug.Log("PCRを非表示");
+        UIM.TableUpdate();
     }
-
-    public void NextStage()//ターンマネージャーを一定時間後に次の段階に進めるための関数
-    {
-
-    }
-
     public void MedicineConsumption()//全プレイヤーの薬を使用　使用した分感染率を下げる
     {
         int num;
@@ -333,6 +333,7 @@ public class IventAll : Config
             Player[i].Setinfection(c);
         }
         Debug.Log("全プレイヤーの薬を使用");
+        UIM.TableUpdate();
     }
     public void Countermeasures()//全プレイヤーの感染対策をOFFにする
     {
@@ -340,6 +341,7 @@ public class IventAll : Config
         {
             Player[i].SetCountermeasures(false);
         }
+        UIM.TableUpdate();
     }
     public void ShortageOfSupplies()//物資不足での死亡判定
     {
@@ -352,11 +354,14 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);
                 Player[i].SetDeath(true);//死亡判定
+                FO.DSObject[i].SetActive(true);//死亡時のシャドウを展開
+                UIM.DeathImage(i);//画像を死亡に差し替え
                 MM.PlaySE(1);
                 MM.LogOut(Player[i].GetName() + "が物資不足で死亡", true);
                 Debug.Log(Player[i].GetName() + "が物資不足で死亡");
             }
         }
+        UIM.TableUpdate();
     }
     public void InfectionDeath ()//感染での死亡
     {
@@ -369,11 +374,14 @@ public class IventAll : Config
                 Player[i].SetTool(0);
                 Player[i].SetMoney(0);//金を0にすれば実質仕入れが不可能になる
                 Player[i].SetDeath(true);//死亡判定
+                FO.DSObject[i].SetActive(true);//死亡時のシャドウを展開
+                UIM.DeathImage(i);//画像を死亡に差し替え
                 MM.PlaySE(1);
                 MM.LogOut(Player[i].GetName() + "が感染により死亡", true);
                 Debug.Log(Player[i].GetName() + "が感染により死亡");
             }
         }
+        UIM.TableUpdate();
     }
 
     public void PurchasingON()//仕入れボタンをすべて表示
@@ -382,11 +390,15 @@ public class IventAll : Config
         {
             for (int l = 0; l < FO.PurchasingGroup.GetLength(1); l++)
             {
-                FO.PurchasingGroup[i,l].SetActive(true);
+                if (Player[i].GetDeath() == false)
+                {
+                    FO.PurchasingGroup[i, l].SetActive(true);
+                }
             }
         }
         MM.LogOut("仕入れボタンを表示", false);
         Debug.Log("仕入れボタンを表示");
+        UIM.TableUpdate();
     }
     public void PurchasingOFF()//仕入れボタンをすべて非表示
     {
@@ -399,15 +411,25 @@ public class IventAll : Config
         }
         MM.LogOut("仕入れボタンを非表示", false);
         Debug.Log("仕入れボタンを非表示");
+        UIM.TableUpdate();
     }
     public void BusinessGroupON(int T)//購入ボタンをすべて表示
     {
         for (int i = 0; i < FO.BusinessGroup.GetLength(1); i++)
         {
             FO.BusinessGroup[T, i].SetActive(true);
+            switch (T)
+            {
+                case 0: break;
+                case 1: FO.BusinessGroup[T, 2].SetActive(false); FO.BusinessGroup[T, 3].SetActive(false);break;
+                case 2: FO.BusinessGroup[T, 4].SetActive(false); FO.BusinessGroup[T, 5].SetActive(false); break;
+                case 3: FO.BusinessGroup[T, 6].SetActive(false); FO.BusinessGroup[T, 7].SetActive(false); break;
+                default:Debug.LogError("Cord_303-購入ボタン表示の例外でエラー"); break;
+            }
         }
         MM.LogOut(T.ToString() + "の購入を表示", false);
         Debug.Log(T.ToString() + "の購入を表示");
+        UIM.TableUpdate();
     }
     public void BusinessGroupOFF(int T)//購入ボタンをすべて非表示
     {
@@ -417,6 +439,7 @@ public class IventAll : Config
         }
         MM.LogOut(T.ToString() + "の購入を非表示", false);
         Debug.Log(T.ToString() + "の購入を非表示");
+        UIM.TableUpdate();
     }
     public void TimerSwOFF()//10秒カウント初期化用CountermeasuresMask
     {
@@ -426,6 +449,7 @@ public class IventAll : Config
         }
         MM.LogOut("仕入れタイマー10秒用初期化", false);
         Debug.Log("仕入れタイマー10秒用初期化");
+        UIM.TableUpdate();
     }
     public void CountermeasuresMaskOFF()//感染対策適応をすべて非表示
     {
@@ -435,7 +459,38 @@ public class IventAll : Config
         }
         MM.LogOut("感染対策適応を非表示", false);
         Debug.Log("感染対策適応を非表示");
+        UIM.TableUpdate();
+    }
+     public bool ALLD()//全員死んでいるかどうか判定
+    {
+        if (Player[0].GetDeath())//感染が死亡ラインを越えていたら
+        {
+            if (Player[1].GetDeath())//感染が死亡ラインを越えていたら
+            {
+                if (Player[2].GetDeath())//感染が死亡ラインを越えていたら
+                {
+                    if (Player[3].GetDeath())//感染が死亡ラインを越えていたら
+                    {
+                        MM.LogOut("全員死亡", true);
+                        Debug.Log("全員死亡");
+                        UIM.TableUpdate();
+                        return true;
+                    }
+                }
+            }
+        }
+        UIM.TableUpdate();
+
+        return false;
     }
 
+    private void DSOFF()//死亡表記用の影を隠す
+    {
+        for (int i = 0; i < FO.DSObject.GetLength(0); i++)
+        {
+            FO.DSObject[i].SetActive(false);
+        }
+        UIM.TableUpdate();
+    }
 
 }

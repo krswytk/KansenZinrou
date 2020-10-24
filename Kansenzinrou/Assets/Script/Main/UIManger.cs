@@ -24,6 +24,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         
         for (int l = 0; l < FO.UIOBText.GetLength(0); l++)
         {
+            //Debug.Log(Player[0].GetMedicine());
             FO.UIOBText[l, 0].text = Player[l].GetMedicine().ToString();//薬量
             FO.UIOBText[l, 1].text = Player[l].GetFood().ToString();//食料
             FO.UIOBText[l, 2].text = Player[l].GetWater().ToString();//飲料
@@ -168,12 +169,22 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                         default: Debug.LogError("Cord_103-感染表示で想定外の発生"); break;
                     }
                     break;
-                default: Debug.LogError("Cord_104-感染表示で想定外の発生"); break;
+                default:
+                    Debug.LogError("Cord_104-感染表示で想定外の発生"); break;
             }
             FO.InfectionImage[l].sprite = S;
-            MM.PlaySE(6);
-        }
+            if (Player[l].GetDeath())
+            {
+                DeathImage(l);
+            }
+        }  
+        MM.PlaySE(6);//感染表示のSE
         Debug.Log("感染予測表示");
+    }
+
+    public void DeathImage(int i)//表示を死亡画像にする
+    {
+        FO.InfectionImage[i].sprite = FO.InfectionMark[5];
     }
 
     public void InfectionIndication(int num)//感染状態の完全表示　情勢イベントでのPCRで使用するもの
