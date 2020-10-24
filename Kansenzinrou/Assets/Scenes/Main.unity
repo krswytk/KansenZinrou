@@ -374,7 +374,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14921949}
-        m_MethodName: SIP
+        m_MethodName: SDP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2311,7 +2311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82822704}
-        m_MethodName: SIM
+        m_MethodName: SDM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5860,7 +5860,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 241095574}
-        m_MethodName: SIM
+        m_MethodName: SWM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9259,7 +9259,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 407557841}
-        m_MethodName: SIP
+        m_MethodName: SWP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27317,7 +27317,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450209741}
-        m_MethodName: SIM
+        m_MethodName: SFM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33205,7 +33205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1792388961}
-        m_MethodName: SIP
+        m_MethodName: SFP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

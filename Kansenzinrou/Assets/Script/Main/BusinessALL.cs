@@ -114,6 +114,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         next = true;//次に進む（交渉決定)ボタンをtrueにする
         MM.PlaySE(FO.SoundSE[2]);
         C++;
+        Debug.Log("交渉終了ボタンを押した");
     }
     public int GetTurn()//今の交渉順を返す
     {

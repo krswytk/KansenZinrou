@@ -21,7 +21,8 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
 
     public void TableUpdate()//表の更新を行う    
     {
-        for (int l = 0; l < FO.UIOBText.GetLength(0)-1; l++)
+        
+        for (int l = 0; l < FO.UIOBText.GetLength(0); l++)
         {
             FO.UIOBText[l, 0].text = Player[l].GetMedicine().ToString();//薬量
             FO.UIOBText[l, 1].text = Player[l].GetFood().ToString();//食料
@@ -44,6 +45,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                 FO.UIOBText[l, 3].text = "∞";
             }
         }
+        //Debug.Log("表の更新");
     }
 
     public void NewsDisplay(Config.news N)//ニュースの更新を行う
@@ -72,6 +74,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                 FO.Ibenttext.text = "情勢イベントは\n\r" + "このターン中のみ医者の用意出来るベッドが1になる";
                 break;
         }
+        Debug.Log("情勢イベント表示");
 
     }
 
@@ -90,48 +93,78 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
                 case 0:
                     switch (r)
                     {
-                        case 1: S = FO.InfectionMark[0]; break;
-                        case 2: S = FO.InfectionMark[0]; break;
-                        case 3: S = FO.InfectionMark[0]; break;
-                        case 4: S = FO.InfectionMark[0]; break;
-                        case 5: S = FO.InfectionMark[0]; break;
-                        case 6: S = FO.InfectionMark[1]; break;
-                        case 7: S = FO.InfectionMark[1]; break;
-                        case 8: S = FO.InfectionMark[1]; break;
-                        case 9: S = FO.InfectionMark[2]; break;
-                        case 10: S = FO.InfectionMark[2]; break;
+                        case 1: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 2: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 3: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 4: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 5: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 6: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 7: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 8: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 9: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 10: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
                         default: Debug.LogError("Cord_101-感染表示で想定外の発生"); break;
                     }
                     break;
                 case 1:
                     switch (r)
                     {
-                        case 1: S = FO.InfectionMark[0]; break;
-                        case 2: S = FO.InfectionMark[0]; break;
-                        case 3: S = FO.InfectionMark[0]; break;
-                        case 4: S = FO.InfectionMark[0]; break;
-                        case 5: S = FO.InfectionMark[1]; break;
-                        case 6: S = FO.InfectionMark[1]; break;
-                        case 7: S = FO.InfectionMark[1]; break;
-                        case 8: S = FO.InfectionMark[2]; break;
-                        case 9: S = FO.InfectionMark[2]; break;
-                        case 10: S = FO.InfectionMark[3]; break;
+                        case 1: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 2: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 3: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 4: S = FO.InfectionMark[0];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "元気です。", false); break;
+                        case 5: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 6: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 7: S = FO.InfectionMark[1];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "ちょっと具合が悪いです。", false); break;
+                        case 8: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 9: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 10: S = FO.InfectionMark[3];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "吐き気がするです。", false); break;
                         default: Debug.LogError("Cord_102-感染表示で想定外の発生"); break;
                     }
                     break;
                 case 2:
                     switch (r)
                     {
-                        case 1: S = FO.InfectionMark[2]; break;
-                        case 2: S = FO.InfectionMark[2]; break;
-                        case 3: S = FO.InfectionMark[2]; break;
-                        case 4: S = FO.InfectionMark[3]; break;
-                        case 5: S = FO.InfectionMark[3]; break;
-                        case 6: S = FO.InfectionMark[3]; break;
-                        case 7: S = FO.InfectionMark[3]; break;
-                        case 8: S = FO.InfectionMark[4]; break;
-                        case 9: S = FO.InfectionMark[4]; break;
-                        case 10: S = FO.InfectionMark[4]; break;
+                        case 1: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 2: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 3: S = FO.InfectionMark[2];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "風邪っぽいです。", false); break;
+                        case 4: S = FO.InfectionMark[3];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "吐き気がするです。", false); break;
+                        case 5: S = FO.InfectionMark[3];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "吐き気がするです。", false); break;
+                        case 6: S = FO.InfectionMark[3];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "吐き気がするです。", false); break;
+                        case 7: S = FO.InfectionMark[3];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "吐き気がするです。", false); break;
+                        case 8: S = FO.InfectionMark[4];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "死にそうです。", false); break;
+                        case 9: S = FO.InfectionMark[4];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "死にそうです。", false); break;
+                        case 10: S = FO.InfectionMark[4];
+                            MM.LogOut(Player[l].GetName() + "の体調予測は" + "死にそうです。", false); break;
                         default: Debug.LogError("Cord_103-感染表示で想定外の発生"); break;
                     }
                     break;
@@ -140,6 +173,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             FO.InfectionImage[l].sprite = S;
             MM.PlaySE(FO.SoundSE[6]);
         }
+        Debug.Log("感染予測表示");
     }
 
     public void InfectionIndication(int num)//感染状態の完全表示　情勢イベントでのPCRで使用するもの
@@ -149,15 +183,19 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         {
             case 0:
                 FO.InfectionIndicationText.text = Player[num].GetName() + ":健康体そのものです";
+                MM.LogOut(Player[num].GetName() + "のPCR検査結果は" + "健康体そのものです。", false);
                 break;
             case 1:
                 FO.InfectionIndicationText.text = Player[num].GetName() + ":あなたは軽症です";
+                MM.LogOut(Player[num].GetName() + "のPCR検査結果は" + "あなたは軽症です。", false);
                 break;
             case 2:
                 FO.InfectionIndicationText.text = Player[num].GetName() + ":あなたは重症です";
+                MM.LogOut(Player[num].GetName() + "のPCR検査結果は" + "あなたは重症です。", false);
                 break;
             case 3:
                 FO.InfectionIndicationText.text = Player[num].GetName() + ":このままでは死にます";
+                MM.LogOut(Player[num].GetName() + "のPCR検査結果は" + "このままでは死にます。", false);
                 break;
             default:
                 Debug.LogError("Cord_105-PRC検査表示で想定外の発生");
@@ -168,6 +206,8 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
     public void MaskON(int t)
     {
         FO.CountermeasuresMask[t].SetActive(true);
+        Debug.Log(Player[t].GetName() + "は感染症対策を行いました");
+        MM.LogOut(Player[t].GetName() + "は感染症対策を行いました", false);
     }
 
     public void MaskOFF()
@@ -176,5 +216,6 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
         {
             FO.CountermeasuresMask[l].SetActive(false);
         }
+        Debug.Log("感染対策をすべてOFFにしました。");
     }
 }

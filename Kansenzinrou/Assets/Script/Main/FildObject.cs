@@ -51,6 +51,7 @@ public class FildObject : Config
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log("全ボタン、テキストオブジェクトの取得");
         MM = GetComponent<MainManeger>();
 
         /////////////////////////////////////////////////////////////////////////////
