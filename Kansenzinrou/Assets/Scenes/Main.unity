@@ -374,7 +374,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 14921949}
-        m_MethodName: SIP
+        m_MethodName: SDP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1824,7 +1824,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 62561886}
-        m_MethodName: WP
+        m_MethodName: WM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2311,7 +2311,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 82822704}
-        m_MethodName: SIM
+        m_MethodName: SDM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3049,7 +3049,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 121872382}
-        m_MethodName: MP
+        m_MethodName: MM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3798,7 +3798,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 155587074}
-        m_MethodName: FP
+        m_MethodName: FM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5860,7 +5860,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 241095574}
-        m_MethodName: SIM
+        m_MethodName: SWM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6219,7 +6219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 260850694}
-        m_MethodName: TP
+        m_MethodName: TM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9259,7 +9259,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 407557841}
-        m_MethodName: SIP
+        m_MethodName: SWP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9623,7 +9623,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 426942458}
-        m_MethodName: TP
+        m_MethodName: TM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10321,7 +10321,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 505736189}
-        m_MethodName: MP
+        m_MethodName: MM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12340,7 +12340,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 551014828}
-        m_MethodName: WP
+        m_MethodName: WM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14815,7 +14815,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 715726316}
-        m_MethodName: FP
+        m_MethodName: FM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21230,7 +21230,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1088735988}
-        m_MethodName: TP
+        m_MethodName: TM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21424,6 +21424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112d14587808e6a43b363ce4d55f6501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sw: 0
+  Turn: 0
+  C: 0
+  next: 0
   S: 
   NS: 
   SI: 
@@ -24691,7 +24695,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1316530245}
-        m_MethodName: TP
+        m_MethodName: TM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25068,7 +25072,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1328465664}
-        m_MethodName: FP
+        m_MethodName: FM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -26026,7 +26030,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1362501253}
-        m_MethodName: WP
+        m_MethodName: WM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27317,7 +27321,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450209741}
-        m_MethodName: SIM
+        m_MethodName: SFM
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33205,7 +33209,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1792388961}
-        m_MethodName: SIP
+        m_MethodName: SFP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33573,7 +33577,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1817810837}
-        m_MethodName: MP
+        m_MethodName: MM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34316,7 +34320,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1908149055}
-        m_MethodName: FP
+        m_MethodName: FM_
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37256,7 +37260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2084460072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2a747765deeaf64f8619471f75159fd, type: 3}
+  m_Script: {fileID: 11500000, guid: e6acbf92726330a408d749ac2478c180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2084460075
@@ -37303,7 +37307,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2084460074}
-        m_MethodName: TimerON
+        m_MethodName: NextSW
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

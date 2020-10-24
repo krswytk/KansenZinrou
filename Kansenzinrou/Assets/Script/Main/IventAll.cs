@@ -32,8 +32,7 @@ public class IventAll : Config
 
         TimerSw = new bool[11];
         TimerSwOFF();//10秒カウント初期化用
-        FO.IbentAll.SetActive(true);//情勢イベントボックスを表示
-        CountermeasuresMaskOFF();
+        FO.IbentAll.SetActive(false);//情勢イベントボックスを表示
 
     }
     private void Update()
@@ -46,6 +45,7 @@ public class IventAll : Config
                 ssw = true;//一度のみ呼び出すためのスイッチ
                 Timer = 0;//Timerの初期化
                 FO.TimerAll.SetActive(true);//タイマー関係全表示
+                Debug.Log("仕入れタイマースタート");
                 TimerSwOFF();
             }//タイマー初回起動時
 
@@ -142,6 +142,7 @@ public class IventAll : Config
                 FO.TimerAll.SetActive(false);//タイマー表記を隠す
                 Timer = 0;
                 FO.TimerText.text = Timer.ToString("f0");
+                Debug.Log("仕入れタイマー終了");
             }
         }
     }
@@ -174,12 +175,14 @@ public class IventAll : Config
         }
 
         UIM.TableUpdate();
+        Debug.Log("給料を全員に配布");
     }
 
     public void TimerON()//制限時間のタイマー計測を始める　
     {
         sw = true;
-        MM.LogOut("仕入れタイマースタート", false);
+        MM.LogOut("仕入れタイマースイッチ起動", false);
+        Debug.Log("仕入れタイマースイッチ起動");
     }
 
     public bool GetTimerSW()//現在タイマーが作動中か判定　
@@ -193,6 +196,7 @@ public class IventAll : Config
         {
             Player[i].SetPurchasing(0);
         }
+        Debug.Log("仕入れ数を0にリセット");
     }
 
     public void AllSuppliesMinus()//物資を-1する
@@ -201,6 +205,7 @@ public class IventAll : Config
         {
             Player[i].AllSuppliesMinus();
         }
+        Debug.Log("全員の全物資を-1した。");
     }
 
     private news now = news.何もない;//現在の情勢イベントを格納しておく
@@ -246,7 +251,7 @@ public class IventAll : Config
                     num = RandomDice.DiceRoll(4)-1;//0-3が入る
                     UIM.InfectionIndication(num);
                     FO.PCR.SetActive(true);//ゲームオブジェクトPCRを表示
-                    Invoke("OFFPCR", 3.5f);
+                    //Invoke("OFFPCR", 3.5f);//3.5秒後に表示を消す
                     break;
                 case 5:
                     now = news.支援;
@@ -260,6 +265,7 @@ public class IventAll : Config
             UIM.NewsDisplay(now);//選択された情勢イベントをテキストとして出力させる
             MM.LogOut(now.ToString(), false);
             MM.PlaySE(FO.SoundSE[4]);
+            Debug.Log(now + "で情勢イベント内容決定");
         }
         else
         {
@@ -285,6 +291,7 @@ public class IventAll : Config
                 MainManeger.InfectionStage = (int)FirstNumber.感染増加;//感染した際の増加率
                 break;
             case news.体調不良:
+                FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示
                 //特になし
                 break;
             case news.支援:
@@ -298,11 +305,13 @@ public class IventAll : Config
                 break;
         }
         now = news.何もない;
+        Debug.Log("情勢イベント内容打ち消し");
     }
     
     public void PCROFF()
     {
         FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示に戻す
+        Debug.Log("PCRを非表示");
     }
 
     public void NextStage()//ターンマネージャーを一定時間後に次の段階に進めるための関数
@@ -323,6 +332,7 @@ public class IventAll : Config
             if (c < 0) c = 0;
             Player[i].Setinfection(c);
         }
+        Debug.Log("全プレイヤーの薬を使用");
     }
     public void Countermeasures()//全プレイヤーの感染対策をOFFにする
     {
@@ -344,6 +354,7 @@ public class IventAll : Config
                 Player[i].SetDeath(true);//死亡判定
                 MM.PlaySE(FO.SoundSE[1]);
                 MM.LogOut(Player[i].GetName() + "が物資不足で死亡", true);
+                Debug.Log(Player[i].GetName() + "が物資不足で死亡");
             }
         }
     }
@@ -360,6 +371,7 @@ public class IventAll : Config
                 Player[i].SetDeath(true);//死亡判定
                 MM.PlaySE(FO.SoundSE[1]);
                 MM.LogOut(Player[i].GetName() + "が感染により死亡", true);
+                Debug.Log(Player[i].GetName() + "が感染により死亡");
             }
         }
     }
@@ -374,6 +386,7 @@ public class IventAll : Config
             }
         }
         MM.LogOut("仕入れボタンを表示", false);
+        Debug.Log("仕入れボタンを表示");
     }
     public void PurchasingOFF()//仕入れボタンをすべて非表示
     {
@@ -385,6 +398,7 @@ public class IventAll : Config
             }
         }
         MM.LogOut("仕入れボタンを非表示", false);
+        Debug.Log("仕入れボタンを非表示");
     }
     public void BusinessGroupON(int T)//購入ボタンをすべて表示
     {
@@ -393,6 +407,7 @@ public class IventAll : Config
             FO.BusinessGroup[T, i].SetActive(true);
         }
         MM.LogOut(T.ToString() + "の購入を表示", false);
+        Debug.Log(T.ToString() + "の購入を表示");
     }
     public void BusinessGroupOFF(int T)//購入ボタンをすべて非表示
     {
@@ -401,6 +416,7 @@ public class IventAll : Config
             FO.BusinessGroup[T, i].SetActive(false);
         }
         MM.LogOut(T.ToString() + "の購入を非表示", false);
+        Debug.Log(T.ToString() + "の購入を非表示");
     }
     public void TimerSwOFF()//10秒カウント初期化用CountermeasuresMask
     {
@@ -409,13 +425,15 @@ public class IventAll : Config
             TimerSw[i] = true;
         }
         MM.LogOut("仕入れタイマー10秒用初期化", false);
+        Debug.Log("仕入れタイマー10秒用初期化");
     }
     public void CountermeasuresMaskOFF()//感染対策適応をすべて非表示
     {
-        for (int i = 0; i < FO.CountermeasuresMask.GetLength(1); i++)
+        for (int i = 0; i < FO.CountermeasuresMask.GetLength(0); i++)
         {
             FO.CountermeasuresMask[i].SetActive(false);
         }
         MM.LogOut("感染対策適応を非表示", false);
+        Debug.Log("感染対策適応を非表示");
     }
 }

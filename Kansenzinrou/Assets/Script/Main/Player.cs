@@ -22,6 +22,7 @@ public class Player {
 
     public Player(string name,int job)
     {
+        Debug.Log(name + "のプレイヤークラスを生成");
         int n = 1;
         this.Name = name;
         this.Job = (Config.Job)Enum.ToObject(typeof(Config.Job), job);//数字で来たジョブ情報をenum形式に再変換して登録

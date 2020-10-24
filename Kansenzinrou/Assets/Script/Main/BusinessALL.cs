@@ -8,11 +8,11 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     TurnManeger TM;
     FildObject FO;
     IventAll IA;
-    private bool sw;
+    [HideInInspector] public bool sw;//取引開始のスイッチ
 
-    private int Turn;
-    private int C;
-    private static bool next;
+    [HideInInspector] public int Turn;//今取引をしている人のターン
+    [HideInInspector] public int C;//交渉した人の人数保管用のカウンター
+    [HideInInspector] public bool next;//次の人に取引を回すスイッチ
 
     [HideInInspector] public int[] S;//取引前の物資量
     [HideInInspector] public int[] NS;//取引後の物資量
@@ -31,7 +31,8 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
         C = 0;
         Allfalse();//関連ボタンをすべて隠す
         Player = MM.Player;
-        FO.Countermeasures.SetActive(false);
+        FO.Countermeasures.SetActive(false);//感染症対策YESNOボタンのセット
+        FO.Next.SetActive(false);//Nextボタンを非表示にする
 
         SI = new int[4];
     }
@@ -46,22 +47,22 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                 switch (TM.GetTurn())//現在が何ターン目なのか取得
                 {
                     case 1:
-                        Turn = 3;//薬局から
+                        Turn = 0;//薬局から
                         break;
                     case 2:
-                        Turn = 0;//食べ物から
+                        Turn = 1;//食べ物から
                         break;
                     case 3:
-                        Turn = 1;//水から
+                        Turn = 2;//水から
                         break;
                     case 4:
-                        Turn = 2;//道具から
+                        Turn = 3;//道具から
                         break;
                     case 5:
-                        Turn = 3;//薬局から
+                        Turn = 0;//薬局から
                         break;
                     case 6:
-                        Turn = 0;//食べ物から
+                        Turn = 1;//食べ物から
                         break;
                     default:
                         Debug.LogError("Cord_501-交渉にて想定外のターンを取得");
@@ -69,34 +70,29 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                 }//誰から始めるのか判断
                 next = true;//次に進む（交渉決定)ボタンをtrueにする
-                C++;
             }
 
             if (next)
             {
-                Turn += 1;//1234のいずれかに　4なら↓
                 if (Turn >= 4)//もし4になったら0(薬剤師)に戻す
                 {
                     Turn = 0;
                 }
-                if (Player[Turn].GetDeath() == false)//死亡してたら終了の処理を記述
+
+                Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
+                FO.Next.SetActive(true);//Nextボタンを表示にする
+                SINOW();//取引前の仕入れ数を取得
+                C++;
+
+                if (Player[Turn].GetDeath() == false)//死亡してたら終了の処理を記述//もし死んでなければ
                 {
-                    Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
                     FO.Countermeasures.SetActive(true);//感染対策を行うかのボタン表示
                     IA.BusinessGroupON(Turn);//順番に沿ったボタンを表示
-                    SINOW();
-                    if (C == 4)
-                    {//4回繰り返したら//つまり全員取引を行ったら
-                        Allfalse();
-                        C = 0;
-                        sw = false;
-                        TM.SetBusinessSW();//ターンMの取引ボタンを終了に戻す
-                    }
                     next = false;
                 }
                 else
                 {
-                    next = false;
+                    Turn += 1;//1234のいずれかに　4なら↓
                 }
             }
         }
@@ -110,10 +106,19 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
     public void NextSW()//交渉決定用のボタン
     {
         Infection();// 感染の判定
-        IA.BusinessGroupON(Turn);//最初の順番のものを表示
         next = true;//次に進む（交渉決定)ボタンをtrueにする
+        IA.BusinessGroupOFF(Turn);//対象取引ボタンを隠す
+        FO.Next.SetActive(false);//Nextボタンを表示にする
         MM.PlaySE(FO.SoundSE[2]);
-        C++;
+        if (C >= 4)
+        {//4回繰り返したら//つまり全員取引を行ったら
+            Allfalse();
+            C = 0;
+            sw = false;
+            TM.SetBusinessSW();//ターンMの取引ボタンを終了に戻す
+        }
+        Turn += 1;//1234のいずれかに　4なら↓
+        Debug.Log("交渉終了ボタンを押した");
     }
     public int GetTurn()//今の交渉順を返す
     {

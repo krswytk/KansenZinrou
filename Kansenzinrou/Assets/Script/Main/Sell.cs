@@ -21,8 +21,9 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         {
             M -= 1;//仕入れ金を返却
             MM.Player[0].SetSell(M);//売値に反映
+            UIM.TableUpdate();
+            Debug.Log("薬の売値を減少");
         }
-        UIM.TableUpdate();
     }
     public void SDP()
     {
@@ -30,6 +31,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[0].SetSell(M);//売値に反映
         UIM.TableUpdate();
+        Debug.Log("薬の売値を上昇");
     }
     public void SFM()
     {
@@ -38,8 +40,9 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         {
             M -= 1;//仕入れ金を返却
             MM.Player[1].SetSell(M);//売値に反映
+            UIM.TableUpdate();
+            Debug.Log("食料の売値を減少");
         }
-        UIM.TableUpdate();
     }
     public void SFP()
     {
@@ -47,6 +50,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[1].SetSell(M);//売値に反映
         UIM.TableUpdate();
+        Debug.Log("食料の売値を上昇");
     }
     public void SWM()
     {
@@ -55,8 +59,9 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         {
             M -= 1;//仕入れ金を返却
             MM.Player[2].SetSell(M);//売値に反映
+            UIM.TableUpdate();
+            Debug.Log("水の売値を減少");
         }
-        UIM.TableUpdate();
     }
     public void SWP()
     {
@@ -64,6 +69,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[2].SetSell(M);//売値に反映
         UIM.TableUpdate();
+        Debug.Log("水の売値を上昇");
     }
     public void STM()
     {
@@ -72,8 +78,9 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         {
             M -= 1;//仕入れ金を返却
             MM.Player[3].SetSell(M);//売値に反映
+            UIM.TableUpdate();
+            Debug.Log("道具の売値を減少");
         }
-        UIM.TableUpdate();
     }
     public void STP()
     {
@@ -81,5 +88,6 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[3].SetSell(M);//売値に反映
         UIM.TableUpdate();
+        Debug.Log("道具の売値を上昇");
     }
 }
