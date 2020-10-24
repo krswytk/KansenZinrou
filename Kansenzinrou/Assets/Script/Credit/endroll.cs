@@ -38,8 +38,8 @@ public class endroll : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
-            //SceneManager.LoadScene("Start");
-            feadSC.fade("Start");
+            //SceneManager.LoadScene("Title");
+            feadSC.fade("Title");
         }
     }
     IEnumerator Gotitle()
@@ -48,8 +48,8 @@ public class endroll : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             StopCoroutine(seenmove);
-            //SceneManager.LoadScene("Start");
-            feadSC.fade("Start");
+            //SceneManager.LoadScene("Title");
+            feadSC.fade("Title");
         }
         yield return null;
     }
