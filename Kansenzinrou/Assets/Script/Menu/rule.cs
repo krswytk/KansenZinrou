@@ -49,6 +49,6 @@ public class rule : MonoBehaviour
 
     public void GameStart()
     {
-        feadSC.fade("Title");//ゲームスタート
+        feadSC.fade("Name");//ゲームスタート
     }
 }
