@@ -23,7 +23,7 @@ public class feadSC : MonoBehaviour
 
     public static void fade(string name)
     {
-        fadeimage = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/fade.prefab");
+        fadeimage = Resources.Load<GameObject>("fade");//フェード素材回収
         SceneManager.sceneLoaded += GameSceneLoaded;
         F = Instantiate(fadeimage, Vector3.zero, Quaternion.identity, GameObject.Find("Canvas").transform);
         F.GetComponent<fadeob>().ONfade(name);
