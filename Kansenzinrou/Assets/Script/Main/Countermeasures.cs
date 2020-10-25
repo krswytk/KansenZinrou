@@ -27,14 +27,12 @@ public class Countermeasures : MonoBehaviour//感染対策用のボタンスク�
         MM.Player[BA.GetTurn()].SetCountermeasures(true);//該当プレイヤーの感染対策をONにする
         FO.CountermeasuresMask[BA.GetTurn()].SetActive(true);
         FO.Countermeasures.SetActive(false);
-        MM.PlaySE(0);
-        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いました。");
-        
         int num = MM.Player[BA.GetTurn()].GetMoney();
         num -= MainManeger.InfectionControl;
         MM.Player[BA.GetTurn()].SetMoney(num);
         GameObject.Find("Maneger").GetComponent<UIManger>().TableUpdate();
-        
+        MM.PlaySE(0);
+        Debug.Log(MM.Player[BA.GetTurn()].GetName() + "は感染対策を行いました。");
     }
 
     public void No()
