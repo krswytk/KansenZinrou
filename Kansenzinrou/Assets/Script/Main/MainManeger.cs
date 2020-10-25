@@ -31,24 +31,11 @@ public class MainManeger : Config
     // Start is called before the first frame update
     void Awake()
     {
-
-
-    }
-    void Start()
-    {
         GPN = GetComponent<GetPlayerName>();
 
         FO = GetComponent<FildObject>();
-        try
-        {
-            PlayerNumber = GPN.PlayerName.Length;//プレイ人数を取得
-            Debug.Log(GPN.PlayerName.Length + "人でプレイを行います");
-        }
-        catch
-        {
-            PlayerNumber = 4;
-            Debug.Log("デバック起動４人でプレイを行います");
-        }
+
+        PlayerNumber = 4;
 
         Infectionprobability = (int)FirstNumber.感染確率;
         InfectionStage = (int)FirstNumber.感染増加;
@@ -59,8 +46,14 @@ public class MainManeger : Config
         AllLogCount = 0;
         LogCount = 0;
         audioSource = GetComponent<AudioSource>();//SE再生用の取得
-        LogOut("初期起動",false);
+        Debug.Log("初期起動");
+        LogOut("初期起動", false);
+    }
 
+    void Start()
+    {
+
+        PlayerNumber = 4;
         try
         {
             Debug.Log("プレイヤー名を取得しています\n" + GPN.PlayerName[0] + "\n" + GPN.PlayerName[1] + "\n" + GPN.PlayerName[2] + "\n" + GPN.PlayerName[3]);
@@ -81,14 +74,16 @@ public class MainManeger : Config
 
         Player = new Player[PlayerNumber];//プレイヤー数で初期化を行う
 
-
+  
         for (int l = 0; l < Player.Length; l++)
         {
             Player[l] = new Player(GPN.PlayerName[l], l);//プレイヤークラスに名前と役職を当て込む　薬剤師　食料　水　道具の順番
             Player[l].PlayerDate();//プレイヤーデータを各プレイヤーデバック表示
+            Debug.Log("プレイヤー初期データ表示");
         }
         FirstSet = true;
         LogOut("初期値設定終了", false);
+        Debug.Log("初期値設定終了");
     }
     // Update is called once per frame
 

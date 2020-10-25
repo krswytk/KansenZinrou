@@ -11,6 +11,8 @@ public class RuleH: MonoBehaviour
     static public int x;
     public GameObject t1, t2, t3, t4, t5, t6, t7;
     List<GameObject> list = new List<GameObject>();
+    public AudioClip sound1;//
+    AudioSource audioSource;//
 
     public void Start()
     {
@@ -23,6 +25,7 @@ public class RuleH: MonoBehaviour
         list.Add(t7);
         x = 0;
         list[x].SetActive(true);
+        audioSource = GetComponent<AudioSource>();//
     }
     void Update()
     {
@@ -38,6 +41,7 @@ public class RuleH: MonoBehaviour
         x++;
         list[x].SetActive(true);
         list[x - 1].SetActive(false);
+        audioSource.PlayOneShot(sound1);//
     }
     public void Up()
     {
@@ -45,6 +49,7 @@ public class RuleH: MonoBehaviour
         x--;
         list[x].SetActive(true);
         list[x + 1].SetActive(false);
+        audioSource.PlayOneShot(sound1);//
     }
 
 
