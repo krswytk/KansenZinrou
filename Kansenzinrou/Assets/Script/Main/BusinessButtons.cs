@@ -42,12 +42,17 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num = Player[BA.GetTurn()].GetMoney();//お金取得
                 num -= Player[0].GetSell();//お金減少
                 Player[BA.GetTurn()].SetMoney(num);//お金反映
-                //お金ー
+                                                   //お金ー
 
                 num = Player[0].GetPurchasing();//仕入れ取得
                 num -= 1;//仕入れ減少
                 Player[0].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
+
+                num = Player[0].GetMoney();//お金取得
+                num += Player[0].GetSell();//お金減少
+                Player[0].SetMoney(num);//お金反映
+                //買われた側お金＋
 
                 UIM.TableUpdate();
                 MM.PlaySE(0);
@@ -77,7 +82,12 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num = Player[1].GetPurchasing();//仕入れ取得
                 num -= 1;//仕入れ減少
                 Player[1].SetPurchasing(num);//仕入れ反映
-                                             //仕入れマイナス-
+                                             //仕入れマイナス- 
+                                             
+                num = Player[1].GetMoney();//お金取得
+                num += Player[1].GetSell();//お金減少
+                Player[1].SetMoney(num);//お金反映
+                //買われた側お金＋
 
                 UIM.TableUpdate();
                 MM.PlaySE(0);
@@ -104,7 +114,12 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num = Player[2].GetPurchasing();//仕入れ取得
                 num -= 1;//仕入れ減少
                 Player[2].SetPurchasing(num);//仕入れ反映
-                                             //仕入れマイナス-
+                                             //仕入れマイナス-      
+                                             
+                num = Player[2].GetMoney();//お金取得
+                num += Player[2].GetSell();//お金減少
+                Player[2].SetMoney(num);//お金反映
+                //買われた側お金＋
 
                 UIM.TableUpdate();
                 MM.PlaySE(0);
@@ -132,6 +147,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
                 num -= 1;//仕入れ減少
                 Player[3].SetPurchasing(num);//仕入れ反映
                                              //仕入れマイナス-
+
+                num = Player[3].GetMoney();//お金取得
+                num += Player[3].GetSell();//お金減少
+                Player[3].SetMoney(num);//お金反映
+                //買われた側お金＋
 
                 UIM.TableUpdate();
                 MM.PlaySE(0);
@@ -166,6 +186,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             Player[0].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+元に戻す
 
+            num = Player[0].GetMoney();//お金取得
+            num -= Player[0].GetSell();//お金減少
+            Player[0].SetMoney(num);//お金反映
+                                    //買われた側お金-
+
             UIM.TableUpdate();
             MM.PlaySE(3);
         }
@@ -188,6 +213,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             num += 1;//仕入れ増加
             Player[1].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+元に戻す
+
+            num = Player[1].GetMoney();//お金取得
+            num -= Player[1].GetSell();//お金減少
+            Player[1].SetMoney(num);//お金反映
+                                    //買われた側お金-
 
             UIM.TableUpdate();
             MM.PlaySE(3);
@@ -212,6 +242,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             Player[2].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+元に戻す
 
+            num = Player[2].GetMoney();//お金取得
+            num -= Player[2].GetSell();//お金減少
+            Player[2].SetMoney(num);//お金反映
+                                    //買われた側お金-
+
             UIM.TableUpdate();
             MM.PlaySE(3);
         }
@@ -234,6 +269,11 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
             num += 1;//仕入れ増加
             Player[3].SetPurchasing(num);//仕入れ反映
                                          //仕入れ+元に戻す
+
+            num = Player[3].GetMoney();//お金取得
+            num -= Player[3].GetSell();//お金減少
+            Player[3].SetMoney(num);//お金反映
+                                    //買われた側お金-
 
             UIM.TableUpdate();
             MM.PlaySE(3);
