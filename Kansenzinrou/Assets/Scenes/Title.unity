@@ -138,7 +138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1f466b86f5fe7034a97f6fbb2c932e1e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.206
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652349215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b83dec358724e1542ad5af6485760f9a, type: 3}
+  m_Script: {fileID: 11500000, guid: d723fa7855e45084a9e4d822bbed2f6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1652349218
@@ -1509,7 +1509,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1652349219}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1652349217}
+        m_MethodName: EX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 566580088}
+        m_MethodName: set_clip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: a11ff81e52e641442805b3045b1493fe,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1652349219
