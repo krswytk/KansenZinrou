@@ -8,10 +8,17 @@ public class Log : MonoBehaviour
     string[] stringLog;
     // Start is called before the first frame update
     void Start() {
+        /*string[] text = new string[2];
+        text[0] = "道具屋 2噛め";
+        text[1] = "あ";
+        
+        InfrctionLog.setInfectedPerson(text);*/
+
         LogText.text = "";
-       stringLog = InfrctionLog.getInfectedLog();
+
+        stringLog = InfrctionLog.getInfectedLog();
         for (int i = 0; i < stringLog.Length; i++)
-            LogText.text += stringLog[i];
+            LogText.text += stringLog[i] + "\n";
     }
 
     // Update is called once per frame

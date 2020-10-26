@@ -6,6 +6,7 @@ public class InfrctionLog : MonoBehaviour
 {
     private static string[] InfectionLog;
     
+    
     public static void setInfectedPerson(string[] Log)
     {
         InfectionLog = Log;
