@@ -13,13 +13,11 @@ public class startbutton : MonoBehaviour
     public void OnClickStartButton() //https://dianxnao.com/ボタンクリックでシーン間を遷移%ef%bc%88移動%ef%bc%89する/
     {
         Debug.Log("メニューへ");
-        SceneManager.LoadScene("Menu");
         feadSC.fade("Menu");
     }
 
     public void Credit() //https://dianxnao.com/ボタンクリックでシーン間を遷移%ef%bc%88移動%ef%bc%89する/
     {
-        SceneManager.LoadScene("Credit");
         feadSC.fade("Credit");
     }
 }
