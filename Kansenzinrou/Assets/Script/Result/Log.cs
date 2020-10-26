@@ -11,7 +11,7 @@ public class Log : MonoBehaviour
         LogText.text = "";
        stringLog = InfrctionLog.getInfectedLog();
         for (int i = 0; i < stringLog.Length; i++)
-            LogText.text += stringLog[i];
+            LogText.text += stringLog[i] + "\n";
     }
 
     // Update is called once per frame
