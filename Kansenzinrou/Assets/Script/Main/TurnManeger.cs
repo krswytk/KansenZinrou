@@ -385,12 +385,18 @@ public class TurnManeger : MonoBehaviour
 
     private void CountInfectionGameSceneLoaded(Scene next, LoadSceneMode mode)
     {
+        int count=0;
         for (int i = 0; i < MM.Player.Length; i++)
         {
             Point.setInfectedPerson(InfectionCounter[i], i + 1);//感染人数の格納
-        }
 
-        InfrctionLog.setInfectedPerson(MM.AllLog);//AllLogの格納
+            if (Player[i].GetDeath() == false)
+            {
+                count++;
+            }
+        }
+        Survivor.setSurvivor(count);//生存人数の格納
+        InfrctionLog.setInfectedPerson(MM.Log);//AllLogの格納
         SceneManager.sceneLoaded -= CountInfectionGameSceneLoaded;
     }
     /*
