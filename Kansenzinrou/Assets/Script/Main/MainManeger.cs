@@ -62,10 +62,10 @@ public class MainManeger : Config
         catch
         {
             GPN.PlayerName = new string[4];//4人分の名前空間を確保
-            for (int l = 0; l < GPN.PlayerName.Length; l++)
-            {
-                GPN.PlayerName[l] = "Player " + l.ToString();//Plyer1 Playre2...
-            }
+            GPN.PlayerName[0] = "薬剤屋";//
+            GPN.PlayerName[1] = "食料屋";//
+            GPN.PlayerName[2] = "飲料屋";//
+            GPN.PlayerName[3] = "道具屋";//
             Debug.Log("デバックプレイヤー起動");
             LogOut("デバックプレイヤー起動", false);
         }//もしプレイヤー名が入っていなかったら　主デバック用
@@ -79,7 +79,7 @@ public class MainManeger : Config
         {
             Player[l] = new Player(GPN.PlayerName[l], l);//プレイヤークラスに名前と役職を当て込む　薬剤師　食料　水　道具の順番
             Player[l].PlayerDate();//プレイヤーデータを各プレイヤーデバック表示
-            Debug.Log("プレイヤー初期データ表示");
+            //Debug.Log("プレイヤー初期データ表示");
         }
         FirstSet = true;
         LogOut("初期値設定終了", false);

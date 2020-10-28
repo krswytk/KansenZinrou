@@ -46,7 +46,7 @@ public class IventAll : Config
                 ssw = true;//一度のみ呼び出すためのスイッチ
                 Timer = 0;//Timerの初期化
                 FO.TimerAll.SetActive(true);//タイマー関係全表示
-                Debug.Log("仕入れタイマースタート");
+                //Debug.Log("仕入れタイマースタート");
                 TimerSwOFF();
             }//タイマー初回起動時
 
@@ -182,8 +182,8 @@ public class IventAll : Config
     public void TimerON()//制限時間のタイマー計測を始める　
     {
         sw = true;
-        MM.LogOut("仕入れタイマースイッチ起動", false);
-        Debug.Log("仕入れタイマースイッチ起動");
+        MM.LogOut("仕入れタイマー起動", false);
+        Debug.Log("仕入れタイマー起動");
     }
 
     public bool GetTimerSW()//現在タイマーが作動中か判定　
@@ -197,7 +197,7 @@ public class IventAll : Config
         {
             Player[i].SetPurchasing(0);
         }
-        Debug.Log("仕入れ数を0にリセット");
+        //Debug.Log("仕入れ数を0にリセット");
         UIM.TableUpdate();
     }
 
@@ -295,7 +295,7 @@ public class IventAll : Config
                 MainManeger.InfectionStage = (int)FirstNumber.感染増加;//感染した際の増加率
                 break;
             case news.体調不良:
-                FO.PCR.SetActive(false);//ゲームオブジェクトPCRを非表示
+                PCROFF();//ゲームオブジェクトPCRを非表示
                 //特になし
                 break;
             case news.支援:

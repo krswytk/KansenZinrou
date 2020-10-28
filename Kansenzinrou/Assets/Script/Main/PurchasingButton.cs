@@ -35,12 +35,14 @@ public class PurchasingButton : MonoBehaviour//仕入れ数調整用ボタンス
         int M = MM.Player[0].GetMoney();//対応プレイヤーの所持金を格納
         int P = MM.Player[0].GetPurchasing();//対応プレイヤーの仕入れ数を格納
         if (M >= (int)Config.FirstNumber.薬仕入れ金)//1つ以上仕入れられるお金がある
-        { 
-            P += 1;//仕入れ数を1つ増やす
-            M -= (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を徴収
-            MM.Player[0].SetMoney(M);//所持金に反映
-            MM.Player[0].SetPurchasing(P);//仕入れ数に反映
-            MM.PlaySE(3);
+        {
+            if(MM.Player[0].GetPurchasing() < MainManeger.DrugPurchaseRestrictions){
+                P += 1;//仕入れ数を1つ増やす
+                M -= (int)Config.FirstNumber.薬仕入れ金;//仕入れ金を徴収
+                MM.Player[0].SetMoney(M);//所持金に反映
+                MM.Player[0].SetPurchasing(P);//仕入れ数に反映
+                MM.PlaySE(3);
+            }
         }
         UIM.TableUpdate();
     }
