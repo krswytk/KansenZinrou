@@ -45,6 +45,18 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             {
                 FO.UIOBText[l, 3].text = "∞";
             }
+            if(Player[l].GetFood() == 0)
+            {
+                FO.UIOBText[l, 1].text = "<color=#ff0000>" + Player[l].GetFood().ToString().Insert(1, "</color>");
+            }
+            if (Player[l].GetWater() == 0)
+            {
+                FO.UIOBText[l, 2].text = "<color=#ff0000>" + Player[l].GetWater().ToString().Insert(1, "</color>");
+            }
+            if (Player[l].GetTool() == 0)
+            {
+                FO.UIOBText[l, 3].text = "<color=#ff0000>" + Player[l].GetTool().ToString().Insert(1, "</color>");
+            }
         }
         //Debug.Log("表の更新");
     }
