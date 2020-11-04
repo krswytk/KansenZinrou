@@ -22,7 +22,8 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
             M -= 1;//仕入れ金を返却
             MM.Player[0].SetSell(M);//売値に反映
             UIM.TableUpdate();
-            Debug.Log("薬の売値を減少");
+            // Debug.Log("薬の売値を減少");
+            MM.PlaySE(3);
         }
     }
     public void SDP()
@@ -31,7 +32,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[0].SetSell(M);//売値に反映
         UIM.TableUpdate();
-        Debug.Log("薬の売値を上昇");
+        //Debug.Log("薬の売値を上昇");
         MM.PlaySE(0);
     }
     public void SFM()
@@ -42,7 +43,8 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
             M -= 1;//仕入れ金を返却
             MM.Player[1].SetSell(M);//売値に反映
             UIM.TableUpdate();
-            Debug.Log("食料の売値を減少");
+            //Debug.Log("食料の売値を減少");
+            MM.PlaySE(3);
         }
     }
     public void SFP()
@@ -51,7 +53,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[1].SetSell(M);//売値に反映
         UIM.TableUpdate();
-        Debug.Log("食料の売値を上昇");
+        //Debug.Log("食料の売値を上昇");
         MM.PlaySE(0);
     }
     public void SWM()
@@ -62,7 +64,8 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
             M -= 1;//仕入れ金を返却
             MM.Player[2].SetSell(M);//売値に反映
             UIM.TableUpdate();
-            Debug.Log("水の売値を減少");
+            //Debug.Log("水の売値を減少");
+            MM.PlaySE(3);
         }
     }
     public void SWP()
@@ -71,7 +74,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[2].SetSell(M);//売値に反映
         UIM.TableUpdate();
-        Debug.Log("水の売値を上昇");
+        //Debug.Log("水の売値を上昇");
         MM.PlaySE(0);
     }
     public void STM()
@@ -82,7 +85,8 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
             M -= 1;//仕入れ金を返却
             MM.Player[3].SetSell(M);//売値に反映
             UIM.TableUpdate();
-            Debug.Log("道具の売値を減少");
+            //Debug.Log("道具の売値を減少");
+            MM.PlaySE(3);
         }
     }
     public void STP()
@@ -91,7 +95,7 @@ public class Sell : MonoBehaviour//売値の調整ボタン用スクリプト//�
         M += 1;
         MM.Player[3].SetSell(M);//売値に反映
         UIM.TableUpdate();
-        Debug.Log("道具の売値を上昇");
+        //Debug.Log("道具の売値を上昇");
         MM.PlaySE(0);
     }
 }

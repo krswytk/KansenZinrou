@@ -179,7 +179,7 @@ public class UIManger : MonoBehaviour//UI表示全般を行うクラス
             }
         }  
         MM.PlaySE(6);//感染表示のSE
-        Debug.Log("感染予測表示");
+        //Debug.Log("感染予測表示");
     }
 
     public void DeathImage(int i)//表示を死亡画像にする

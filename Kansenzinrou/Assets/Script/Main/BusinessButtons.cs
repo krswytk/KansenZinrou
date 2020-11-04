@@ -96,7 +96,7 @@ public class BusinessButtons : MonoBehaviour//取引時に使用するボタン�
     }
     public void WP()//水の購入
     {
-        if (Player[2].GetPurchasing() > 0)//まず食料の仕入れがあるか確認
+        if (Player[2].GetPurchasing() > 0)//まず水の仕入れがあるか確認
         {
             if (Player[BA.GetTurn()].GetMoney() >= Player[2].GetSell())//次に購入できるお金があるか確認//所持金が仕入れ以上ある
             {
