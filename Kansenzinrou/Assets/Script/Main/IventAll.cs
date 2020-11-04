@@ -309,7 +309,7 @@ public class IventAll : Config
                 break;
         }
         now = news.何もない;
-        Debug.Log("情勢イベント内容打ち消し");
+        //Debug.Log("情勢イベント内容打ち消し");
         UIM.TableUpdate();
     }
     
@@ -462,7 +462,7 @@ public class IventAll : Config
         UIM.TableUpdate();
     }
      public bool ALLD()//全員死んでいるかどうか判定
-    {
+     {
         if (Player[0].GetDeath())//感染が死亡ラインを越えていたら
         {
             if (Player[1].GetDeath())//感染が死亡ラインを越えていたら
@@ -482,7 +482,7 @@ public class IventAll : Config
         UIM.TableUpdate();
 
         return false;
-    }
+     }
 
     private void DSOFF()//死亡表記用の影を隠す
     {

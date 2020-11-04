@@ -11,7 +11,7 @@ public class RandomDice : MonoBehaviour//ランダム生成用の関数　どこ
         //Random.InitState(System.DateTime.Now.Millisecond);
 
         num = Random.Range(1, Max + 1);
-
+        Debug.Log("ダイスの値は:" + num);
         return num;
     }
 }
