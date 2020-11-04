@@ -9,6 +9,7 @@ public class TurnManeger : MonoBehaviour
     UIManger UIM;
     MainManeger MM;
     IventAll IA;
+    FildObject FO;
 
 
     Player[] Player;
@@ -26,6 +27,7 @@ public class TurnManeger : MonoBehaviour
     void Start()
     {
         Turn = 1;
+        FO = GameObject.Find("Maneger").GetComponent<FildObject>();
         UIM = GetComponent<UIManger>();
         IA = GetComponent<IventAll>();
         MM = GetComponent<MainManeger>();
@@ -34,12 +36,12 @@ public class TurnManeger : MonoBehaviour
         TSW = true;
         Timer = 0;
         BusinessSW = false;
+        FO.TurnText.text = (Turn).ToString("f0");
     }
 
     // Update is called once per frame
     void Update()
     {
-
         Timer += Time.deltaTime;
 
         if (MM.FirstSet)//初期設定がすべて完了していたら
@@ -297,7 +299,7 @@ public class TurnManeger : MonoBehaviour
                             stage = Config.Stage.シーン切り替え待機;
                         }
                         Turn += 1;
-
+                        FO.TurnText.text = (Turn).ToString("f0");
 
                     }
                     if ((Timer - NowTime) > (int)Config.FirstNumber.NextStage)//一定時間経過したら
