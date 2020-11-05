@@ -33,7 +33,7 @@ public class SimplePun : MonoBehaviourPunCallbacks
         //生成座標をランダムで決定
         var v = new Vector3(Random.Range(-10f, 10f), Random.Range(-5f, 5f));
         //キャラクターを生成
-        GameObject NetTextOB = PhotonNetwork.Instantiate("NetTextOB", v, Quaternion.identity, 0);
+        //GameObject NetTextOB = PhotonNetwork.Instantiate("NetTextOB", v, Quaternion.identity, 0);
         //自分だけが操作できるようにスクリプトを有効にする
     }
 }
