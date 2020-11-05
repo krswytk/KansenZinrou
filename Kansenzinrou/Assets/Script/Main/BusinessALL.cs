@@ -81,6 +81,11 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     Turn = 0;
                 }
 
+                if (Turn == 0) FO.BusinessTurnText.text = "薬局";
+                if (Turn == 1) FO.BusinessTurnText.text = "食べ物";
+                if (Turn == 2) FO.BusinessTurnText.text = "水";
+                if (Turn == 3) FO.BusinessTurnText.text = "道具";
+
                 Player[Turn].SetNowSupplies(S);//取引前の物資量を保持しておく
                 FO.Next.SetActive(true);//Nextボタンを表示にする
                 SINOW();//取引前の仕入れ数を取得
