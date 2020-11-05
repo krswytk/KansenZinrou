@@ -149,7 +149,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     {
                         if ( Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MainManeger.Infectionprobability - 2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability - 2) >= RandomDice.DiceRoll(10))//1,2で感染
                             { 
                                 Debug.Log("感染");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" +"との取引で"+ Player[Turn].GetName() + "が感染",true);
@@ -158,7 +158,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                         }
                         else//自分が感染している
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が悪化", true);
@@ -172,7 +172,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                     {
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で感染
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で感染
                             {
                                 Debug.Log("感染");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が感染", true);
@@ -181,7 +181,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                         }
                         else//自分が感染している
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が悪化", true);
@@ -199,13 +199,13 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で感染
                             {
                                 Debug.Log("感染");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が感染", true);
                                 Player[Turn].Setinfection(MainManeger.InfectionStage);
                             }
-                            if ((MainManeger.Infectionprobability-2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability-2) >= RandomDice.DiceRoll(10))//1,2で感染
                             {
                                 Debug.Log("相手が感染");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[i].GetName() + "が感染", true);
@@ -214,7 +214,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                         }
                         else//自分が感染している
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が悪化", true);
@@ -230,7 +230,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
 
                         if (Player[Turn].Getinfection() == 0)//0なら自分は感染していない
                         {
-                            if ((MainManeger.Infectionprobability + 2) <= RandomDice.DiceRoll(10))//1,2で感染
+                            if ((MainManeger.Infectionprobability + 2) >= RandomDice.DiceRoll(10))//1,2,3,4,5,6で感染
                             {
                                 Debug.Log("感染");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が感染", true);
@@ -239,7 +239,7 @@ public class BusinessALL : MonoBehaviour//取引関係のスクリプト//感染
                         }
                         else//自分が感染している
                         {
-                            if ((MainManeger.Infectionprobability) <= RandomDice.DiceRoll(10))//1,2,3,4で悪化
+                            if ((MainManeger.Infectionprobability) >= RandomDice.DiceRoll(10))//1,2,3,4で悪化
                             {
                                 Debug.Log("悪化");
                                 MM.LogOut(Player[Turn].GetName() + "(購入者)" + Player[i].GetName() + "(販売者)" + "との取引で" + Player[Turn].GetName() + "が悪化", true);
