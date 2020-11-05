@@ -20713,6 +20713,7 @@ GameObject:
   - component: {fileID: 988708875}
   - component: {fileID: 988708874}
   - component: {fileID: 988708873}
+  - component: {fileID: 988708876}
   m_Layer: 5
   m_Name: TimerSkip
   m_TagString: Untagged
@@ -20822,6 +20823,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988708871}
   m_CullTransparentMesh: 0
+--- !u!114 &988708876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988708871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55cdced48db5174daaa989eeccdf62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &995478171
 GameObject:
   m_ObjectHideFlags: 0
@@ -29069,7 +29082,7 @@ RectTransform:
   - {fileID: 272195876}
   - {fileID: 509285004}
   m_Father: {fileID: 291165589}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
