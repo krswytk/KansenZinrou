@@ -8,13 +8,12 @@ using Photon.Realtime;
 
 public class ConectNetWork : MonoBehaviourPunCallbacks
 {
-
-    // Use this for initialization
-    void Start()
+    public void Start()
     {
-        ConnectPhoton(false);//サーバ接続処理を呼び出す　falseでオンライン　trueでオフラインで実行する
+        ConnectPhoton(false);//鯖、ロビー、ルーム接続処理を開始 trueでオフラインでスタート
     }
 
+    // Photonサーバ接続処理
     public void ConnectPhoton(bool boolOffline)
     {
         if (boolOffline)
@@ -26,49 +25,95 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
         // Photonサーバに接続する
         PhotonNetwork.ConnectUsingSettings();
     }
-    
-    public override void OnConnectedToMaster()//サーバ接続時のコールバック　サーバ接続と同時に呼び出し、ロビーに接続する
-    {
-        PhotonNetwork.JoinLobby();//ランダムに部屋に入る　ない場合は生成する
-        // "room"という名前のルームに参加する（ルームが無ければ作成してから参加する）
-        //PhotonNetwork.JoinOrCreateRoom("room", new RoomOptions(), TypedLobby.Default);
-    }
-    public override void OnJoinedLobby()//ロビー接続時のコールバック　ロビー接続と同時に呼び出し、ルームに接続する
-    {
-        base.OnJoinedLobby();
-    }
 
-
-
-
-
-
-
-
-
+    // Photonサーバ切断処理
     public void DisConnectPhoton()
     {
         PhotonNetwork.Disconnect();
     }
 
-
-
-
-    //ルームに入室後に呼び出される
-    /*public override void OnJoinedRoom()
+    // コールバック：Photonサーバ接続失敗
+    public override void OnDisconnected(DisconnectCause cause)
     {
-        //生成座標をランダムで決定
-        var v = new Vector3(Random.Range(-10f, 10f), Random.Range(-5f, 5f));
-        //キャラクターを生成
-        //GameObject NetTextOB = PhotonNetwork.Instantiate("NetTextOB", v, Quaternion.identity, 0);
-        //自分だけが操作できるようにスクリプトを有効にする
+        base.OnDisconnected(cause);
+    }
+
+    // コールバック：Photonサーバ接続完了
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("サーバーへの接続完了");//サーバー接続をデバックログで出力
+        // ロビーに接続
+        PhotonNetwork.JoinLobby();
+        //PhotonNetwork.LeaveLobby();//ロビーから退出する処理
+    }
+
+    // コールバック：ロビー接続完了
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("ロビーへの接続完了");//ロビー接続をデバックログで出力
+        base.OnJoinedLobby();
+    }
+
+    // コールバック：ロビー離脱完了
+    public override void OnLeftLobby()
+    {
+        base.OnLeftLobby();
+    }
+
+    // コールバック：ルーム一覧更新処理
+    // (ロビーに入室した時、他のプレイヤーが更新した時のみ)
+    
+        /*
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        base.OnRoomListUpdate(roomList);
+        // ルーム一覧更新
+        foreach (var info in roomList)
+        {
+            if (!info.RemovedFromList)
+            {
+                // 更新データが削除でない場合
+                roomDispList.Add(info);
+            }
+            else
+            {
+                // 更新データが削除の場合
+                roomDispList.Remove(info);
+            }
+        }
     }*/
 
 
-    void OnGUI()
+    // ルーム作成・入室処理
+    public void CreateRoom(string roomName)
     {
-        //ログインの状態を画面上に出力
-        GUILayout.Label(PhotonNetwork.NetworkClientState.ToString());
+        PhotonNetwork.CreateRoom(roomName);
     }
 
+    // ルーム入室処理
+    public void ConnectToRoom(string roomName)
+    {
+        PhotonNetwork.JoinRoom(roomName);
+    }
+
+    // コールバック：ルーム作成完了
+    public override void OnCreatedRoom()
+    {
+        Debug.Log("ルームの作成");//ルームの作成をデバックログで出力
+        base.OnCreatedRoom();
+    }
+
+    // コールバック：ルーム作成失敗
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("ルームの作成が失敗");//ルームの作成が失敗をデバックログで出力
+        base.OnCreateRoomFailed(returnCode, message);
+    }
+
+    // コールバック：ルームに入室した時
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("ルーム入室");//ルーム入室をデバックログで出力
+        base.OnJoinedRoom();
+    }
 }
