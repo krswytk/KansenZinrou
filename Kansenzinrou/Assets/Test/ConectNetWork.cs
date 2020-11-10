@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -8,17 +8,20 @@ using Photon.Realtime;
 
 public class ConectNetWork : MonoBehaviourPunCallbacks
 {
-    public void Start()
+
+    public void Start()//シーンの最初に呼び出す
     {
+        Debug.Log("全接続を開始");//サーバー接続をデバックログで出力
         ConnectPhoton(false);//鯖、ロビー、ルーム接続処理を開始 trueでオフラインでスタート
     }
+
 
     // Photonサーバ接続処理
     public void ConnectPhoton(bool boolOffline)
     {
         if (boolOffline)
         {
-            // オフラインモードを設定
+            // オフラインモードを設定 //絶対に実行させることはないはず
             PhotonNetwork.OfflineMode = true; // OnConnectedToMaster()が呼ばれる
             return;
         }
@@ -29,12 +32,14 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     // Photonサーバ切断処理
     public void DisConnectPhoton()
     {
+        Debug.Log("サーバーから切断");//サーバー接続をデバックログで出力
         PhotonNetwork.Disconnect();
     }
 
     // コールバック：Photonサーバ接続失敗
     public override void OnDisconnected(DisconnectCause cause)
     {
+        Debug.LogError("サーバーへの接続失敗");//サーバー接続をデバックログで出力
         base.OnDisconnected(cause);
     }
 
@@ -51,38 +56,15 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("ロビーへの接続完了");//ロビー接続をデバックログで出力
-        base.OnJoinedLobby();
+        CreateRoom(OnlineName.OnlineRoomName);//ルームの作成または接続//設定されたルーム名でルームを制作
     }
 
     // コールバック：ロビー離脱完了
     public override void OnLeftLobby()
     {
+        Debug.Log("ロビーから離脱");//ロビー接続をデバックログで出力
         base.OnLeftLobby();
     }
-
-    // コールバック：ルーム一覧更新処理
-    // (ロビーに入室した時、他のプレイヤーが更新した時のみ)
-    
-        /*
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        base.OnRoomListUpdate(roomList);
-        // ルーム一覧更新
-        foreach (var info in roomList)
-        {
-            if (!info.RemovedFromList)
-            {
-                // 更新データが削除でない場合
-                roomDispList.Add(info);
-            }
-            else
-            {
-                // 更新データが削除の場合
-                roomDispList.Remove(info);
-            }
-        }
-    }*/
-
 
     // ルーム作成・入室処理
     public void CreateRoom(string roomName)
@@ -107,6 +89,8 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("ルームの作成が失敗");//ルームの作成が失敗をデバックログで出力
+        //今回の場合ルームがすでに制作されていたということ//なので作成ではなく、入室処理を行う
+        ConnectToRoom(OnlineName.OnlineRoomName);
         base.OnCreateRoomFailed(returnCode, message);
     }
 
