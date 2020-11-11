@@ -146,9 +146,12 @@ public class IventAll : Config
             }
         }
     }
-    public void skip()//たいまーすきっぷ
+    public void Skip()//たいまーすきっぷ
     {
-        Timer = Timer + (Timer - (int)FirstNumber.仕入れ時間);
+        if (sw==true)
+        {
+            Timer = Timer - (Timer - (int)FirstNumber.仕入れ時間);
+        }
     }
     public void Salary()//お給料
     {
