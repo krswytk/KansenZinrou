@@ -12,6 +12,6 @@ public class TimerSkip : MonoBehaviour
     }
     public void TimerSkipSW()
     {
-        IA.skip();
+        IA.Skip();
     }
 }
