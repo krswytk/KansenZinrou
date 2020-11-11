@@ -18,8 +18,8 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
     private void Update()
     {
         //自分の生成オブジェクトか判断
-        if (photonView.IsMine)
-        {
+       // if (photonView.IsMine)
+       // {
             //移動入力量を保持
             var direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
             //時間で距離を算出
@@ -37,7 +37,7 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
             }
 
             ChangeBodyColor();
-        }
+       // }
     }
 
     // データを送受信するメソッド
@@ -45,7 +45,7 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            //Debug.Log("データー送信");
+            Debug.Log("データー送信");
             // 自身側が生成したオブジェクトの場合は
             // 色相値と移動中フラグのデータを送信する
             stream.SendNext(hue);
@@ -53,7 +53,7 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            //Debug.Log("データー受信");
+            Debug.Log("データー受信");
             // 他プレイヤー側が生成したオブジェクトの場合は
             // 受信したデータから色相値と移動中フラグを更新する
             hue = (float)stream.ReceiveNext();

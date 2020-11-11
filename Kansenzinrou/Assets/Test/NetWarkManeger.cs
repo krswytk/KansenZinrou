@@ -8,6 +8,9 @@ public class NetWarkManeger : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Start()
     {
+        PhotonNetwork.SendRate = 20; // 1秒間にメッセージ送信を行う回数
+        PhotonNetwork.SerializationRate = 10; // 1秒間にオブジェクト同期を行う回数
+
         num = new int[2];
         num[0] = 0;
         num[1] = 0;
@@ -17,19 +20,29 @@ public class NetWarkManeger : MonoBehaviourPunCallbacks, IPunObservable
         UPText();
     }
 
+    private void Update()
+    {
+        num[1]++;
+        UPText();
+    }
+
 
     //数値変更で値を同期させる
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        Debug.Log("同期開始");
+        //送信時
         if (stream.IsWriting)
         {
+            Debug.Log("データ送信");
             //値を送る
             stream.SendNext(num);
-        }
+        }//受信時
         else
         {
+            Debug.Log("データ受信");
             //値を受け取る
-            num = (int[])stream.ReceiveNext();
+            this.num = (int[])stream.ReceiveNext();
         }
         UPText();
     }
