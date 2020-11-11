@@ -2,32 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Buttontest : MonoBehaviour
+public class Buttontest : MonoBehaviourPunCallbacks
 {
-    private static int num;
-    public Text text;
-    // Start is called before the first frame update
-    void Start()
+    public void UP1()
     {
-        num = 0;
-        text.text = num.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UP()
-    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Get(0);
         num++;
-        text.text = num.ToString();
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Set(0,num);
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().UPText();
     }
-    public void DOWN()
+    public void DOWN1()
     {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Get(0);
         num--;
-        text.text = num.ToString();
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Set(0, num);
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().UPText();
+    }
+    public void UP2()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Get(1);
+        num++;
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Set(1, num);
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().UPText();
+    }
+    public void DOWN2()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Get(1);
+        num--;
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().Set(1, num);
+        GameObject.Find("NetWorkManeger").GetComponent<NetWarkManeger>().UPText();
     }
 }
