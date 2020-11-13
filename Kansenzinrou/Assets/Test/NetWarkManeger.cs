@@ -22,8 +22,9 @@ public class NetWarkManeger : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        num[1]++;
-        UPText();
+        var hashtable = new ExitGames.Client.Photon.Hashtable();
+        hashtable["Score"] = 100;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
     }
 
 
