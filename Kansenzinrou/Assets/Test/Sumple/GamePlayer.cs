@@ -4,16 +4,18 @@ using UnityEngine;
 // MonoBehaviourPunCallbacksを継承すると、photonViewプロパティが使えるようになる
 public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
 {
-    [SerializeField]
-    private Projectile projectilePrefab = default; // ProjectileのPrefabの参照
-
     private SpriteRenderer spriteRenderer;
     private float hue = 0f; // 色相値
     private bool isMoving = false; // 移動中フラグ
 
+    private ProjectileManager projectileManager;
+
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        projectileManager = GameObject.FindWithTag("ProjectileManager").GetComponent<ProjectileManager>();
 
         ChangeBodyColor();
     }
@@ -97,7 +99,6 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     private void FireProjectile(float angle)
     {
-        var projectile = Instantiate(projectilePrefab);
-        projectile.Init(transform.position, angle);
+        projectileManager.Fire(transform.position, angle);
     }
 }
