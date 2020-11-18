@@ -29,13 +29,13 @@ public class ProjectileManager : MonoBehaviour
     }
 
     // 弾を発射（アクティブ化）するメソッド
-    public void Fire(Vector3 origin, float angle)
+    public void Fire(int id, int ownerId, Vector3 origin, float angle, int timestamp)
     {
         // 非アクティブの弾があれば使い回す、なければ生成する
         var projectile = (inactivePool.Count > 0)
             ? inactivePool.Pop()
             : Instantiate(projectilePrefab, transform);
-        projectile.Activate(origin, angle);
+        projectile.Activate(id, ownerId, origin, angle, timestamp);
         activeList.Add(projectile);
     }
 
@@ -45,5 +45,17 @@ public class ProjectileManager : MonoBehaviour
         activeList.Remove(projectile);
         projectile.Deactivate();
         inactivePool.Push(projectile);
+    }
+
+    public void Remove(int id, int ownerId)
+    {
+        foreach (var projectile in activeList)
+        {
+            if (projectile.Equals(id, ownerId))
+            {
+                Remove(projectile);
+                break;
+            }
+        }
     }
 }

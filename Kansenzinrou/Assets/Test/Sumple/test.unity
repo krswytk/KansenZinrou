@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 1306094901}
   m_Layer: 0
   m_Name: ProjectileManager
-  m_TagString: Untagged
+  m_TagString: ProjectileManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cd4c3cf4c8b8284090282d740a393b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 737205886306515609, guid: 7f6c74d6d16a3cb4db0ccb6dce35847e,
+    type: 3}
 --- !u!4 &1306094902
 Transform:
   m_ObjectHideFlags: 0

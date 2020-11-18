@@ -1,4 +1,5 @@
 ﻿using Photon.Pun;
+using TMPro;
 using UnityEngine;
 
 // MonoBehaviourPunCallbacksを継承すると、photonViewプロパティが使えるようになる
@@ -10,6 +11,10 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
 
     private ProjectileManager projectileManager;
 
+    private int projectileId = 0;
+
+    [SerializeField]
+    private TextMeshPro nameLabel = default;
 
     private void Awake()
     {
@@ -18,6 +23,11 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
         projectileManager = GameObject.FindWithTag("ProjectileManager").GetComponent<ProjectileManager>();
 
         ChangeBodyColor();
+    }
+
+    private void Start()
+    {
+        nameLabel.text = photonView.Owner.NickName;
     }
 
     private void Update()
@@ -57,7 +67,7 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
                 float angle = Mathf.Atan2(dp.y, dp.x);
 
                 // FireProjectile(angle)をRPCで実行する
-                photonView.RPC(nameof(FireProjectile), RpcTarget.All, angle);
+                photonView.RPC(nameof(FireProjectile), RpcTarget.All, transform.position, angle);
             }
         }
     }
@@ -97,8 +107,30 @@ public class GamePlayer : MonoBehaviourPunCallbacks, IPunObservable
     // 弾を発射するメソッド
     // [PunRPC]属性をつけると、RPCでの実行が有効になる
     [PunRPC]
-    private void FireProjectile(float angle)
+    private void FireProjectile(Vector3 origin, float angle, PhotonMessageInfo info)
     {
-        projectileManager.Fire(transform.position, angle);
+        int timestamp = info.SentServerTimestamp;
+        projectileManager.Fire(timestamp, photonView.OwnerActorNr, origin, angle, timestamp);
+    }
+
+
+
+    //当たり判定の処理　弾を受ける側が当たり判定を行う
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (photonView.IsMine)//あたったのが自分
+        {
+            var projectile = collision.GetComponent<Projectile>();
+            if (projectile != null && projectile.OwnerId != PhotonNetwork.LocalPlayer.ActorNumber)
+            {
+                photonView.RPC(nameof(HitByProjectile), RpcTarget.All, projectile.Id, projectile.OwnerId);
+            }
+        }
+    }
+
+    [PunRPC]
+    private void HitByProjectile(int projectileId, int ownerId)
+    {
+        projectileManager.Remove(projectileId, ownerId);
     }
 }

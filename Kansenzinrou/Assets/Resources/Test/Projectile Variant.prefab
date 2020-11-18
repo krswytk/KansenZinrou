@@ -19,10 +19,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1064542763790723490, guid: 847b3d0c52e5f3143b32c3d4feecd3ee,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3945569723489437275, guid: 847b3d0c52e5f3143b32c3d4feecd3ee,
         type: 3}
       propertyPath: m_Name
-      value: Projectile
+      value: Projectile Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3945569723489437276, guid: 847b3d0c52e5f3143b32c3d4feecd3ee,
         type: 3}
@@ -93,6 +98,7 @@ PrefabInstance:
     - {fileID: 6242937626839537313, guid: 847b3d0c52e5f3143b32c3d4feecd3ee, type: 3}
     - {fileID: 5572412867707196045, guid: 847b3d0c52e5f3143b32c3d4feecd3ee, type: 3}
     - {fileID: -6687925940936944432, guid: 847b3d0c52e5f3143b32c3d4feecd3ee, type: 3}
+    - {fileID: 5498859058891777342, guid: 847b3d0c52e5f3143b32c3d4feecd3ee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 847b3d0c52e5f3143b32c3d4feecd3ee, type: 3}
 --- !u!1 &1443875269279486017 stripped
 GameObject:
