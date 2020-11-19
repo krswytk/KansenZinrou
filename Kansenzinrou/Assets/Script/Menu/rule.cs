@@ -51,4 +51,9 @@ public class rule : MonoBehaviour
     {
         feadSC.fade("Name");//ゲームスタート
     }
+
+    public void MultiStart()
+    {
+        feadSC.fade("Multi");//マルチゲームスタート
+    }
 }

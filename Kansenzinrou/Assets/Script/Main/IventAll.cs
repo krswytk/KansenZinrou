@@ -135,8 +135,7 @@ public class IventAll : Config
                         break;
                 }
             }
-
-            if ((Timer - TimerCount) > (int)FirstNumber.仕入れ時間)
+            if (Timer > (int)FirstNumber.仕入れ時間)
             {
                 sw = false;//制限時間以上ならカウント終了
                 ssw = false;
@@ -145,6 +144,13 @@ public class IventAll : Config
                 FO.TimerText.text = Timer.ToString("f0");
                 Debug.Log("仕入れタイマー終了");
             }
+        }
+    }
+    public void Skip()//たいまーすきっぷ
+    {
+        if (sw==true)
+        {
+            Timer = Timer - (Timer - (int)FirstNumber.仕入れ時間);
         }
     }
     public void Salary()//お給料

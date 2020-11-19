@@ -26,6 +26,12 @@ public class FildObject : Config
     [HideInInspector] public GameObject Timer;//時間表示のオブジェクト
     [HideInInspector] public Text TimerText;//時間表示のタイマー
 
+    [HideInInspector] public GameObject TurnNum;//ターン数表示のオブジェクト
+    [HideInInspector] public Text TurnText;//ターン数表示のテキスト
+
+    [HideInInspector] public GameObject BusinessTurnNum;//ターン数表示のテキスト
+    [HideInInspector] public Text BusinessTurnText;
+
     [HideInInspector] public GameObject PCR;//感染情報確定の複数格納オブジェクト
     [HideInInspector] public GameObject InfectionIndication;//感染情報確定のオブジェクト
     [HideInInspector] public Text InfectionIndicationText;//感染情報確定のテキストオブジェクト
@@ -138,6 +144,15 @@ public class FildObject : Config
         Timer = GameObject.Find("Timer");//情勢イベント
         TimerText = Timer.GetComponent<Text>();//情勢イベントテキスト
         /////////////////////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////////////////////
+        TurnNum = GameObject.Find("TurnNum");//ターン数
+        TurnText = TurnNum.GetComponent<Text>();//ターン数テキスト
+
+        /////////////////////////////////////////////////////////////////////////////
+        ///
+        BusinessTurnNum = GameObject.Find("BusinessTurnNum");//ターン数
+        BusinessTurnText = BusinessTurnNum.GetComponent<Text>();//ターン数テキスト
 
         /////////////////////////////////////////////////////////////////////////////
         PCR = GameObject.Find("PCR");//感染情報確定の複数格納オブジェクト
