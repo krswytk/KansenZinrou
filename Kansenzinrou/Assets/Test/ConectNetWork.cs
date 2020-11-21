@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -8,11 +9,19 @@ using Photon.Realtime;
 
 public class ConectNetWork : MonoBehaviourPunCallbacks
 {
+    private string OnlineRoomName = "Room";
+
+    int[] num = new int[4];
+    public GameObject[] t; 
 
     public void Start()//シーンの最初に呼び出す
     {
+        PhotonNetwork.GameVersion = "1.0";
         Debug.Log("全接続を開始");//サーバー接続をデバックログで出力
         ConnectPhoton(false);//鯖、ロビー、ルーム接続処理を開始 trueでオフラインでスタート
+        num[0] = 0; num[1] = 0; num[2] = 0; num[3] = 0;
+        UPText(1);
+        UPText(2);
     }
 
 
@@ -56,7 +65,7 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         Debug.Log("ロビーへの接続完了");//ロビー接続をデバックログで出力
-        CreateRoom(OnlineName.OnlineRoomName);//ルームの作成または接続//設定されたルーム名でルームを制作
+        CreateRoom(OnlineRoomName);//ルームの作成または接続//設定されたルーム名でルームを制作
     }
 
     // コールバック：ロビー離脱完了
@@ -66,7 +75,7 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
         base.OnLeftLobby();
     }
 
-    // ルーム作成・入室処理
+    // ルーム作成,入室処理
     public void CreateRoom(string roomName)
     {
         PhotonNetwork.CreateRoom(roomName);
@@ -82,6 +91,7 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("ルームの作成");//ルームの作成をデバックログで出力
+
         base.OnCreatedRoom();
     }
 
@@ -90,7 +100,8 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     {
         Debug.Log("ルームの作成が失敗");//ルームの作成が失敗をデバックログで出力
         //今回の場合ルームがすでに制作されていたということ//なので作成ではなく、入室処理を行う
-        ConnectToRoom(OnlineName.OnlineRoomName);
+        ConnectToRoom(OnlineRoomName);
+
         base.OnCreateRoomFailed(returnCode, message);
     }
 
@@ -99,5 +110,53 @@ public class ConectNetWork : MonoBehaviourPunCallbacks
     {
         Debug.Log("ルーム入室");//ルーム入室をデバックログで出力
         base.OnJoinedRoom();
+    }
+
+    public int Get(int i)
+    {
+        return num[i-1];
+    }
+    public void Set(int num ,int i)
+    {
+        this.num[i - 1] = num;
+    }
+    public void UPText(int i)
+    {
+        t[i-1].GetComponent<Text>().text = num[i-1].ToString();
+    }
+    [PunRPC]
+    public void UP1()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Get(1);
+        num++;
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Set(num, 1);
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().UPText(1);
+    }
+
+    [PunRPC]
+    public void DOWN1()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Get(1);
+        num--;
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Set(num, 1);
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().UPText(1);
+    }
+
+    [PunRPC]
+    public void UP2()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Get(2);
+        num++;
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Set(num, 2);
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().UPText(2);
+    }
+
+    [PunRPC]
+    public void DOWN2()
+    {
+        int num = GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Get(2);
+        num--;
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().Set(num, 2);
+        GameObject.Find("NetWorkManeger").GetComponent<ConectNetWork>().UPText(2);
     }
 }

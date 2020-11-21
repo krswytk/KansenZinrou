@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Test/Sumple/test.unity
     guid: ef5fa42e2a9ac734a9c1a3d952642b45
   - enabled: 1

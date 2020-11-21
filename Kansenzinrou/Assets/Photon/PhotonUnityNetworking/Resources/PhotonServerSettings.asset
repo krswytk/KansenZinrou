@@ -40,6 +40,10 @@ MonoBehaviour:
   - RespawnSpaceship
   - FireProjectile
   - HitByProjectile
+  - DOWN1
+  - DOWN2
+  - UP1
+  - UP2
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 0

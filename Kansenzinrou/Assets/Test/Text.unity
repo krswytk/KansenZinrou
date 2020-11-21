@@ -533,8 +533,9 @@ GameObject:
   - component: {fileID: 634169799}
   - component: {fileID: 634169798}
   - component: {fileID: 634169801}
+  - component: {fileID: 634169802}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: DOWN1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +605,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 634169801}
-        m_MethodName: DOWN1
+        m_MethodName: BDOWN1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -665,6 +666,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f4833d987ef9f48ad21366f3e690e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &634169802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634169796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &682080149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,8 +1097,9 @@ GameObject:
   - component: {fileID: 1038720596}
   - component: {fileID: 1038720595}
   - component: {fileID: 1038720598}
+  - component: {fileID: 1038720599}
   m_Layer: 5
-  m_Name: Button
+  m_Name: UP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1145,7 +1169,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1038720598}
-        m_MethodName: UP1
+        m_MethodName: BUP1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1206,6 +1230,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f4833d987ef9f48ad21366f3e690e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1038720599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038720593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1070669817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,8 +1265,9 @@ GameObject:
   - component: {fileID: 1070669821}
   - component: {fileID: 1070669820}
   - component: {fileID: 1070669819}
+  - component: {fileID: 1070669823}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: DOWN2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1239,7 +1286,7 @@ RectTransform:
   m_Children:
   - {fileID: 214083252}
   m_Father: {fileID: 2025573672}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1302,7 +1349,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1070669819}
-        m_MethodName: DOWN2
+        m_MethodName: BDOWN2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1351,6 +1398,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070669817}
   m_CullTransparentMesh: 0
+--- !u!114 &1070669823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070669817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1116220101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,8 +1433,9 @@ GameObject:
   - component: {fileID: 1116220105}
   - component: {fileID: 1116220104}
   - component: {fileID: 1116220103}
+  - component: {fileID: 1116220107}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: UP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1384,7 +1454,7 @@ RectTransform:
   m_Children:
   - {fileID: 1148986637}
   m_Father: {fileID: 2025573672}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1447,7 +1517,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1116220103}
-        m_MethodName: UP2
+        m_MethodName: BUP2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1496,6 +1566,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116220101}
   m_CullTransparentMesh: 0
+--- !u!114 &1116220107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116220101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1148986636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,7 +1754,6 @@ GameObject:
   - component: {fileID: 1245745969}
   - component: {fileID: 1245745971}
   - component: {fileID: 1245745970}
-  - component: {fileID: 1245745972}
   - component: {fileID: 1245745973}
   m_Layer: 0
   m_Name: NetWorkManeger
@@ -1697,6 +1788,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382f24dbff5e8b043b7b59b848b8abee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  t:
+  - {fileID: 118547238}
+  - {fileID: 305051624}
 --- !u!114 &1245745971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1709,19 +1803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa616eaa1f5832d4b8996c21e551b6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1245745972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245745968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ad818006f93ce4e98251b6da307799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  num: 
 --- !u!114 &1245745973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,7 +1822,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 1245745972}
+  - {fileID: 0}
   viewIdField: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2389,8 +2470,8 @@ RectTransform:
   - {fileID: 1038720594}
   - {fileID: 634169797}
   - {fileID: 305051625}
-  - {fileID: 1070669818}
   - {fileID: 1116220102}
+  - {fileID: 1070669818}
   - {fileID: 1281154306}
   m_Father: {fileID: 0}
   m_RootOrder: 2
