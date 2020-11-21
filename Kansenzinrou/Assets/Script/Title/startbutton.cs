@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class startbutton : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1920, 1080, false, 30);
     }
 
     public void OnClickStartButton() //https://dianxnao.com/ボタンクリックでシーン間を遷移%ef%bc%88移動%ef%bc%89する/
