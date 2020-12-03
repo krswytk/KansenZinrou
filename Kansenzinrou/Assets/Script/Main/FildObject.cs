@@ -52,6 +52,9 @@ public class FildObject : Config
 
     [HideInInspector] public GameObject[] DSObject;//死亡表示のセット
 
+
+    [HideInInspector] public GameObject PLname_object;//死亡表示のセット
+
     MainManeger MM;
 
 
@@ -256,5 +259,7 @@ public class FildObject : Config
         DSObject[2] = GameObject.Find("WSD");//水屋の対策
         DSObject[3] = GameObject.Find("TSD");//道具屋の対策
         ////////////////////////////////////////////////////////////////////////////
+        ///
+        PLname_object = GameObject.Find("NextPL");//道具屋の対策
     }
 }

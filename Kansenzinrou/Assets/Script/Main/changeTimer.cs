@@ -7,22 +7,28 @@ public class changeTimer : MonoBehaviour
 {
     MainManeger MM;
     TurnManeger TM;
+    FildObject FO;
     [SerializeField] GameObject text;
-    bool txton = true;
+    private bool txton = true;
     [HideInInspector] public float span = 5f;
     private float currentTime = 0f;
     [HideInInspector] public int Turn;//今取引をしている人のターン
-    Player[] Player;
-    bool PLchack = true;
-    public GameObject PLname_object = null;
-    int MPLT = 0;
+    private Player[] Player;
+    private bool PLchack = true;
+    private int MPLT = 0;
+
+    private Text PLD_text;
     void Start()
     {
         TM= GameObject.Find("Maneger").GetComponent<TurnManeger>();
         MM = GameObject.Find("Maneger").GetComponent<MainManeger>();
+        FO = GameObject.Find("Maneger").GetComponent<FildObject>();
         Player = MM.Player;
         //TM = GetComponent<TurnManeger>();
         //MM = GetComponent<MainManeger>();
+
+
+        PLD_text = FO.PLname_object.GetComponent<Text>();
     }
     void Update()
     {
@@ -104,20 +110,16 @@ public class changeTimer : MonoBehaviour
         switch (Turn)//現在が何ターン目なのか取得
         {
             case 0:
-                Text PLD_text = PLname_object.GetComponent<Text>();
                 PLD_text.text = "薬局から取引開始";
                 break;
             case 1:
-                Text PLF_text = PLname_object.GetComponent<Text>();
-                PLF_text.text = "食べ物から取引開始";
+                PLD_text.text = "食べ物から取引開始";
                 break;
             case 2:
-                Text PLW_text = PLname_object.GetComponent<Text>();
-                PLW_text.text = "水から取引開始";
+                PLD_text.text = "水から取引開始";
                 break;
             case 3:
-                Text PLT_text = PLname_object.GetComponent<Text>();
-                PLT_text.text = "道具から取引開始";
+                PLD_text.text = "道具から取引開始";
                 break;
             case 4:
                 Turn = 0;//薬局から
